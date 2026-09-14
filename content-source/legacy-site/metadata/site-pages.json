@@ -1,0 +1,267 @@
+{
+  "source": "https://www.christlikeness.ca/",
+  "harvested": "2026-09-14",
+  "method": "Wix router pagesMap from the served viewer model; page data from https://static.wixstatic.com/sites/<pageJsonFileName>.json.z?v=3",
+  "visible_menu": [
+    {
+      "depth": 0,
+      "label": "Home",
+      "visible": true,
+      "visibleMobile": true,
+      "link": {
+        "type": "page",
+        "uri": "hs",
+        "title": "Home"
+      }
+    },
+    {
+      "depth": 0,
+      "label": "Church",
+      "visible": true,
+      "visibleMobile": true,
+      "link": {
+        "type": "page",
+        "uri": "church",
+        "title": "Church"
+      }
+    },
+    {
+      "depth": 0,
+      "label": "About",
+      "visible": true,
+      "visibleMobile": true,
+      "link": {
+        "type": "page",
+        "uri": "about",
+        "title": "About"
+      }
+    },
+    {
+      "depth": 0,
+      "label": "Connect",
+      "visible": true,
+      "visibleMobile": true,
+      "link": {
+        "type": "page",
+        "uri": "connect",
+        "title": "Connect"
+      }
+    },
+    {
+      "depth": 0,
+      "label": "Music",
+      "visible": true,
+      "visibleMobile": true,
+      "link": {
+        "type": "page",
+        "uri": "music",
+        "title": "Music"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "pageId": "id48v",
+      "title": "About",
+      "uri": "about",
+      "url": "https://www.christlikeness.ca/about",
+      "hidden": false
+    },
+    {
+      "pageId": "jcu2b",
+      "title": "Church",
+      "uri": "church",
+      "url": "https://www.christlikeness.ca/church",
+      "hidden": false
+    },
+    {
+      "pageId": "v5n7s",
+      "title": "Convention",
+      "uri": "closed",
+      "url": "https://www.christlikeness.ca/closed",
+      "hidden": true
+    },
+    {
+      "pageId": "uy73n",
+      "title": "Home2",
+      "uri": "coming-soon-03",
+      "url": "https://www.christlikeness.ca/coming-soon-03",
+      "hidden": true
+    },
+    {
+      "pageId": "h0wad",
+      "title": "Connect",
+      "uri": "connect",
+      "url": "https://www.christlikeness.ca/connect",
+      "hidden": false
+    },
+    {
+      "pageId": "x4z8y",
+      "title": "deliverance",
+      "uri": "deliverance",
+      "url": "https://www.christlikeness.ca/deliverance",
+      "hidden": true
+    },
+    {
+      "pageId": "uu2f8",
+      "title": "Prayers for deliverance",
+      "uri": "deliveranceprayer",
+      "url": "https://www.christlikeness.ca/deliveranceprayer",
+      "hidden": true
+    },
+    {
+      "pageId": "tls8x",
+      "title": "Devo Bible",
+      "uri": "devobible",
+      "url": "https://www.christlikeness.ca/devobible",
+      "hidden": true
+    },
+    {
+      "pageId": "js4hy",
+      "title": "vid2",
+      "uri": "devobible-3d-tabernacle",
+      "url": "https://www.christlikeness.ca/devobible-3d-tabernacle",
+      "hidden": true
+    },
+    {
+      "pageId": "svmz7",
+      "title": "vid6",
+      "uri": "devobible-ezek1",
+      "url": "https://www.christlikeness.ca/devobible-ezek1",
+      "hidden": true
+    },
+    {
+      "pageId": "p70i3",
+      "title": "vid7",
+      "uri": "devobible-ezek2",
+      "url": "https://www.christlikeness.ca/devobible-ezek2",
+      "hidden": true
+    },
+    {
+      "pageId": "go7xc",
+      "title": "vid3",
+      "uri": "devobible-ezra-nehemiah",
+      "url": "https://www.christlikeness.ca/devobible-ezra-nehemiah",
+      "hidden": true
+    },
+    {
+      "pageId": "hh18i",
+      "title": "vid5",
+      "uri": "devobible-isaiah",
+      "url": "https://www.christlikeness.ca/devobible-isaiah",
+      "hidden": true
+    },
+    {
+      "pageId": "y50mf",
+      "title": "vid4",
+      "uri": "devobible-job",
+      "url": "https://www.christlikeness.ca/devobible-job",
+      "hidden": true
+    },
+    {
+      "pageId": "fp0s2",
+      "title": "vid1",
+      "uri": "devobible-vid-joshua",
+      "url": "https://www.christlikeness.ca/devobible-vid-joshua",
+      "hidden": true
+    },
+    {
+      "pageId": "t5pt0",
+      "title": "finals",
+      "uri": "finalsbatch3",
+      "url": "https://www.christlikeness.ca/finalsbatch3",
+      "hidden": true
+    },
+    {
+      "pageId": "prwli",
+      "title": "Fullscreen Page",
+      "uri": "fullscreen-page",
+      "url": "https://www.christlikeness.ca/fullscreen-page",
+      "hidden": true
+    },
+    {
+      "pageId": "hgaca",
+      "title": "Home",
+      "uri": "hs",
+      "url": "https://www.christlikeness.ca/",
+      "hidden": false
+    },
+    {
+      "pageId": "hqqox",
+      "title": "Copy of Church",
+      "uri": "hs2",
+      "url": "https://www.christlikeness.ca/hs2",
+      "hidden": true
+    },
+    {
+      "pageId": "c310r",
+      "title": "LAF",
+      "uri": "laf",
+      "url": "https://www.christlikeness.ca/laf",
+      "hidden": true
+    },
+    {
+      "pageId": "op189",
+      "title": "More Than Enough SPRING",
+      "uri": "mte-closed",
+      "url": "https://www.christlikeness.ca/mte-closed",
+      "hidden": true
+    },
+    {
+      "pageId": "eh6ap",
+      "title": "Music",
+      "uri": "music",
+      "url": "https://www.christlikeness.ca/music",
+      "hidden": false
+    },
+    {
+      "pageId": "qhssh",
+      "title": "P&F",
+      "uri": "paf",
+      "url": "https://www.christlikeness.ca/paf",
+      "hidden": true
+    },
+    {
+      "pageId": "ipify",
+      "title": "Menu",
+      "uri": "popup-ipify",
+      "url": "https://www.christlikeness.ca/popup-ipify",
+      "hidden": true
+    },
+    {
+      "pageId": "b3tcj",
+      "title": "PWR",
+      "uri": "pwr",
+      "url": "https://www.christlikeness.ca/pwr",
+      "hidden": true
+    },
+    {
+      "pageId": "g8mam",
+      "title": "RSVP",
+      "uri": "rsvp",
+      "url": "https://www.christlikeness.ca/rsvp",
+      "hidden": true
+    },
+    {
+      "pageId": "ojk7c",
+      "title": "STC",
+      "uri": "stc",
+      "url": "https://www.christlikeness.ca/stc",
+      "hidden": true
+    },
+    {
+      "pageId": "xz5i9",
+      "title": "VIP Form",
+      "uri": "vip",
+      "url": "https://www.christlikeness.ca/vip",
+      "hidden": true
+    },
+    {
+      "pageId": "aor1y",
+      "title": "Volunteer Worker Form",
+      "uri": "volunteer",
+      "url": "https://www.christlikeness.ca/volunteer",
+      "hidden": true
+    }
+  ]
+}

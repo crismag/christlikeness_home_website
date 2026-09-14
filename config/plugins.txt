@@ -1,0 +1,9 @@
+# Approved WordPress plugins (one wordpress.org slug per line).
+#
+# A plugin is added here only after the Core → free plugin → custom evaluation
+# in docs/ARCHITECTURE.md, with its record in the plugin register there.
+# scripts/test.sh fails if any other plugin is active.
+#
+# Plugin code is never committed to this repository and never modified.
+#
+# (none approved yet)

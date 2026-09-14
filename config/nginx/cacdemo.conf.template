@@ -1,0 +1,37 @@
+# Local development vhost for the cacdemo WordPress runtime.
+# Rendered by scripts/bootstrap-local.sh into /etc/nginx/sites-available/cacdemo.
+server {
+    listen 80;
+    server_name __HOSTNAME__;
+
+    root __WP_ROOT__;
+    index index.php index.html;
+
+    # Matches the shared PHP-FPM pool's post_max_size so oversize uploads get
+    # WordPress's own error instead of an nginx 413.
+    client_max_body_size 8m;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~* ^/wp-content/uploads/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:__PHP_FPM_SOCK__;
+    }
+
+    location ~* \.(css|js|jpg|jpeg|png|gif|webp|avif|ico|svg|woff2?)$ {
+        expires 30d;
+        access_log off;
+        try_files $uri =404;
+    }
+
+    location ~ /\.(ht|git) {
+        deny all;
+    }
+}

@@ -1,0 +1,29 @@
+# Local secrets / environment (never commit)
+config/local.env
+.env
+.env.*
+!config/local.sample.env
+
+# WordPress runtime artifacts must never live here
+wp-config.php
+wp-admin/
+wp-includes/
+wp-content/uploads/
+uploads/
+
+# Database dumps and backups
+*.sql
+*.sql.gz
+*.sqlite
+*.bak
+backups/
+
+# Logs, caches, OS/editor noise
+*.log
+.cache/
+node_modules/
+vendor/
+.DS_Store
+*.swp
+.idea/
+.vscode/

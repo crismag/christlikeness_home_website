@@ -1,0 +1,145 @@
+{
+  "harvested": "2026-09-14",
+  "assets": [
+    {
+      "local": "images/branding/logo-mark-white-transparent__a3b8d0f9.png",
+      "wix_media_id": "2484cf_a3b8d0f9195341fc9747ac3cf5c41b36~mv2.png",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_a3b8d0f9195341fc9747ac3cf5c41b36~mv2.png",
+      "format": "PNG",
+      "width": 528,
+      "height": 530,
+      "bytes": 14616,
+      "sha256": "531c3668b2f98f3bc8fd44f39ec94599e3444b3fda28425233fa17801c9b005e"
+    },
+    {
+      "local": "images/branding/site-favicon-34px__d2836239.png",
+      "wix_media_id": "2484cf_d2836239a7304865925a197293599c7f~mv2.png",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_d2836239a7304865925a197293599c7f~mv2.png",
+      "format": "PNG",
+      "width": 34,
+      "height": 34,
+      "bytes": 4151,
+      "sha256": "429972f83d37ac2493d3fc011f23fd17cb98e67b41f81a5e206d68e343fb60ed"
+    },
+    {
+      "local": "images/branding/logo-mark-photo-collage-landscape__31263352.jpg",
+      "wix_media_id": "2484cf_3126335256a24fa195be40dbfe9cbc51~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_3126335256a24fa195be40dbfe9cbc51~mv2.jpg",
+      "format": "JPEG",
+      "width": 2400,
+      "height": 1800,
+      "bytes": 171022,
+      "sha256": "27f0078d0998d993f8e1b4731f8c5d9e4f012017d91bab2ba9e99c7327744708"
+    },
+    {
+      "local": "images/branding/logo-mark-photo-collage-portrait__db3f71fb.png",
+      "wix_media_id": "2484cf_db3f71fbf0c84e63b02b25b6125f7e66~mv2.png",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_db3f71fbf0c84e63b02b25b6125f7e66~mv2.png",
+      "format": "PNG",
+      "width": 2394,
+      "height": 3358,
+      "bytes": 2926469,
+      "sha256": "ba86b33790f903411909445941ae2b8ddf2397b8fa1782b29e0b6ff0bb1e03fe"
+    },
+    {
+      "local": "images/music/christlike-worship-logo__064effd0.jpg",
+      "wix_media_id": "2484cf_064effd033c94781a297ca1f9016fc40~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_064effd033c94781a297ca1f9016fc40~mv2.jpg",
+      "format": "JPEG",
+      "width": 4000,
+      "height": 4000,
+      "bytes": 206499,
+      "sha256": "530b2fe5f50dcaa60fcf8055d6328416536fd7f74a3e3a703f4c73c531bfc921"
+    },
+    {
+      "local": "images/music/radical-music-logo__128bda72.jpg",
+      "wix_media_id": "2484cf_128bda729efb4f55b094e84eaae81af1~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_128bda729efb4f55b094e84eaae81af1~mv2.jpg",
+      "format": "JPEG",
+      "width": 4000,
+      "height": 4000,
+      "bytes": 634754,
+      "sha256": "66ab62e5ae4d1cdfc218ee5dbbfaf0f731e66a6bd3e79d76d5fc0bde81e19eb7"
+    },
+    {
+      "local": "images/people/about-lead-pastors-section-photo__b55d3b0b.jpg",
+      "wix_media_id": "2484cf_b55d3b0b76ac4d87841f9888f879c08d~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_b55d3b0b76ac4d87841f9888f879c08d~mv2.jpg",
+      "format": "JPEG",
+      "width": 1836,
+      "height": 3264,
+      "bytes": 3631401,
+      "sha256": "cadc112bd6c3751505cff96a8aa98ded36a1f6b2fb26f3014ce245f45dd7bc97"
+    },
+    {
+      "local": "images/worship/church-page-background-video-frame__f8f846c1.jpg",
+      "wix_media_id": "2484cf_f8f846c1a8c640729dc2e843a91d9514f000.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_f8f846c1a8c640729dc2e843a91d9514f000.jpg",
+      "format": "JPEG",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 208420,
+      "sha256": "756b3783935cac3891986af36a7023b11d57ab2ba4ba5cf948be80327e99d687"
+    },
+    {
+      "local": "images/outreach/looking-for-a-church-banner-landscape__7bc424be.jpg",
+      "wix_media_id": "2484cf_7bc424be56e044bb9108f04b2c7d073c~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_7bc424be56e044bb9108f04b2c7d073c~mv2.jpg",
+      "format": "JPEG",
+      "width": 3081,
+      "height": 1605,
+      "bytes": 780012,
+      "sha256": "73a1184e724229044db2961750e4690ff35db098d24d8da55d250e83c5ac0ff2"
+    },
+    {
+      "local": "images/outreach/looking-for-a-church-banner-portrait__b8948580.jpg",
+      "wix_media_id": "2484cf_b8948580f6ae46419205c6e2b9d0d521~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_b8948580f6ae46419205c6e2b9d0d521~mv2.jpg",
+      "format": "JPEG",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 554452,
+      "sha256": "3e1b9e4d7bbbe701ab9e450351f56ef9c64f01498ad5dc6e31aa4b5cf8f6c204"
+    },
+    {
+      "local": "images/events/youth-convention-2024-counter-culture-banner__a952e9b8.jpg",
+      "wix_media_id": "2484cf_a952e9b8970b40d3b44d1902fc82fab8~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_a952e9b8970b40d3b44d1902fc82fab8~mv2.jpg",
+      "format": "JPEG",
+      "width": 3200,
+      "height": 1800,
+      "bytes": 9934517,
+      "sha256": "4e64ff421621769661bc55013b186e8d6035b87fe6d0ba906202e20897e0a304"
+    },
+    {
+      "local": "images/events/mte-spring-drive-2024-food-pantry-clothes-closet__dc86feaa.jpg",
+      "wix_media_id": "2484cf_dc86feaa3ff44ee7bf61ce3f5e1945eb~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_dc86feaa3ff44ee7bf61ce3f5e1945eb~mv2.jpg",
+      "format": "JPEG",
+      "width": 3840,
+      "height": 2160,
+      "bytes": 605941,
+      "sha256": "213ea56ed9f269f287d92a3addcbfad14c018fd31130edb94be3570e9923a14d"
+    },
+    {
+      "local": "images/resources/devo-bible-product-photo-covers__8e4236be.jpg",
+      "wix_media_id": "2484cf_8e4236bebc4449ec8a5636dbe9e988c0~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_8e4236bebc4449ec8a5636dbe9e988c0~mv2.jpg",
+      "format": "JPEG",
+      "width": 2268,
+      "height": 2684,
+      "bytes": 3928761,
+      "sha256": "57c7c08892bae551953025c7e58be9c192286cd9912050c730d4bc07a2382cd9"
+    },
+    {
+      "local": "images/resources/devo-bible-product-photo-interior__a93d6386.jpg",
+      "wix_media_id": "2484cf_a93d6386b28d4da3bea72f1ed8c4390d~mv2.jpg",
+      "remote_url": "https://static.wixstatic.com/media/2484cf_a93d6386b28d4da3bea72f1ed8c4390d~mv2.jpg",
+      "format": "JPEG",
+      "width": 2268,
+      "height": 2684,
+      "bytes": 3737438,
+      "sha256": "2174b29f72f488ccae09d36ba95a30787157ef6b681f57e8f563d5e215efb382"
+    }
+  ]
+}
