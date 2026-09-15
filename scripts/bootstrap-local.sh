@@ -210,6 +210,37 @@ theme() {
     [[ "$(wpc theme list --status=active --field=name)" == "$THEME_SLUG" ]] || wpc theme activate "$THEME_SLUG" >/dev/null
 }
 
+plugins() {
+    log "Approved plugins (config/plugins.txt)"
+    local slug
+    while read -r slug; do
+        if wpc plugin is-installed "$slug"; then
+            wpc plugin is-active "$slug" || wpc plugin activate "$slug" >/dev/null
+        else
+            wpc plugin install "$slug" --activate >/dev/null
+        fi
+        log "  $slug $(wpc plugin get "$slug" --field=version) active"
+    done < <(approved_plugins)
+}
+
+own_plugins_step() {
+    local slug link
+    while read -r slug; do
+        log "Plugin $slug (source: wordpress/plugins/$slug)"
+        link="$WP_ROOT/wp-content/plugins/$slug"
+        [[ -e "$link" && ! -L "$link" ]] && die "$link is a real directory — the runtime must symlink to the repository"
+        ln -sfn "$REPO_ROOT/wordpress/plugins/$slug" "$link"
+        sudo -n -u www-data test -r "$link/$slug.php" || die "www-data cannot read $link/$slug.php"
+        wpc plugin is-active "$slug" || wpc plugin activate "$slug" >/dev/null
+    done < <(own_plugins)
+}
+
+scf_definitions() {
+    wpc plugin is-active secure-custom-fields || return 0
+    log "Secure Custom Fields definitions (config/scf)"
+    wpc eval-file "$REPO_ROOT/scripts/scf-sync.php" import | sed 's/^/  /'
+}
+
 main() {
     preflight
     database
@@ -219,6 +250,9 @@ main() {
     webserver
     install_site
     theme
+    plugins
+    scf_definitions
+    own_plugins_step
     permissions
     log "Done: $SITE_URL  (admin: $SITE_URL/wp-admin/, user $ADMIN_USER)"
     log "Run scripts/test.sh to verify."

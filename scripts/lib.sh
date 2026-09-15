@@ -25,6 +25,8 @@ THEME_SLUG="cacdemo"
 THEME_SRC="$REPO_ROOT/wordpress/themes/$THEME_SLUG"
 
 approved_plugins() { grep -vE '^[[:space:]]*(#|$)' "$REPO_ROOT/config/plugins.txt" | awk '{print $1}'; }
+# Our own plugins (wordpress/plugins/<slug>/): symlinked locally, uploaded to staging, never from WordPress.org.
+own_plugins() { find "$REPO_ROOT/wordpress/plugins" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | sort; }
 
 log()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 warn() { printf '\033[1;33m!!\033[0m %s\n' "$*" >&2; }

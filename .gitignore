@@ -27,3 +27,7 @@ vendor/
 *.swp
 .idea/
 .vscode/
+
+# Sermon harvest still cache (re-created by scripts/harvest-*.py; images go to the Media Library on import)
+content-source/sermon-harvest/*/stills/
+__pycache__/
