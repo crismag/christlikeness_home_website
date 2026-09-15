@@ -26,6 +26,8 @@ const CACDEMO_PUBLISHING_VERSION = 3;
 const CACDEMO_SCOPES_META        = 'cacdemo_publishing_scopes';
 const CACDEMO_CONTRIBUTOR_ROLE   = 'page_contributor';
 const CACDEMO_MANAGE_CAP         = 'cacdemo_manage_contributors';
+// Level keys without translated labels: capability checks can run before translations may load (kses_init on set_current_user).
+const CACDEMO_PUBLISHING_LEVEL_KEYS = array( 'contributor', 'publisher' );
 
 /** Primitive capabilities of a post type registered with capability_type [ singular, plural ]. */
 function cacdemo_publishing_type_caps( $plural ) {
@@ -100,7 +102,7 @@ function cacdemo_publishing_scopes( $user_id ) {
 	$stored = get_user_meta( (int) $user_id, CACDEMO_SCOPES_META, true );
 	$scopes = array();
 	foreach ( is_array( $stored ) ? $stored : array() as $scope => $level ) {
-		if ( ! isset( cacdemo_publishing_levels()[ $level ] ) ) {
+		if ( ! in_array( $level, CACDEMO_PUBLISHING_LEVEL_KEYS, true ) ) {
 			continue;
 		}
 		if ( 'sermons' === $scope || ( preg_match( '/^ministry:(\d+)$/', $scope, $m ) && 'ministry' === get_post_type( (int) $m[1] ) ) ) {
@@ -115,7 +117,7 @@ function cacdemo_publishing_set_scopes( $user_id, $scopes ) {
 	$sections = cacdemo_publishing_sections();
 	$clean    = array();
 	foreach ( (array) $scopes as $scope => $level ) {
-		if ( isset( $sections[ $scope ], cacdemo_publishing_levels()[ $level ] ) ) {
+		if ( isset( $sections[ $scope ] ) && in_array( $level, CACDEMO_PUBLISHING_LEVEL_KEYS, true ) ) {
 			$clean[ $scope ] = $level;
 		}
 	}
