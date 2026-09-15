@@ -1,0 +1,247 @@
+{
+    "key": "group_cacdemo_centre_details",
+    "title": "Centre details",
+    "fields": [
+        {
+            "key": "field_cacdemo_centre_service_day",
+            "label": "Service day",
+            "name": "centre_service_day",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "choices": {
+                "Sunday": "Sunday",
+                "Saturday": "Saturday",
+                "Friday": "Friday",
+                "Thursday": "Thursday",
+                "Wednesday": "Wednesday",
+                "Tuesday": "Tuesday",
+                "Monday": "Monday"
+            },
+            "default_value": "Sunday",
+            "return_format": "value",
+            "ui": 0,
+            "allow_null": 0,
+            "multiple": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_cacdemo_centre_service_time",
+            "label": "Service time",
+            "name": "centre_service_time",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "For example: 10:00 AM",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_street",
+            "label": "Street address",
+            "name": "centre_street",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_unit",
+            "label": "Unit",
+            "name": "centre_unit",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave empty if not confirmed.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_city",
+            "label": "City or area",
+            "name": "centre_city",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_province",
+            "label": "Province",
+            "name": "centre_province",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "ON",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_postal_code",
+            "label": "Postal code",
+            "name": "centre_postal_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_map_url",
+            "label": "Map link",
+            "name": "centre_map_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Link to the location on a map service.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cacdemo_centre_phone",
+            "label": "Phone",
+            "name": "centre_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Only if this centre has its own confirmed number.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_centre_verification_notes",
+            "label": "Verification notes (internal)",
+            "name": "centre_verification_notes",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Unconfirmed details and who needs to confirm them. Never shown on the website.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "centre"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Canonical centre facts. Publish a centre only when every shown detail is church-confirmed.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

@@ -1,9 +1,53 @@
-<!-- wp:group {"tagName":"footer","layout":{"type":"constrained"}} -->
-<footer class="wp-block-group">
-	<!-- wp:site-title /-->
+<!-- wp:group {"tagName":"div","align":"full","className":"site-footer is-style-section-night","style":{"spacing":{"padding":{"top":"var:preset|spacing|section","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull site-footer is-style-section-night" style="padding-top:var(--wp--preset--spacing--section);padding-bottom:var(--wp--preset--spacing--60)">
+	<!-- wp:pattern {"slug":"cacdemo/centre-footer"} /-->
 
-	<!-- wp:paragraph {"align":"center"} -->
-	<p class="has-text-align-center">&copy; Christlikeness</p>
-	<!-- /wp:paragraph -->
-</footer>
+	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70","top":"var:preset|spacing|60"}}}} -->
+	<div class="wp-block-columns alignwide">
+		<!-- wp:column {"width":"33.33%"} -->
+		<div class="wp-block-column" style="flex-basis:33.33%">
+			<!-- wp:heading {"level":2,"fontSize":"subheading"} -->
+			<h2 class="wp-block-heading has-subheading-font-size">Contact</h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"textColor":"night-muted","style":{"typography":{"fontFamily":"var:preset|font-family|sans"}},"fontSize":"small"} -->
+			<p class="has-night-muted-color has-text-color has-small-font-size">Questions, prayer requests or planning a visit.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:buttons -->
+			<div class="wp-block-buttons">
+				<!-- wp:button -->
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/contact/">Contact us</a></div>
+				<!-- /wp:button -->
+			</div>
+			<!-- /wp:buttons -->
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column {"width":"66.66%"} -->
+		<div class="wp-block-column" style="flex-basis:66.66%">
+			<!-- wp:heading {"level":2,"className":"screen-reader-text"} -->
+			<h2 class="wp-block-heading screen-reader-text">Pages</h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:page-list /-->
+		</div>
+		<!-- /wp:column -->
+	</div>
+	<!-- /wp:columns -->
+
+	<!-- wp:separator {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|50"}}},"backgroundColor":"night-rule"} -->
+	<hr class="wp-block-separator alignwide has-text-color has-night-rule-color has-alpha-channel-opacity has-night-rule-background-color has-background" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--50)"/>
+	<!-- /wp:separator -->
+
+	<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group alignwide">
+		<!-- wp:site-title {"level":0} /-->
+
+		<!-- wp:paragraph {"textColor":"night-muted","style":{"typography":{"fontFamily":"var:preset|font-family|sans"}},"fontSize":"small"} -->
+		<p class="has-night-muted-color has-text-color has-small-font-size">© Christlikeness</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
+</div>
 <!-- /wp:group -->

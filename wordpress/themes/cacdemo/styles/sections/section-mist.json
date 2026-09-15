@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Mist band",
+	"slug": "section-mist",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"color": { "background": "var:preset|color|mist", "text": "var:preset|color|ink" },
+		"elements": {
+			"link": { "color": { "text": "var:preset|color|stage" } }
+		}
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Arch",
+	"slug": "arch",
+	"blockTypes": [ "core/image" ],
+	"styles": {
+		"css": "& img { aspect-ratio: 4 / 5; width: 100%; height: auto; object-fit: cover; border-radius: 50% 50% 0 0 / 40% 40% 0 0; }"
+	}
+}

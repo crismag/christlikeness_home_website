@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Night band",
+	"slug": "section-night",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"color": { "background": "var:preset|color|night", "text": "var:preset|color|paper" },
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|stage-light" },
+				":hover": { "color": { "text": "var:preset|color|paper" } }
+			},
+			"heading": { "color": { "text": "var:preset|color|paper" } },
+			"button": {
+				"color": { "background": "var:preset|color|paper", "text": "var:preset|color|night" },
+				"border": { "color": "var:preset|color|paper" },
+				":hover": { "color": { "background": "var:preset|color|mist" }, "border": { "color": "var:preset|color|mist" } }
+			},
+			"caption": { "color": { "text": "var:preset|color|night-muted" } },
+			"cite": { "color": { "text": "var:preset|color|night-muted" } }
+		},
+		"blocks": {
+			"core/separator": { "color": { "text": "var:preset|color|night-rule" } }
+		}
+	}
+}

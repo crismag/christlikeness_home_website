@@ -1,0 +1,12 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+	"version": 3,
+	"title": "Text link",
+	"slug": "text-link",
+	"blockTypes": [
+		"core/button"
+	],
+	"styles": {
+		"css": "& { background: transparent; color: var(--wp--preset--color--stage); border-color: transparent; padding-left: 0; padding-right: 0; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; } &:hover { background: transparent; border-color: transparent; color: var(--wp--preset--color--stage); text-decoration-thickness: 2.5px; }"
+	}
+}

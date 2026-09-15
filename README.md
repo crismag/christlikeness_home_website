@@ -50,4 +50,5 @@ Day to day, run `scripts/test.sh` (fast, read-only). See [tests/README.md](tests
 - Plugins provide capability; the theme provides the Christlikeness design.
 - Deployments ship our theme/plugin code, never core, databases or uploads.
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
+[docs/INFORMATION-ARCHITECTURE.md](docs/INFORMATION-ARCHITECTURE.md).
