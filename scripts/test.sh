@@ -14,8 +14,9 @@
 #
 #   scripts/test.sh --publishing  Also runs the contextual publishing acceptance test
 #                              (tests/publishing.php): section permissions, tampering,
-#                              contributors, uploads, visitor view. Temporary users and
-#                              content are removed. Run after changing publishing code.
+#                              contributors, uploads, visitor view) and the Content Manager
+#                              (tests/manage.php). Temporary users and content are removed.
+#                              Run after changing publishing or Content Manager code.
 #
 set -uo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
@@ -200,6 +201,11 @@ if [[ "${1:-}" == "--publishing" ]]; then
     PASS=$((PASS + $(grep -c 'PASS' <<<"$out"))); FAIL=$((FAIL + $(grep -c 'FAIL' <<<"$out")))
     [[ $status -ne 0 && $(grep -c 'FAIL' <<<"$out") -eq 0 ]] && fail "publishing test did not run: $(tail -1 <<<"$out")"
 
+    section "Content Manager acceptance (/manage/, temporary users and content)"
+    out=$(wpc eval-file "$REPO_ROOT/tests/manage.php" 2>&1); status=$?
+    printf '%s\n' "$out" | grep -E 'PASS|FAIL|^[A-Z][a-z]' | grep -v ' passed, '
+    PASS=$((PASS + $(grep -c 'PASS' <<<"$out"))); FAIL=$((FAIL + $(grep -c 'FAIL' <<<"$out")))
+    [[ $status -ne 0 && $(grep -c 'FAIL' <<<"$out") -eq 0 ]] && fail "Content Manager test did not run: $(tail -1 <<<"$out")"
 fi
 
 printf '\n%d passed, %d failed\n' "$PASS" "$FAIL"

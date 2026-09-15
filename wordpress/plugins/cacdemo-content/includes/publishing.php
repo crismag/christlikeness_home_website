@@ -579,10 +579,10 @@ function cacdemo_publishing_trim_admin_menu() {
 
 add_filter( 'login_redirect', 'cacdemo_publishing_login_redirect', 10, 3 );
 
-/** Page contributors start from the website, where the section actions are. */
+/** Page contributors start in the Content Manager rather than wp-admin. */
 function cacdemo_publishing_login_redirect( $redirect_to, $requested, $user ) {
 	if ( $user instanceof WP_User && in_array( CACDEMO_CONTRIBUTOR_ROLE, $user->roles, true ) && ( ! $requested || admin_url() === $requested ) ) {
-		return home_url( '/' );
+		return function_exists( 'cacdemo_manage_url' ) ? cacdemo_manage_url() : home_url( '/' );
 	}
 	return $redirect_to;
 }
@@ -600,31 +600,33 @@ function cacdemo_publishing_actions() {
 	$actions = array();
 	if ( is_page( 'sermons' ) || is_tax( array( 'sermon_series', 'sermon_speaker', 'sermon_topic' ) ) ) {
 		if ( current_user_can( get_post_type_object( 'sermon' )->cap->create_posts ) ) {
-			$actions[] = array( __( 'New sermon', 'cacdemo' ), admin_url( 'post-new.php?post_type=sermon' ), true );
+			$actions[] = array( __( 'New sermon', 'cacdemo' ), cacdemo_manage_url( 'sermons/new' ), true );
 		}
 	} elseif ( is_singular( 'sermon' ) ) {
 		if ( current_user_can( 'edit_post', get_queried_object_id() ) ) {
-			$actions[] = array( __( 'Edit sermon', 'cacdemo' ), get_edit_post_link( get_queried_object_id(), 'url' ), false );
+			$actions[] = array( __( 'Edit sermon', 'cacdemo' ), cacdemo_manage_url( 'sermons/' . get_queried_object_id() ), false );
 		}
 		if ( current_user_can( get_post_type_object( 'sermon' )->cap->create_posts ) ) {
-			$actions[] = array( __( 'New sermon', 'cacdemo' ), admin_url( 'post-new.php?post_type=sermon' ), false );
+			$actions[] = array( __( 'New sermon', 'cacdemo' ), cacdemo_manage_url( 'sermons/new' ), false );
 		}
 	} elseif ( is_singular( 'post' ) ) {
 		if ( current_user_can( 'edit_post', get_queried_object_id() ) ) {
-			$actions[] = array( __( 'Edit update', 'cacdemo' ), get_edit_post_link( get_queried_object_id(), 'url' ), false );
+			$actions[] = array( __( 'Edit update', 'cacdemo' ), cacdemo_manage_url( 'updates/' . get_queried_object_id() ), false );
+		}
+	} elseif ( is_page() && ! is_front_page() ) {
+		if ( current_user_can( 'edit_post', get_queried_object_id() ) ) {
+			$actions[] = array( __( 'Edit page', 'cacdemo' ), cacdemo_manage_url( 'pages/' . get_queried_object_id() ), false );
+			$actions[] = array( __( 'Add sub-page', 'cacdemo' ), cacdemo_manage_url( 'pages/new', array( 'parent' => get_queried_object_id() ) ), false );
 		}
 	} elseif ( is_singular( 'ministry' ) ) {
 		$ministry = get_queried_object_id();
 		$user     = get_current_user_id();
 		if ( cacdemo_publishing_role_can( $user, 'edit_others_posts' ) || cacdemo_publishing_level( $user, 'ministry:' . $ministry ) ) {
-			$actions[] = array( __( 'Add update', 'cacdemo' ), admin_url( 'post-new.php?cacdemo_ministry=' . $ministry ), true );
+			$actions[] = array( __( 'Add update', 'cacdemo' ), cacdemo_manage_url( 'updates/new', array( 'ministry' => $ministry ) ), true );
 		}
 		if ( current_user_can( 'edit_post', $ministry ) ) {
-			$actions[] = array( __( 'Edit page', 'cacdemo' ), get_edit_post_link( $ministry, 'url' ), false );
-			$actions[] = array( __( 'Add a way to serve', 'cacdemo' ), admin_url( 'post-new.php?post_type=serve_role&cacdemo_ministry=' . $ministry ), false );
-			if ( ! cacdemo_publishing_role_can( get_current_user_id(), 'edit_others_serve_roles' ) ) {
-				$actions[] = array( __( 'Ways to serve', 'cacdemo' ), admin_url( 'edit.php?post_type=serve_role' ), false );
-			}
+			$actions[] = array( __( 'Edit page', 'cacdemo' ), cacdemo_manage_url( 'ministries/' . $ministry ), false );
+			$actions[] = array( __( 'Add a way to serve', 'cacdemo' ), cacdemo_manage_url( 'roles/new', array( 'ministry' => $ministry ) ), false );
 		}
 	}
 	return $actions;

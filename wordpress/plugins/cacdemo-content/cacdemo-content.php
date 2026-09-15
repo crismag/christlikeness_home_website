@@ -22,6 +22,7 @@ require_once __DIR__ . '/includes/ministries.php';
 require_once __DIR__ . '/includes/channels.php';
 require_once __DIR__ . '/includes/publishing.php';
 require_once __DIR__ . '/includes/publishing-admin.php';
+require_once __DIR__ . '/includes/manage/manage.php';
 
 add_action( 'init', 'cacdemo_content_register_blocks' );
 

@@ -45,3 +45,10 @@ function cacdemo_register_assets() {
 
 	wp_register_script( 'cacdemo-view-switch', get_theme_file_uri( 'assets/js/view-switch.js' ), array(), $version( 'assets/js/view-switch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 }
+
+add_action( 'cacdemo_manage_enqueue', 'cacdemo_manage_styles' );
+
+/** Content Manager (/manage/, cacdemo-content plugin): the theme provides its look. */
+function cacdemo_manage_styles() {
+	wp_enqueue_style( 'cacdemo-manage', get_theme_file_uri( 'assets/css/manage.css' ), array(), (string) filemtime( get_theme_file_path( 'assets/css/manage.css' ) ) );
+}

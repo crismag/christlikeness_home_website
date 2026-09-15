@@ -214,14 +214,14 @@ try {
 	$cookie      = LOGGED_IN_COOKIE . '=' . rawurlencode( wp_generate_auth_cookie( $cookie_user, $expiration, 'logged_in' ) );
 	$signed_in   = wp_remote_retrieve_body( wp_remote_get( home_url( '/sermons/' ), array( 'timeout' => 20, 'headers' => array( 'Cookie' => $cookie ) ) ) );
 	$anonymous   = wp_remote_retrieve_body( wp_remote_get( home_url( '/sermons/' ), array( 'timeout' => 20 ) ) );
-	$check( 'signed-in sermon Publisher sees New sermon on the Sermons page', (bool) preg_match( '/<nav[^>]*cacdemo-publish-actions.*post-new\.php\?post_type=sermon/s', $signed_in ) );
+	$check( 'signed-in sermon Publisher sees New sermon on the Sermons page', (bool) preg_match( '#<nav[^>]*cacdemo-publish-actions.*?/manage/sermons/new/#s', $signed_in ) );
 	$check( 'visitors see no publishing actions', ! preg_match( '/<nav[^>]*cacdemo-publish-actions/', $anonymous ) );
 	$ministry_page = wp_remote_retrieve_body( wp_remote_get( get_permalink( $ministry_a ), array( 'timeout' => 20, 'headers' => array( 'Cookie' => $cookie ) ) ) );
 	$check( 'sermon Publisher sees no actions on a ministry page', ! preg_match( '/<nav[^>]*cacdemo-publish-actions/', $ministry_page ) );
 	$con_cookie = LOGGED_IN_COOKIE . '=' . rawurlencode( wp_generate_auth_cookie( $ministry_con, $expiration, 'logged_in' ) );
 	$page_a     = wp_remote_retrieve_body( wp_remote_get( get_permalink( $ministry_a ), array( 'timeout' => 20, 'headers' => array( 'Cookie' => $con_cookie ) ) ) );
 	$page_b     = wp_remote_retrieve_body( wp_remote_get( get_permalink( $ministry_b ), array( 'timeout' => 20, 'headers' => array( 'Cookie' => $con_cookie ) ) ) );
-	$check( 'ministry Contributor sees Add update on their ministry only', (bool) preg_match( '/<nav[^>]*cacdemo-publish-actions.*cacdemo_ministry=' . $ministry_a . '/s', $page_a ) && ! preg_match( '/<nav[^>]*cacdemo-publish-actions/', $page_b ) );
+	$check( 'ministry Contributor sees Add update on their ministry only', (bool) preg_match( '#<nav[^>]*cacdemo-publish-actions.*?/manage/updates/new/\?ministry=' . $ministry_a . '#s', $page_a ) && ! preg_match( '/<nav[^>]*cacdemo-publish-actions/', $page_b ) );
 	$check( 'the ministry page lists its published updates', str_contains( $anonymous_a = wp_remote_retrieve_body( wp_remote_get( get_permalink( $ministry_a ), array( 'timeout' => 20 ) ) ), 'Test update by ministry contributor (temporary)' ) && ! str_contains( $anonymous_a, 'Test update for another ministry' ) );
 	$check( 'an update links back to its ministry', str_contains( wp_remote_retrieve_body( wp_remote_get( get_permalink( $update ), array( 'timeout' => 20 ) ) ), 'href="' . get_permalink( $ministry_a ) . '"' ) );
 } catch ( Throwable $e ) {

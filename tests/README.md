@@ -51,3 +51,8 @@ permissions through REST and capability checks, tampering with a way to serve's 
 validation, upload types, removal of access, the contributors service (existing account reuse, new accounts, who may manage whom)
 and the website's contextual actions for signed-in and anonymous requests. Everything created, including anything the temporary
 users authored, is deleted. Run after changing publishing code, and before releases.
+
+The same flag also runs `tests/manage.php`: it signs in temporary accounts over HTTP, reads the Content Manager's rendered
+forms (including SCF's signed data) and submits them like a browser, checking access per section, publishing and unpublishing,
+tampering, trash permissions, context links (ministry updates, sub-pages), People, and the website's links into `/manage/`.
+
