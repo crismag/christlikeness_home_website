@@ -1,0 +1,150 @@
+{
+    "key": "group_cacdemo_ministry_details",
+    "title": "Ministry details",
+    "fields": [
+        {
+            "key": "field_cacdemo_ministry_tagline",
+            "label": "Purpose statement",
+            "name": "ministry_tagline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "One sentence: what this ministry does (shown on cards and the ministry page).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": 160,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_ministry_short_name",
+            "label": "Short name",
+            "name": "ministry_short_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional shorter label for menus and cards.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "default_value": "",
+            "maxlength": 30,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_ministry_contact_label",
+            "label": "Public contact label",
+            "name": "ministry_contact_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Only information meant to be public (e.g. 'Productions team').",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": 80,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_ministry_contact_url",
+            "label": "Public contact link",
+            "name": "ministry_contact_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Optional mailto: or page link. Leave empty to use the church Contact page.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cacdemo_ministry_invite_heading",
+            "label": "Invitation heading",
+            "name": "ministry_invite_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Default: 'Interested in serving with <ministry>?'",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": 120,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_ministry_invite_text",
+            "label": "Invitation text",
+            "name": "ministry_invite_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional. Default: 'You do not need to know everything before getting involved\u2026'",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "rows": 3,
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "ministry"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Public ministry presentation. Never enter internal notes, rosters, schedules or private contacts here.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

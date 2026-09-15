@@ -1,0 +1,125 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" id="main">
+	<!-- wp:group {"metadata":{"name":"Ministry header"},"className":"cacdemo-ministry-hero","style":{"spacing":{"padding":{"top":"clamp(2.5rem, 1rem + 4.5vw, 5rem)","bottom":"clamp(2rem, 1rem + 3vw, 3.5rem)"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div class="wp-block-group cacdemo-ministry-hero" style="padding-top:clamp(2.5rem, 1rem + 4.5vw, 5rem);padding-bottom:clamp(2rem, 1rem + 3vw, 3.5rem)">
+		<!-- wp:paragraph {"align":"wide","className":"cacdemo-eyebrow-link"} -->
+		<p class="alignwide cacdemo-eyebrow-link"><a href="/ministries/">Ministries</a></p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:post-title {"level":1,"align":"wide","className":"cacdemo-display cacdemo-ministry-hero__title","fontSize":"display"} /-->
+
+		<!-- wp:paragraph {"align":"wide","className":"cacdemo-ministry-hero__purpose","fontSize":"lead","metadata":{"bindings":{"content":{"source":"acf/field","args":{"key":"ministry_tagline"}}}}} -->
+		<p class="alignwide cacdemo-ministry-hero__purpose has-lead-font-size"></p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:buttons {"align":"wide"} -->
+		<div class="wp-block-buttons alignwide">
+			<!-- wp:button {"metadata":{"bindings":{"text":{"source":"cacdemo/ministry","args":{"key":"serve_label"}}}}} -->
+			<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#ways-to-serve">Serve with us</a></div>
+			<!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
+
+		<!-- wp:post-featured-image {"align":"wide","aspectRatio":"21/9","className":"cacdemo-ministry-hero__image"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"About the ministry"},"className":"cacdemo-ministry-about","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div class="wp-block-group cacdemo-ministry-about" style="padding-bottom:var(--wp--preset--spacing--70)">
+		<!-- wp:post-content {"align":"wide","className":"cacdemo-ministry-content","layout":{"type":"constrained","contentSize":"38rem","justifyContent":"left"}} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Ways to serve"},"anchor":"ways-to-serve","className":"cacdemo-ways","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div id="ways-to-serve" class="wp-block-group cacdemo-ways" style="padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:heading {"align":"wide"} -->
+		<h2 class="wp-block-heading alignwide">Ways to serve</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:query {"queryId":42,"query":{"perPage":50,"pages":0,"offset":0,"postType":"serve_role","order":"asc","orderBy":"menu_order","inherit":false,"cacdemoMinistryRoles":true},"align":"wide"} -->
+		<div class="wp-block-query alignwide">
+			<!-- wp:post-template {"className":"cacdemo-ways__list"} -->
+				<!-- wp:group {"className":"cacdemo-way","style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"default"}} -->
+				<div class="wp-block-group cacdemo-way">
+					<!-- wp:post-title {"level":3,"className":"cacdemo-way__title","fontSize":"subheading"} /-->
+
+					<!-- wp:post-excerpt {"className":"cacdemo-way__line"} /-->
+
+					<!-- wp:group {"className":"cacdemo-way__badges","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+					<div class="wp-block-group cacdemo-way__badges">
+						<!-- wp:paragraph {"className":"cacdemo-badge cacdemo-badge--needed","metadata":{"bindings":{"content":{"source":"cacdemo/ministry","args":{"key":"needed"}}}}} -->
+						<p class="cacdemo-badge cacdemo-badge--needed"></p>
+						<!-- /wp:paragraph -->
+
+						<!-- wp:paragraph {"className":"cacdemo-badge","metadata":{"bindings":{"content":{"source":"cacdemo/ministry","args":{"key":"experience"}}}}} -->
+						<p class="cacdemo-badge"></p>
+						<!-- /wp:paragraph -->
+					</div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-no-results -->
+				<!-- wp:group {"className":"cacdemo-ways__empty","layout":{"type":"default"}} -->
+				<div class="wp-block-group cacdemo-ways__empty">
+					<!-- wp:paragraph -->
+					<p>There aren’t any specific openings listed right now, but we’d still be glad to hear from you.</p>
+					<!-- /wp:paragraph -->
+
+					<!-- wp:buttons -->
+					<div class="wp-block-buttons">
+						<!-- wp:button {"className":"is-style-text-link","metadata":{"bindings":{"url":{"source":"cacdemo/ministry","args":{"key":"contact_url"}}}}} -->
+						<div class="wp-block-button is-style-text-link"><a class="wp-block-button__link wp-element-button" href="/contact/">Ask about serving</a></div>
+						<!-- /wp:button -->
+					</div>
+					<!-- /wp:buttons -->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Invitation"},"align":"full","className":"is-style-section-mist","style":{"spacing":{"padding":{"top":"var:preset|spacing|section","bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull is-style-section-mist" style="padding-top:var(--wp--preset--spacing--section);padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:columns {"verticalAlignment":"bottom","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70","top":"var:preset|spacing|50"}}}} -->
+		<div class="wp-block-columns alignwide are-vertically-aligned-bottom">
+			<!-- wp:column {"verticalAlignment":"bottom","width":"58%"} -->
+			<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:58%">
+				<!-- wp:heading {"metadata":{"bindings":{"content":{"source":"cacdemo/ministry","args":{"key":"invite_heading"}}}}} -->
+				<h2 class="wp-block-heading">Interested in serving?</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"cacdemo/ministry","args":{"key":"invite_text"}}}}} -->
+				<p></p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"verticalAlignment":"bottom","width":"42%"} -->
+			<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:42%">
+				<!-- wp:buttons -->
+				<div class="wp-block-buttons">
+					<!-- wp:button {"metadata":{"bindings":{"url":{"source":"cacdemo/ministry","args":{"key":"contact_url"}}}}} -->
+					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/contact/">I’m interested</a></div>
+					<!-- /wp:button -->
+
+					<!-- wp:button {"className":"is-style-text-link"} -->
+					<div class="wp-block-button is-style-text-link"><a class="wp-block-button__link wp-element-button" href="/contact/">Ask a question</a></div>
+					<!-- /wp:button -->
+				</div>
+				<!-- /wp:buttons -->
+			</div>
+			<!-- /wp:column -->
+		</div>
+		<!-- /wp:columns -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

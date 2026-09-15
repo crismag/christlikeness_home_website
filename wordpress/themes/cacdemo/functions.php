@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
 add_action( 'after_setup_theme', 'cacdemo_setup' );
 
 function cacdemo_setup() {
-	add_editor_style( 'assets/css/sermons.css' );
+	add_editor_style( array( 'assets/css/sermons.css', 'assets/css/ministries.css' ) );
 }
 
 add_action( 'init', 'cacdemo_register_assets' );
@@ -26,6 +26,14 @@ function cacdemo_register_assets() {
 			'ver'    => $version( 'assets/css/sermons.css' ),
 		) );
 	}
+
+	// Ministry list and ministry page; both render Query Loops.
+	wp_enqueue_block_style( 'core/query', array(
+		'handle' => 'cacdemo-ministries',
+		'src'    => get_theme_file_uri( 'assets/css/ministries.css' ),
+		'path'   => get_theme_file_path( 'assets/css/ministries.css' ),
+		'ver'    => $version( 'assets/css/ministries.css' ),
+	) );
 
 	wp_register_script( 'cacdemo-view-switch', get_theme_file_uri( 'assets/js/view-switch.js' ), array(), $version( 'assets/js/view-switch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 }

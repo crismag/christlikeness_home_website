@@ -1,0 +1,113 @@
+/**
+ * Ministries: the ministry list on /ministries/ and the ministry page (hero, ways to serve).
+ * Lists before cards: ruled rows, no boxes, no shadows. Missing photos are omitted, not placeholdered.
+ */
+
+/* ---------- Ministry list ---------- */
+.cacdemo-ministry-list {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	column-gap: var(--wp--preset--spacing--70);
+	border-top: 2px solid currentColor;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+@media (min-width: 48rem) {
+	.cacdemo-ministry-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.cacdemo-ministry-list > li {
+	margin: 0;
+	padding-block: var(--wp--preset--spacing--50) var(--wp--preset--spacing--60);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+.cacdemo-ministry-item__image { margin-block-end: var(--wp--preset--spacing--30); }
+.cacdemo-ministry-item__name { margin: 0; line-height: 1.1; }
+.cacdemo-ministry-item__name a {
+	color: inherit;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.75rem;
+}
+.cacdemo-ministry-item__name a:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.2em;
+}
+.cacdemo-ministry-item__purpose {
+	font-size: var(--wp--preset--font-size--lead);
+	line-height: 1.4;
+	max-width: 34ch;
+	margin: 0;
+}
+.cacdemo-ministry-item__meta { margin-block-start: var(--wp--preset--spacing--30); align-items: baseline; }
+.cacdemo-ministry-item__roles {
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--stone);
+	margin: 0;
+}
+
+/* Badges: short status words, never colour alone. */
+.cacdemo-badge {
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0;
+	padding: 0.15em 0.55em;
+	border: 1px solid var(--wp--preset--color--rule);
+	border-radius: 2px;
+	color: var(--wp--preset--color--ink);
+}
+.cacdemo-badge--needed {
+	border-color: var(--wp--preset--color--stage);
+	color: var(--wp--preset--color--stage);
+}
+.cacdemo-badge:empty,
+.cacdemo-ministry-item__roles:empty,
+.cacdemo-ministry-item__purpose:empty,
+.cacdemo-ministry-hero__purpose:empty,
+.cacdemo-way__badges:not(:has(p:not(:empty))),
+.cacdemo-ministry-item__meta:not(:has(p:not(:empty))) { display: none; }
+
+.cacdemo-ministries:not(:has(.wp-block-post-template > li)):not(:has(.wp-block-query-no-results)) { display: none; }
+
+/* ---------- Ministry page ---------- */
+.cacdemo-ministry-hero__title { margin-block: 0; max-width: 14ch; }
+.cacdemo-ministry-hero__purpose { max-width: 36ch; margin-block: 0; }
+.cacdemo-ministry-hero .wp-block-buttons { margin-block-start: var(--wp--preset--spacing--50); }
+.cacdemo-ministry-hero__image { margin-block-start: var(--wp--preset--spacing--60); }
+
+/* The introduction is editor content; the section closes up when there is none. */
+.cacdemo-ministry-about:not(:has(.cacdemo-ministry-content > *)) { display: none; }
+.cacdemo-ministry-content > :first-child { margin-block-start: 0; }
+
+/* Ways to serve */
+.cacdemo-ways { scroll-margin-top: var(--wp--preset--spacing--50); }
+.cacdemo-ways > h2 { margin-block-end: var(--wp--preset--spacing--50); }
+.cacdemo-ways__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+	column-gap: var(--wp--preset--spacing--70);
+	border-top: 2px solid currentColor;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.cacdemo-ways__list > li {
+	margin: 0;
+	padding-block: var(--wp--preset--spacing--40);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+.cacdemo-way__title { margin: 0; line-height: 1.2; }
+.cacdemo-way__line p { margin: 0; line-height: 1.45; }
+.cacdemo-way__line .wp-block-post-excerpt__more-text { display: none; }
+.cacdemo-way__badges { margin-block-start: var(--wp--preset--spacing--20); }
+.cacdemo-ways__empty {
+	border-top: 2px solid currentColor;
+	padding-block-start: var(--wp--preset--spacing--40);
+	max-width: 38rem;
+}
+.cacdemo-ways__empty p { margin-block: 0 var(--wp--preset--spacing--20); }

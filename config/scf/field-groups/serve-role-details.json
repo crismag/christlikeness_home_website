@@ -1,0 +1,118 @@
+{
+    "key": "group_cacdemo_serve_role_details",
+    "title": "Serve role details",
+    "fields": [
+        {
+            "key": "field_cacdemo_role_ministry",
+            "label": "Ministry",
+            "name": "role_ministry",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "The ministry this way to serve belongs to.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "post_type": [
+                "ministry"
+            ],
+            "post_status": [
+                "publish",
+                "draft"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_cacdemo_role_status",
+            "label": "Status",
+            "name": "role_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Ongoing: listed as a way to serve. Needed now: a current need (never set just to fill the page). Paused / Filled: not shown publicly.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "choices": {
+                "ongoing": "Ongoing",
+                "needed": "Needed now",
+                "paused": "Paused",
+                "filled": "Filled"
+            },
+            "default_value": "ongoing",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_cacdemo_role_experience",
+            "label": "Experience",
+            "name": "role_experience",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Optional. Helps people who are new to this.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "choices": {
+                "none": "No experience needed",
+                "training": "Training available",
+                "helpful": "Experience helpful"
+            },
+            "default_value": false,
+            "return_format": "label",
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "serve_role"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "A way to serve. Phase 2 adds good fit, commitment, schedule, requirements and the detail page.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}
