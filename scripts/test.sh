@@ -77,6 +77,7 @@ leak=$(curl -s "$SITE_URL/wp-json/wp/v2/centre?status=draft" | grep -c '"status"
 [[ "$leak" == "0" ]] && pass "draft centres are not publicly exposed via REST" || fail "draft centres exposed via REST"
 check "sermon post type and series/speaker/topic taxonomies are registered" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo (post_type_exists(\"sermon\") && taxonomy_exists(\"sermon_series\") && taxonomy_exists(\"sermon_speaker\") && taxonomy_exists(\"sermon_topic\")) ? 1 : 0;') == 1 ]]"
 check "sermon media block is registered (cacdemo-content)" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo WP_Block_Type_Registry::get_instance()->is_registered(\"cacdemo/sermon-media\") ? 1 : 0;') == 1 ]]"
+check "social channels: Follow Us lists the church's pages, home page links them" bash -c "b=\$(curl -s '$SITE_URL/follow-us/'); h=\$(curl -s '$SITE_URL/'); grep -q 'cacdemo-channels is-feeds' <<<\"\$b\" && grep -q 'cacdemo-channels is-compact' <<<\"\$h\" && ! grep -qE 'Fatal error|Warning:|Notice:' <<<\"\$b\""
 check "GET /sermons/ → 200 with the sermon collection, no PHP errors" bash -c "b=\$(curl -s '$SITE_URL/sermons/'); grep -q 'cacdemo-sermon-toolbar' <<<\"\$b\" && ! grep -qE 'Fatal error|Warning:|Notice:|Deprecated:' <<<\"\$b\""
 
 if [[ "${1:-}" == "--interop" ]]; then

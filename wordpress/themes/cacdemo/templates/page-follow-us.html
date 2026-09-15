@@ -1,0 +1,24 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" id="main">
+	<!-- wp:group {"style":{"spacing":{"padding":{"top":"clamp(2.5rem, 1rem + 4.5vw, 5rem)","bottom":"clamp(2rem, 1rem + 3vw, 3.5rem)"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div class="wp-block-group" style="padding-top:clamp(2.5rem, 1rem + 4.5vw, 5rem);padding-bottom:clamp(2rem, 1rem + 3vw, 3.5rem)">
+		<!-- wp:post-title {"level":1,"align":"wide"} /-->
+		<!-- wp:post-content {"align":"wide","className":"cacdemo-page-intro","layout":{"type":"default"}} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"style":{"spacing":{"padding":{"bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div class="wp-block-group" style="padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:heading {"align":"wide","className":"screen-reader-text"} -->
+		<h2 class="wp-block-heading alignwide screen-reader-text">Our pages and groups</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:cacdemo/channels {"variant":"feeds","align":"wide"} /-->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

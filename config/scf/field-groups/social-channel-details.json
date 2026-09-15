@@ -1,0 +1,192 @@
+{
+    "key": "group_cacdemo_channel_details",
+    "title": "Social channel details",
+    "fields": [
+        {
+            "key": "field_cacdemo_channel_short_name",
+            "label": "Short name",
+            "name": "channel_short_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown next to the icon, e.g. \"North York\" or \"Radical YM\".",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "default_value": "",
+            "maxlength": 40,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_channel_platform",
+            "label": "Platform",
+            "name": "channel_platform",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "choices": {
+                "facebook_page": "Facebook page",
+                "facebook_group": "Facebook group",
+                "instagram": "Instagram",
+                "youtube": "YouTube",
+                "spotify": "Spotify",
+                "x": "X (Twitter)"
+            },
+            "default_value": "facebook_page",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_cacdemo_channel_url",
+            "label": "Link",
+            "name": "channel_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "The public address of the page, group or channel.",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "default_value": "",
+            "placeholder": "https://www.facebook.com/\u2026"
+        },
+        {
+            "key": "field_cacdemo_channel_purpose",
+            "label": "What's posted there",
+            "name": "channel_purpose",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "One short line, e.g. \"Sermons and church activities\". Leave empty if unsure.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "default_value": "",
+            "maxlength": 120,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_channel_centre",
+            "label": "Centre",
+            "name": "channel_centre",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Only for a centre's own page.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "post_type": [
+                "centre"
+            ],
+            "post_status": [
+                "publish",
+                "draft"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_cacdemo_channel_embed",
+            "label": "Show recent posts",
+            "name": "channel_embed",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "On the Follow us page, show Facebook's page widget with recent posts (Facebook pages only; groups cannot be embedded).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_cacdemo_channel_home",
+            "label": "Show on home page",
+            "name": "channel_home",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "channel"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Public details of a social media channel the church manages.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

@@ -1,0 +1,85 @@
+/**
+ * Social channels (cacdemo/channels): compact row, list and Follow us cards.
+ * Icons are single-colour masks, so they take the text colour of the band they sit in.
+ */
+
+.cacdemo-channels__list { list-style: none; margin: 0; padding: 0; }
+
+.cacdemo-channel__icon {
+	display: inline-block;
+	flex: none;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: currentColor;
+	-webkit-mask: var(--cacdemo-icon, var(--cacdemo-icon-link)) center / contain no-repeat;
+	mask: var(--cacdemo-icon, var(--cacdemo-icon-link)) center / contain no-repeat;
+	--cacdemo-icon-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a3 3 0 1 1 4.2 4.2l-2 2a1 1 0 1 1-1.4-1.4l2-2a1 1 0 1 0-1.4-1.4L12 13.4a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3.5 3.5a3 3 0 1 1-4.2-4.2l2-2a1 1 0 0 1 1.4 1.4l-2 2a1 1 0 1 0 1.4 1.4L12 10.6a1 1 0 0 1 1.4 0Z'/%3E%3C/svg%3E");
+}
+.cacdemo-channel__icon[data-platform="facebook"] {
+	--cacdemo-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z'/%3E%3C/svg%3E");
+}
+
+/* Compact: icon + short name in a wrapping row. */
+.cacdemo-channels.is-compact .cacdemo-channels__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20) var(--wp--preset--spacing--50);
+}
+.cacdemo-channels.is-compact .cacdemo-channel__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	min-height: 2.75rem;
+	color: inherit;
+	text-decoration: none;
+	font-family: var(--wp--preset--font-family--sans);
+	font-weight: 600;
+}
+.cacdemo-channels.is-compact .cacdemo-channel__link:hover .cacdemo-channel__name {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.25em;
+}
+
+/* List and feeds: ruled rows / cards. */
+.cacdemo-channels.is-list .cacdemo-channels__list,
+.cacdemo-channels.is-feeds .cacdemo-channels__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+	column-gap: var(--wp--preset--spacing--70);
+	border-top: 2px solid currentColor;
+}
+.cacdemo-channels.is-list .cacdemo-channel,
+.cacdemo-channels.is-feeds .cacdemo-channel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--30);
+	padding-block: var(--wp--preset--spacing--50);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+.cacdemo-channel__head { display: flex; gap: var(--wp--preset--spacing--30); align-items: flex-start; }
+.cacdemo-channel__head .cacdemo-channel__icon { width: 2rem; height: 2rem; margin-top: 0.1rem; color: var(--wp--preset--color--stage); }
+.cacdemo-channel__title { margin: 0; font-size: var(--wp--preset--font-size--subheading); line-height: 1.2; }
+.cacdemo-channel__meta {
+	margin: 0.25rem 0 0;
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--stone);
+}
+.cacdemo-channel__follow {
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.75rem;
+	font-family: var(--wp--preset--font-family--sans);
+	font-weight: 600;
+	color: var(--wp--preset--color--stage);
+	text-underline-offset: 0.25em;
+}
+.cacdemo-channels.is-feeds .cacdemo-channels__list { align-items: start; }
+.cacdemo-channel__feed { width: 100%; max-width: 500px; }
+.cacdemo-channel__feed iframe { display: block; max-width: 100%; border: 1px solid var(--wp--preset--color--rule); background: #fff; }
+
+.is-style-section-night .cacdemo-channel__follow,
+.is-style-section-night .cacdemo-channel__head .cacdemo-channel__icon { color: var(--wp--preset--color--stage-light); }
+.is-style-section-night .cacdemo-channel__meta { color: var(--wp--preset--color--night-muted); }

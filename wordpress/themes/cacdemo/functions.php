@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
 add_action( 'after_setup_theme', 'cacdemo_setup' );
 
 function cacdemo_setup() {
-	add_editor_style( array( 'assets/css/sermons.css', 'assets/css/ministries.css' ) );
+	add_editor_style( array( 'assets/css/sermons.css', 'assets/css/ministries.css', 'assets/css/channels.css' ) );
 }
 
 add_action( 'init', 'cacdemo_register_assets' );
@@ -33,6 +33,14 @@ function cacdemo_register_assets() {
 		'src'    => get_theme_file_uri( 'assets/css/ministries.css' ),
 		'path'   => get_theme_file_path( 'assets/css/ministries.css' ),
 		'ver'    => $version( 'assets/css/ministries.css' ),
+	) );
+
+	// Social channels (home band, Connect, Follow us).
+	wp_enqueue_block_style( 'cacdemo/channels', array(
+		'handle' => 'cacdemo-channels',
+		'src'    => get_theme_file_uri( 'assets/css/channels.css' ),
+		'path'   => get_theme_file_path( 'assets/css/channels.css' ),
+		'ver'    => $version( 'assets/css/channels.css' ),
 	) );
 
 	wp_register_script( 'cacdemo-view-switch', get_theme_file_uri( 'assets/js/view-switch.js' ), array(), $version( 'assets/js/view-switch.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
