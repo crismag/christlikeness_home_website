@@ -146,7 +146,8 @@ if [[ "${1:-}" == "--interop" ]]; then
     grep -qE 'wp-block-site-logo.*<img' <<<"$(http_body "$SITE_URL/" | tr -d '\n')" \
         && pass "Site Logo renders in the header" || fail "Site Logo not rendered"
 
-    CACDEMO_FOOTER="$(sed 's#</footer>#<!-- wp:paragraph --><p>Interop Footer Edit</p><!-- /wp:paragraph --></footer>#' "$THEME_SRC/parts/footer.html")"
+    # Append a paragraph to the theme's footer part (the part has no <footer> tag of its own; the template part adds it).
+    CACDEMO_FOOTER="$(cat "$THEME_SRC/parts/footer.html")"$'\n<!-- wp:paragraph --><p>Interop Footer Edit</p><!-- /wp:paragraph -->'
     export CACDEMO_FOOTER
     # Same record the Site Editor saves when an admin edits the footer.
     footer_id=$(wpc eval '
