@@ -77,7 +77,38 @@ each do, and who leads them?
 Facebook (`christlikecanada`), Instagram (`christlikeness_`), Twitter (`christlikeness_`),
 YouTube channel `UCdEsFxptBKsb1j6Q9PaY5jQ`, Facebook group `christlikenessonline`, youth
 Facebook `radicalym` and Instagram `radical_ym`. Confirm each is current and still
-church-controlled. Twitter/X presence may be dormant.
+church-controlled.
+
+**Partly resolved 2026-09-16:** the church confirmed its Facebook pages and group: `christlikecanada`, group
+`christlikenessonline`, `radicalym`, and two new centre pages, `ChristlikenessScarborough` and North York
+(`profile.php?id=61574677416187`). They are Social channel records (Follow Us, Connect, home page). Still open: Instagram,
+X and the YouTube channel. Note: Facebook shows no public details for `christlikecanada` (likely age or country
+restrictions), so its page widget stays blank and is turned off; lifting the restriction would let it show. Twitter/X presence may be dormant.
+
+Update 2026-09-15 (YouTube harvest): the current worship service video descriptions link to
+**Instagram `christlikeness.official`** and **TikTok `christlikeness.official`**, plus Facebook
+share links; the June 14 video still lists `christlikecanada` / `christlikeness_`. The site
+(Connect, Contact) uses the older handles; confirm which are official before publishing.
+A second, older channel (`UCnCa8Wxddbz4gX2v2lxHHwg`, 2018 events, linked from the "CAC"
+playlist) exists; confirm whether it is church-controlled.
+
+### R-21 · P2 · Sermon source conflicts
+
+- **Resolved:** YouTube "Baal Perazim VII" was titled June 14. Facebook dates it June 21, with the same part and length, and the June 21 date was kept.
+- **Resolved 2026-09-16:** YouTube "Responsive Obedience VII" (titled August 23) is Responsive Obedience VI; the title was
+  mislabelled. It is now the YouTube source of that sermon (`decisions.json`).
+- **Resolved 2026-09-16:** Baal Perazim VIII: Facebook 65 min and YouTube 46 min are the same service (one is a trimmed recording).
+- **Resolved 2026-09-16:** "God Is All You Need II" was wrongly dated July 16 in the post; the church dates it July 24, 2023.
+- **Resolved 2026-09-16:** the two August 27, 2023 "Let's Chat" videos are the same service. It is imported as Let's Chat V; the upload
+  labelled IV is skipped (`decisions.json`).
+- Three services posted without a title (December 20 and 27, 2020; June 30, 2024) are titled "Worship Service". Titles needed.
+- Speakers and scripture appear in neither source's post text. 7 speakers and 4 scriptures were filled from poster text and clip titles
+  (`enrichment.json`). Open: the April 12, 2026 "Holy Spirit" clip names Apostle Eljay; which campus sermon was it?
+  Speaker names confirmed with current titles (2026-09-16): Apostle Eljay Payopay, Prophet Czarina Payopay; assigned pastors Pastor
+  Carol Reyes and Pastor Justine Arceo.
+- Open: June 7, 2026 clip calls the sermon "Baal Perazim V" but the Facebook post has no part number (title left as posted).
+- Full Facebook history harvested 2026-09-16 with a member login (November 2020 onward).
+- Details: `content-source/sermon-harvest/import-report.md`, `docs/SERMON-SOURCES.md`.
 
 ### R-10 · P2 · Lead pastors photo
 
@@ -115,7 +146,11 @@ have listed here").
   being "asthmatic, have sinus problems, or epilepsy", "miscarriages or are barren",
   being "tattooed or have multiple piercings", "martial arts" and "yoga" (quoted from the list).
   Publishing on a public site is a church leadership decision.
-- Recommendation: DO NOT MIGRATE by default; keep in the source library for the church's review.
+- Classification (Phase 4): **topical teaching resource candidate** (class B, topic
+  Deliverance) — not obsolete. Source: legacy hidden pages; preserved verbatim.
+- **Publication status: undecided.** Audience (public / member / leader / restricted) is
+  a church decision. Not rewritten, not republished, not scheduled for migration until
+  provenance, copyright and pastoral review are complete.
 
 ## Structural observations
 
@@ -123,5 +158,36 @@ have listed here").
   Plan **301 redirects** for any legacy URLs that are printed or shared (at least `/about`,
   `/church`, `/connect`, `/music`, `/rsvp`, `/devobible*`).
 - The site header's CHRISTLIKENESS link points to a page ID that no longer exists.
-- Legacy "Church" (locations/times) maps to the new **Centres** page, not About.
+- Legacy "Church" (locations/times) maps to canonical **centre records**, displayed on Centres and elsewhere.
 - The site-wide social sharing image and a recurring page background can no longer be downloaded from Wix (HTTP 403).
+
+## Phase 4 architecture decisions and findings
+
+Decisions D-1 to D-7 are tracked in
+[INFORMATION-ARCHITECTURE.md §6](../INFORMATION-ARCHITECTURE.md). Items needing church
+input before publication:
+
+### R-18 · P2 · Core XML sitemap returns HTTP 404 locally — investigate before launch
+
+`/wp-sitemap.xml` and `/wp-sitemap-posts-page-1.xml` return valid XML listing the pages,
+but with an HTTP **404** status (same under Twenty Twenty-Five, so not the cacdemo theme).
+Search engines may ignore a sitemap served as 404. Diagnose in the SEO/launch phase;
+do not patch core.
+
+### R-19 · P1 · Centre data must not become canonical while unconfirmed
+
+Centre records (once D-1 is approved) stay **draft** until the church confirms R-01
+(Scarborough unit), R-02 (times/day/pairing) and R-05 (phone). Unconfirmed fields are
+left empty with an editorial note — never filled with one of the conflicting values.
+
+Status 2026-09-14: D-1 resolved (Secure Custom Fields). North York and Scarborough exist
+locally as **drafts**; Scarborough's unit is empty, both phones are empty, and each record's
+internal verification notes list what still needs confirmation.
+
+### R-20 · P2 · Resource audiences
+
+For each resource candidate (deliverance list, deliverance prayers, Devo Bible, Bible
+videos) the church decides: publish or not, and audience (public / member / leader /
+restricted). Member/leader/restricted items stay unpublished until access control
+exists (see INFORMATION-ARCHITECTURE §4.4).
+
