@@ -12,6 +12,11 @@
 #                              Only for bootstrap, WordPress/PHP upgrades, major
 #                              theme architecture changes, releases, or on request.
 #
+#   scripts/test.sh --publishing  Also runs the contextual publishing acceptance test
+#                              (tests/publishing.php): section permissions, tampering,
+#                              contributors, uploads, visitor view. Temporary users and
+#                              content are removed. Run after changing publishing code.
+#
 set -uo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
@@ -186,6 +191,15 @@ if [[ "${1:-}" == "--interop" ]]; then
     left=$(wpc db query "SELECT ID FROM ${DB_PREFIX}posts" --skip-column-names | grep -cvxF -f "$WORK/ids-before.done" || true)
     [[ "$left" == "0" && "$(wpc option get site_logo 2>/dev/null || true)" == "$logo_before" ]] \
         && pass "temporary content removed and Site Logo restored" || fail "$left temporary posts left behind or Site Logo not restored"
+fi
+
+if [[ "${1:-}" == "--publishing" ]]; then
+    section "Contextual publishing acceptance (temporary users and content)"
+    out=$(wpc eval-file "$REPO_ROOT/tests/publishing.php" 2>&1); status=$?
+    printf '%s\n' "$out" | grep -E 'PASS|FAIL|^[A-Z][a-z]' | grep -v ' passed, '
+    PASS=$((PASS + $(grep -c 'PASS' <<<"$out"))); FAIL=$((FAIL + $(grep -c 'FAIL' <<<"$out")))
+    [[ $status -ne 0 && $(grep -c 'FAIL' <<<"$out") -eq 0 ]] && fail "publishing test did not run: $(tail -1 <<<"$out")"
+
 fi
 
 printf '\n%d passed, %d failed\n' "$PASS" "$FAIL"

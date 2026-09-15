@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cacdemo/publish-actions",
+	"title": "Publishing actions",
+	"category": "widgets",
+	"icon": "edit",
+	"description": "Small links such as New sermon or Edit page, shown only to people allowed to publish in this section. Visitors see nothing.",
+	"textdomain": "cacdemo",
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

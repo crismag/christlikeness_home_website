@@ -1,0 +1,56 @@
+{
+    "key": "group_cacdemo_update_details",
+    "title": "Ministry update",
+    "fields": [
+        {
+            "key": "field_cacdemo_update_ministry",
+            "label": "Ministry",
+            "name": "update_ministry",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "The ministry this update belongs to. It appears in that ministry's Updates. Leave empty for church-wide news.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "post_type": [
+                "ministry"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Links a post to a ministry, so it shows as that ministry's update.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

@@ -41,9 +41,9 @@
         "type": "dashicons",
         "value": "dashicons-microphone"
     },
-    "rename_capabilities": false,
-    "singular_capability_name": "post",
-    "plural_capability_name": "posts",
+    "rename_capabilities": true,
+    "singular_capability_name": "sermon",
+    "plural_capability_name": "sermons",
     "supports": [
         "title",
         "editor",

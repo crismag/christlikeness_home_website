@@ -24,9 +24,9 @@
     "description": "A sermon series. Terms only for series that have sermons.",
     "capabilities": {
         "manage_terms": "manage_categories",
-        "edit_terms": "manage_categories",
+        "edit_terms": "edit_sermons",
         "delete_terms": "manage_categories",
-        "assign_terms": "edit_posts"
+        "assign_terms": "edit_sermons"
     },
     "public": true,
     "publicly_queryable": true,

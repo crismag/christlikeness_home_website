@@ -41,9 +41,9 @@
         "type": "dashicons",
         "value": "dashicons-share"
     },
-    "rename_capabilities": false,
-    "singular_capability_name": "post",
-    "plural_capability_name": "posts",
+    "rename_capabilities": true,
+    "singular_capability_name": "channel",
+    "plural_capability_name": "channels",
     "supports": [
         "title",
         "page-attributes",

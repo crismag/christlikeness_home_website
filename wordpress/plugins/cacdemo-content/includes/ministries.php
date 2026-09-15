@@ -49,6 +49,25 @@ function cacdemo_ministry_roles_query( $query, $block ) {
 }
 
 /**
+ * Updates: a Query Loop with "cacdemoMinistryUpdates": true lists the published posts linked to the ministry being viewed
+ * (SCF field update_ministry), newest first.
+ */
+add_filter( 'query_loop_block_query_vars', 'cacdemo_ministry_updates_query', 10, 2 );
+
+function cacdemo_ministry_updates_query( $query, $block ) {
+	if ( empty( $block->context['query']['cacdemoMinistryUpdates'] ) ) {
+		return $query;
+	}
+	return array_merge( $query, array(
+		'post_type'           => 'post',
+		'orderby'             => 'date',
+		'order'               => 'DESC',
+		'ignore_sticky_posts' => true,
+		'meta_query'          => array( array( 'key' => 'update_ministry', 'value' => (string) ( is_singular( 'ministry' ) ? get_queried_object_id() : 0 ) ) ),
+	) );
+}
+
+/**
  * Block bindings source "cacdemo/ministry" (for ministry and serve role blocks):
  *   roles             "Audio · Video · Lighting +3" — the ministry's ways to serve, for cards
  *   needed            "Needed now" when any role (ministry) or this role (serve role) is needed now
@@ -56,6 +75,8 @@ function cacdemo_ministry_roles_query( $query, $block ) {
  *   invite_heading    the ministry's invitation heading, or "Interested in serving with <ministry>?"
  *   invite_text       the ministry's invitation text, or the default invitation
  *   contact_url       the ministry's public contact link, or the Contact page with the ministry named
+ * and for a post (ministry update):
+ *   ministry_name, ministry_url   the linked ministry, empty when the post is church-wide
  */
 add_action( 'init', 'cacdemo_ministry_register_bindings' );
 
@@ -73,10 +94,18 @@ function cacdemo_ministry_register_bindings() {
 function cacdemo_ministry_binding( $source_args, $block ) {
 	$post_id = (int) ( $block->context['postId'] ?? get_the_ID() );
 	$type    = get_post_type( $post_id );
-	if ( ! $post_id || ! in_array( $type, array( 'ministry', 'serve_role' ), true ) || ! function_exists( 'get_field' ) ) {
+	if ( ! $post_id || ! in_array( $type, array( 'ministry', 'serve_role', 'post' ), true ) || ! function_exists( 'get_field' ) ) {
 		return null;
 	}
 	$key = $source_args['key'] ?? '';
+
+	if ( 'post' === $type ) {
+		$ministry = (int) get_post_meta( $post_id, 'update_ministry', true );
+		if ( ! $ministry || 'publish' !== get_post_status( $ministry ) ) {
+			return '';
+		}
+		return 'ministry_url' === $key ? get_permalink( $ministry ) : ( 'ministry_name' === $key ? get_the_title( $ministry ) : null );
+	}
 
 	if ( 'serve_role' === $type ) {
 		switch ( $key ) {

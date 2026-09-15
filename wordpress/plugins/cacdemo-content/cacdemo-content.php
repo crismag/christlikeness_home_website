@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Christlikeness Content
- * Description:       Christlikeness-specific content behaviour that core and Secure Custom Fields do not provide: sermon media, browsing and comments; ministry and serve role queries and bindings; the church's social channels.
+ * Description:       Christlikeness-specific content behaviour that core and Secure Custom Fields do not provide: sermon media, browsing and comments; ministry and serve role queries and bindings; section-scoped contextual publishing; the church's social channels.
  * Version:           0.2.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
@@ -10,7 +10,8 @@
  * Text Domain:       cacdemo
  *
  * Content types and fields are defined with Secure Custom Fields (config/scf/), not here.
- * This plugin stores no data and deletes nothing on deactivation.
+ * Stored data: capabilities on the administrator/editor roles, the Page contributor role and contributor assignments
+ * (user meta), all kept on deactivation (includes/publishing.php). Nothing is deleted on deactivation.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -19,6 +20,8 @@ require_once __DIR__ . '/includes/sermon-browse.php';
 require_once __DIR__ . '/includes/sermon-comments.php';
 require_once __DIR__ . '/includes/ministries.php';
 require_once __DIR__ . '/includes/channels.php';
+require_once __DIR__ . '/includes/publishing.php';
+require_once __DIR__ . '/includes/publishing-admin.php';
 
 add_action( 'init', 'cacdemo_content_register_blocks' );
 
@@ -27,6 +30,7 @@ function cacdemo_content_register_blocks() {
 	register_block_type( __DIR__ . '/blocks/sermon-media' );
 	register_block_type( __DIR__ . '/blocks/sermon-filters' );
 	register_block_type( __DIR__ . '/blocks/sermon-table' );
+	register_block_type( __DIR__ . '/blocks/publish-actions' );
 	wp_register_script_module( 'cacdemo-channels', plugins_url( 'blocks/channels/view.js', __FILE__ ), array(), (string) filemtime( __DIR__ . '/blocks/channels/view.js' ) );
 	register_block_type( __DIR__ . '/blocks/channels' );
 }

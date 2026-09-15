@@ -8,6 +8,8 @@
 		<p class="alignwide cacdemo-eyebrow-link"><a href="/ministries/">Ministries</a></p>
 		<!-- /wp:paragraph -->
 
+		<!-- wp:cacdemo/publish-actions {"align":"wide"} /-->
+
 		<!-- wp:post-title {"level":1,"align":"wide","className":"cacdemo-display cacdemo-ministry-hero__title","fontSize":"display"} /-->
 
 		<!-- wp:paragraph {"align":"wide","className":"cacdemo-ministry-hero__purpose","fontSize":"lead","metadata":{"bindings":{"content":{"source":"acf/field","args":{"key":"ministry_tagline"}}}}} -->
@@ -79,6 +81,30 @@
 				</div>
 				<!-- /wp:group -->
 			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Updates"},"anchor":"updates","className":"cacdemo-updates","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained","wideSize":"75rem"}} -->
+	<div id="updates" class="wp-block-group cacdemo-updates" style="padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:heading {"align":"wide"} -->
+		<h2 class="wp-block-heading alignwide">Updates</h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:query {"queryId":43,"query":{"perPage":3,"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false,"cacdemoMinistryUpdates":true},"align":"wide"} -->
+		<div class="wp-block-query alignwide">
+			<!-- wp:post-template {"className":"cacdemo-updates__list"} -->
+				<!-- wp:group {"className":"cacdemo-update","style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"default"}} -->
+				<div class="wp-block-group cacdemo-update">
+					<!-- wp:post-date {"className":"cacdemo-update__date"} /-->
+
+					<!-- wp:post-title {"level":3,"isLink":true,"className":"cacdemo-update__title","fontSize":"subheading"} /-->
+
+					<!-- wp:post-excerpt {"excerptLength":24,"className":"cacdemo-update__excerpt"} /-->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
 		</div>
 		<!-- /wp:query -->
 	</div>

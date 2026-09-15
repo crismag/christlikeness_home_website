@@ -42,3 +42,12 @@ Not after routine content, CSS, template or documentation changes.
 ## Future
 
 Plugin-level tests (e.g. PHPUnit) only if `cacdemo-content` gains real custom code.
+
+### `scripts/test.sh --publishing` — contextual publishing acceptance
+
+Runs `tests/publishing.php` after the routine checks. Creates temporary users (visitor, unassigned, sermon Contributor and
+Publisher, ministry Publisher, Content Admin), temporary ministries, sermons, terms and an upload attempt; checks section
+permissions through REST and capability checks, tampering with a way to serve's or an update's ministry, ministry updates (publish only in scope, own vs anyone's, no synced patterns), term rules, content sanitizing, link
+validation, upload types, removal of access, the contributors service (existing account reuse, new accounts, who may manage whom)
+and the website's contextual actions for signed-in and anonymous requests. Everything created, including anything the temporary
+users authored, is deleted. Run after changing publishing code, and before releases.
