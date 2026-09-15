@@ -62,8 +62,22 @@ else
 fi
 unapproved=$(wpc plugin list --fields=name,status --format=csv \
     | awk -F, 'NR>1 && $2 ~ /^(active|active-network|must-use|dropin)$/ {print $1}' \
-    | grep -vxF -f <(approved_plugins; echo "__none__") | paste -sd, || true)
+    | grep -vxF -f <(approved_plugins; own_plugins; echo "__none__") | paste -sd, || true)
 [[ -z "$unapproved" ]] && pass "only plugins listed in config/plugins.txt are running" || fail "unapproved plugins running: $unapproved"
+missing=$( { approved_plugins; own_plugins; } | while read -r p; do wpc plugin is-active "$p" || echo "$p"; done | paste -sd,)
+[[ -z "$missing" ]] && pass "all approved plugins are active" || fail "approved plugins not active: $missing"
+
+section "Content model"
+check "centre post type is registered (SCF definitions imported)" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo post_type_exists(\"centre\") ? 1 : 0;') == 1 ]]"
+defs=$(ls "$REPO_ROOT"/config/scf/*/*.json 2>/dev/null | wc -l)
+db_defs=$(wpc db query "SELECT COUNT(*) FROM ${DB_PREFIX}posts WHERE post_type IN ('acf-post-type','acf-taxonomy','acf-field-group') AND post_status='publish'" --skip-column-names)
+[[ "$defs" -gt 0 && "$defs" == "$db_defs" ]] && pass "SCF definitions in Git match WordPress ($defs)" || fail "SCF definitions differ: $defs in config/scf, $db_defs in WordPress (run scf-sync import or export)"
+check "centre fields are available to block bindings" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo count(array_filter(acf_get_fields(\"group_cacdemo_centre_details\"), fn(\$f) => !empty(\$f[\"allow_in_bindings\"])));') -ge 7 ]]"
+leak=$(curl -s "$SITE_URL/wp-json/wp/v2/centre?status=draft" | grep -c '"status":"draft"' || true)
+[[ "$leak" == "0" ]] && pass "draft centres are not publicly exposed via REST" || fail "draft centres exposed via REST"
+check "sermon post type and series/speaker/topic taxonomies are registered" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo (post_type_exists(\"sermon\") && taxonomy_exists(\"sermon_series\") && taxonomy_exists(\"sermon_speaker\") && taxonomy_exists(\"sermon_topic\")) ? 1 : 0;') == 1 ]]"
+check "sermon media block is registered (cacdemo-content)" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo WP_Block_Type_Registry::get_instance()->is_registered(\"cacdemo/sermon-media\") ? 1 : 0;') == 1 ]]"
+check "GET /sermons/ → 200 with the sermon collection, no PHP errors" bash -c "b=\$(curl -s '$SITE_URL/sermons/'); grep -q 'cacdemo-sermon-toolbar' <<<\"\$b\" && ! grep -qE 'Fatal error|Warning:|Notice:|Deprecated:' <<<\"\$b\""
 
 if [[ "${1:-}" == "--interop" ]]; then
     require_secret CACDEMO_ADMIN_PASSWORD

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cacdemo/sermon-table",
+	"title": "Sermon table",
+	"category": "widgets",
+	"icon": "editor-table",
+	"description": "The sermon collection as a compact table, grouped by year, series, speaker or topic, up to 100 per page. Shown in the Table view.",
+	"textdomain": "cacdemo",
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,161 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","anchor":"main","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" id="main">
+	<!-- wp:group {"metadata":{"name":"Sermon header"},"className":"cacdemo-sermon-hero","style":{"spacing":{"padding":{"top":"clamp(2.5rem, 1rem + 4.5vw, 5rem)","bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group cacdemo-sermon-hero" style="padding-top:clamp(2.5rem, 1rem + 4.5vw, 5rem);padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70","top":"var:preset|spacing|60"}}}} -->
+		<div class="wp-block-columns alignwide">
+			<!-- wp:column {"width":"38%","className":"cacdemo-sermon-hero__text"} -->
+			<div class="wp-block-column cacdemo-sermon-hero__text" style="flex-basis:38%">
+				<!-- wp:paragraph {"className":"cacdemo-eyebrow-link"} -->
+				<p class="cacdemo-eyebrow-link"><a href="/sermons/">Sermons</a></p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:post-title {"level":1,"fontSize":"title"} /-->
+
+				<!-- wp:group {"className":"cacdemo-sermon__facts cacdemo-sermon__facts--hero","layout":{"type":"default"}} -->
+				<div class="wp-block-group cacdemo-sermon__facts cacdemo-sermon__facts--hero">
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Date</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:post-date /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Series</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:post-terms {"term":"sermon_series"} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Speaker</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:post-terms {"term":"sermon_speaker"} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Scripture</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"acf/field","args":{"key":"sermon_scripture"}}}}} -->
+					<p></p>
+					<!-- /wp:paragraph --></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Location</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"cacdemo/sermon","args":{"key":"location"}}}}} -->
+					<p></p>
+					<!-- /wp:paragraph --></div>
+					<!-- /wp:group -->
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Language</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"acf/field","args":{"key":"sermon_language"}}}}} -->
+					<p></p>
+					<!-- /wp:paragraph --></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Topics</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:post-terms {"term":"sermon_topic"} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Published</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"cacdemo/sermon","args":{"key":"published"}}}}} -->
+					<p></p>
+					<!-- /wp:paragraph --></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"className":"cacdemo-sermon__fact","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fact"><!-- wp:paragraph {"className":"cacdemo-sermon__label"} -->
+					<p class="cacdemo-sermon__label">Last updated</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"cacdemo/sermon","args":{"key":"updated"}}}}} -->
+					<p></p>
+					<!-- /wp:paragraph --></div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
+
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"width":"62%","className":"cacdemo-sermon-hero__media"} -->
+			<div class="wp-block-column cacdemo-sermon-hero__media" style="flex-basis:62%">
+				<!-- wp:cacdemo/sermon-media /-->
+
+				<!-- wp:group {"className":"cacdemo-sermon__cover","layout":{"type":"default"}} -->
+				<div class="wp-block-group cacdemo-sermon__cover">
+					<!-- wp:post-featured-image {"aspectRatio":"16/9","className":"cacdemo-sermon__poster"} /-->
+					<!-- wp:group {"className":"cacdemo-sermon__fallback","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-sermon__fallback">
+						<!-- wp:post-terms {"term":"sermon_series","className":"cacdemo-sermon__fallback-series"} /-->
+						<!-- wp:post-title {"level":0,"className":"cacdemo-sermon__fallback-title"} /-->
+					</div>
+					<!-- /wp:group -->
+				</div>
+				<!-- /wp:group -->
+			</div>
+			<!-- /wp:column -->
+		</div>
+		<!-- /wp:columns -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:post-content {"className":"cacdemo-sermon-content","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained"}} /-->
+
+	<!-- wp:group {"metadata":{"name":"Comments"},"className":"cacdemo-comments-wrap","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|section"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group cacdemo-comments-wrap" style="padding-bottom:var(--wp--preset--spacing--section)">
+		<!-- wp:details {"className":"cacdemo-comments"} -->
+		<details class="wp-block-details cacdemo-comments"><summary>Comments</summary>
+			<!-- wp:comments {"className":"cacdemo-comments__thread"} -->
+			<div class="wp-block-comments cacdemo-comments__thread">
+				<!-- wp:comments-title {"level":3,"showPostTitle":false} /-->
+
+				<!-- wp:comment-template -->
+					<!-- wp:group {"className":"cacdemo-comment","layout":{"type":"default"}} -->
+					<div class="wp-block-group cacdemo-comment">
+						<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"}} -->
+						<div class="wp-block-group">
+							<!-- wp:comment-author-name {"isLink":false} /-->
+							<!-- wp:comment-date {"format":"M j, Y"} /-->
+						</div>
+						<!-- /wp:group -->
+						<!-- wp:comment-content /-->
+						<!-- wp:comment-reply-link /-->
+					</div>
+					<!-- /wp:group -->
+				<!-- /wp:comment-template -->
+
+				<!-- wp:comments-pagination -->
+					<!-- wp:comments-pagination-previous /-->
+					<!-- wp:comments-pagination-numbers /-->
+					<!-- wp:comments-pagination-next /-->
+				<!-- /wp:comments-pagination -->
+
+				<!-- wp:post-comments-form /-->
+			</div>
+			<!-- /wp:comments -->
+		</details>
+		<!-- /wp:details -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:pattern {"slug":"cacdemo/sermon-series-more"} /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

@@ -1,0 +1,324 @@
+{
+    "key": "group_cacdemo_sermon_details",
+    "title": "Sermon details",
+    "fields": [
+        {
+            "key": "field_cacdemo_sermon_scripture",
+            "label": "Scripture",
+            "name": "sermon_scripture",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main passage, e.g. Romans 12:1-2",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cacdemo_sermon_featured",
+            "label": "Featured",
+            "name": "sermon_featured",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show this sermon in Featured sermons at the top of the Sermons page (the three most recent featured sermons appear).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "message": "Feature on the Sermons page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_cacdemo_sermon_location",
+            "label": "Location",
+            "name": "sermon_location",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "The centre where this sermon was preached. Leave empty for church-wide or other venues.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "post_type": [
+                "centre"
+            ],
+            "post_status": [
+                "publish",
+                "draft"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_cacdemo_sermon_language",
+            "label": "Language",
+            "name": "sermon_language",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "The language the sermon was preached in.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 1,
+            "choices": {
+                "English": "English",
+                "Tagalog / Filipino": "Tagalog / Filipino",
+                "Taglish": "Taglish (English and Tagalog)"
+            },
+            "default_value": "English",
+            "return_format": "label",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_cacdemo_sermon_sources",
+            "label": "Sources",
+            "name": "sermon_sources",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Where this sermon can be watched or heard. One row per video or audio. Media stays on that platform; only links are stored.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_cacdemo_sermon_source_url",
+            "button_label": "Add source",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cacdemo_sermon_source_media",
+                    "label": "Type",
+                    "name": "media",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "choices": {
+                        "video": "Video",
+                        "audio": "Audio"
+                    },
+                    "default_value": "video",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_platform",
+                    "label": "Platform",
+                    "name": "platform",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "choices": {
+                        "youtube": "YouTube",
+                        "facebook": "Facebook",
+                        "audio": "Audio host / podcast",
+                        "other": "Other"
+                    },
+                    "default_value": "youtube",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_url",
+                    "label": "Link",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "55",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "default_value": "",
+                    "placeholder": "https://"
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional, e.g. \"Scarborough recording\".",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_published",
+                    "label": "Published",
+                    "name": "published",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "When it was posted on the platform.",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "display_format": "F j, Y g:i a",
+                    "return_format": "Y-m-d H:i:s",
+                    "first_day": 0,
+                    "default_to_current_date": 0
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_duration",
+                    "label": "Length (seconds)",
+                    "name": "duration",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "default_value": "",
+                    "min": 0,
+                    "max": "",
+                    "step": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_cacdemo_sermon_source_source_id",
+                    "label": "Source ID",
+                    "name": "source_id",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Set by importers (e.g. facebook:VIDEO_ID) to avoid duplicates.",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_cacdemo_sermon_sources",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sermon"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Sermon metadata and where to watch or listen. Media is never stored here; the preview still is the featured image.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

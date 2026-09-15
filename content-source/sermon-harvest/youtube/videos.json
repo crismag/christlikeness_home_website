@@ -1,0 +1,801 @@
+{
+  "channel_id": "UCdEsFxptBKsb1j6Q9PaY5jQ",
+  "harvested": "2026-09-15",
+  "rule": "sermon = worship service video posted by the church, at least 20 minutes; shorts and short videos excluded",
+  "items": [
+    {
+      "id": "9HM4Og4hbJM",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=9HM4Og4hbJM",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE VII | August 23, 2026",
+      "published": "2026-08-25T04:29:37+00:00",
+      "duration_seconds": 3322,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-08-23",
+        "title": "Responsive Obedience VII",
+        "part": 7,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/08/20260823_Responsive_Obedience_VII.jpg"
+    },
+    {
+      "id": "3j1KNJg3tYQ",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=3j1KNJg3tYQ",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE V | August 16, 2026",
+      "published": "2026-08-24T16:03:23+00:00",
+      "duration_seconds": 2729,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-08-16",
+        "title": "Responsive Obedience V",
+        "part": 5,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/08/20260816_Responsive_Obedience_V.jpg"
+    },
+    {
+      "id": "kETRmzdGQok",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=kETRmzdGQok",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE IV | August 9, 2026",
+      "published": "2026-08-15T02:31:18+00:00",
+      "duration_seconds": 3738,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-08-09",
+        "title": "Responsive Obedience IV",
+        "part": 4,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/08/20260809_Responsive_Obedience_IV.jpg"
+    },
+    {
+      "id": "S_CdXEvQh0A",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=S_CdXEvQh0A",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE III | August 2, 2026",
+      "published": "2026-08-15T02:30:57+00:00",
+      "duration_seconds": 3800,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-08-02",
+        "title": "Responsive Obedience III",
+        "part": 3,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/08/20260802_Responsive_Obedience_III.jpg"
+    },
+    {
+      "id": "EwYHdczAEOk",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=EwYHdczAEOk",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE II | July 26, 2026",
+      "published": "2026-07-27T14:16:43+00:00",
+      "duration_seconds": 4336,
+      "posted_by_church": true,
+      "availability": "unlisted",
+      "found_in": [
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "duplicate",
+      "reason": "same service as Ix-bPSDf_D0",
+      "flags": []
+    },
+    {
+      "id": "Ix-bPSDf_D0",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=Ix-bPSDf_D0",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE II | July 26, 2026",
+      "published": "2026-07-27T14:24:55+00:00",
+      "duration_seconds": 4832,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-07-26",
+        "title": "Responsive Obedience II",
+        "part": 2,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/07/20260726_Responsive_Obedience_II.jpg"
+    },
+    {
+      "id": "4sGZ7tD3Yug",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=4sGZ7tD3Yug",
+      "post_text": "July 25, 2026",
+      "published": "2026-07-25T14:15:29+00:00",
+      "duration_seconds": 103,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "bKrGh-JwztY",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=bKrGh-JwztY",
+      "post_text": "Respond with what is in you, and trust God with the equipping",
+      "published": "2026-07-23T20:00:56+00:00",
+      "duration_seconds": 75,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "5m6L5TZPJ3U",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=5m6L5TZPJ3U",
+      "post_text": "Worship Service | RESPONSIVE OBEDIENCE | July 19, 2026",
+      "published": "2026-07-27T14:03:07+00:00",
+      "duration_seconds": 4742,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-07-19",
+        "title": "Responsive Obedience",
+        "part": null,
+        "campus": null,
+        "series": "Responsive Obedience"
+      },
+      "flags": [],
+      "still_file": "stills/2026/07/20260719_Responsive_Obedience.jpg"
+    },
+    {
+      "id": "qA6i8Tgkmc8",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=qA6i8Tgkmc8",
+      "post_text": "Worship Service | BREAKDOWN TO BUILD-UP II | July 12, 2026",
+      "published": "2026-07-27T13:52:57+00:00",
+      "duration_seconds": 2500,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-07-12",
+        "title": "Breakdown to Build-up II",
+        "part": 2,
+        "campus": null,
+        "series": "Breakdown to Build-up"
+      },
+      "flags": [],
+      "still_file": "stills/2026/07/20260712_Breakdown_to_Build_up_II.jpg"
+    },
+    {
+      "id": "akZzmOYD4nc",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=akZzmOYD4nc",
+      "post_text": "2026 Jul 5 | BREAKDOWN TO BUILD UP | Prophet Czarina",
+      "published": "2026-07-09T16:06:51+00:00",
+      "duration_seconds": 45,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "mxqrAIi4CfA",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=mxqrAIi4CfA",
+      "post_text": "Worship Service | BREAKDOWN TO BUILD-UP | July 5, 2026",
+      "published": "2026-07-27T13:42:31+00:00",
+      "duration_seconds": 2191,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-07-05",
+        "title": "Breakdown to Build-up",
+        "part": null,
+        "campus": null,
+        "series": "Breakdown to Build-up"
+      },
+      "flags": [],
+      "still_file": "stills/2026/07/20260705_Breakdown_to_Build_up.jpg"
+    },
+    {
+      "id": "e2N0bph6fuc",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=e2N0bph6fuc",
+      "post_text": "You cannot control what everything that this culture places in front of you.",
+      "published": "2026-07-01T13:35:41+00:00",
+      "duration_seconds": 66,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "RCNkWJQKnzw",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=RCNkWJQKnzw",
+      "post_text": "Worship Service | BAAL PERAZIM: God of Breakthrough VIII | June 28, 2026",
+      "published": "2026-06-29T16:08:29+00:00",
+      "duration_seconds": 2776,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-06-28",
+        "title": "Baal Perazim: God of Breakthrough VIII",
+        "part": 8,
+        "campus": null,
+        "series": "Baal Perazim: God of Breakthrough"
+      },
+      "flags": [],
+      "still_file": "stills/2026/06/20260628_Baal_Perazim_God_of_Breakthrough_VIII.jpg"
+    },
+    {
+      "id": "ic_b7yajoR4",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=ic_b7yajoR4",
+      "post_text": "June 24, 2026",
+      "published": "2026-06-25T02:50:03+00:00",
+      "duration_seconds": 148,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "XeDwFu98tQU",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=XeDwFu98tQU",
+      "post_text": "May 11, 2026",
+      "published": "2026-06-25T02:49:14+00:00",
+      "duration_seconds": 175,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "u0sSoZS29F8",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=u0sSoZS29F8",
+      "post_text": "Truth about BREAKTHROUGH FAITH.",
+      "published": "2026-06-20T22:38:29+00:00",
+      "duration_seconds": 203,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "3 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "78c2uOetxtQ",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=78c2uOetxtQ",
+      "post_text": "Worship Service | BAAL PERAZIM: God of Breakthrough VII | June 14, 2026",
+      "published": "2026-06-22T23:16:07+00:00",
+      "duration_seconds": 2988,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-06-14",
+        "title": "Baal Perazim: God of Breakthrough VII",
+        "part": 7,
+        "campus": null,
+        "series": "Baal Perazim: God of Breakthrough"
+      },
+      "flags": [
+        "date-conflict: same title date as uh4BOP-Uk8I; this video published 2026-06-22"
+      ],
+      "still_file": "stills/2026/06/20260614_Baal_Perazim_God_of_Breakthrough_VII.jpg"
+    },
+    {
+      "id": "uh4BOP-Uk8I",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=uh4BOP-Uk8I",
+      "post_text": "Worship Service | BAAL PERAZIM: God of Breakthrough VI | June 14, 2026",
+      "published": "2026-06-17T02:43:46+00:00",
+      "duration_seconds": 2882,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos",
+        "playlist:Sunday Worship Service"
+      ],
+      "classification": "sermon",
+      "reason": "worship service, 20+ min",
+      "sermon": {
+        "date": "2026-06-14",
+        "title": "Baal Perazim: God of Breakthrough VI",
+        "part": 6,
+        "campus": null,
+        "series": "Baal Perazim: God of Breakthrough"
+      },
+      "flags": [
+        "date-conflict: same title date as 78c2uOetxtQ; this video published 2026-06-17"
+      ],
+      "still_file": "stills/2026/06/20260614_Baal_Perazim_God_of_Breakthrough_VI.jpg"
+    },
+    {
+      "id": "r_Ks06ELwgo",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=r_Ks06ELwgo",
+      "post_text": "2026 Jun 7 | Baal Perazim V | Apostle Eljay",
+      "published": "2026-06-13T04:43:54+00:00",
+      "duration_seconds": 199,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "3 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "OSzB7b-FMj4",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=OSzB7b-FMj4",
+      "post_text": "Eph. 5:18 Do not get drunk on wine, which leads to debauchery. Instead, be filled with the Spirit",
+      "published": "2026-05-02T16:52:37+00:00",
+      "duration_seconds": 158,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "oAmyZhFxSY8",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=oAmyZhFxSY8",
+      "post_text": "April 29, 2026",
+      "published": "2026-04-29T14:15:22+00:00",
+      "duration_seconds": 79,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "7ixB9FdU5RY",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=7ixB9FdU5RY",
+      "post_text": "April 26, 2026",
+      "published": "2026-04-26T13:53:40+00:00",
+      "duration_seconds": 165,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "Gw9a2WKCZ10",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=Gw9a2WKCZ10",
+      "post_text": "The Holy Spirit came to dwell. Not visiting you, not walking near you.",
+      "published": "2026-04-21T11:03:46+00:00",
+      "duration_seconds": 73,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "shorts"
+      ],
+      "classification": "short",
+      "reason": "Shorts tab",
+      "flags": []
+    },
+    {
+      "id": "-mMSolEnDig",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=-mMSolEnDig",
+      "post_text": "2026 APR 12 | Holy Spirit | Apostle Eljay",
+      "published": "2026-04-19T03:13:07+00:00",
+      "duration_seconds": 212,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "3 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "WDO-gPXQBlU",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=WDO-gPXQBlU",
+      "post_text": "CAMP HIGHLIGHTS 2022",
+      "published": "2022-09-11T18:04:38+00:00",
+      "duration_seconds": 855,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "14 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "dpkNtc7GCmY",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=dpkNtc7GCmY",
+      "post_text": "Raise a Hallelujah by CAC",
+      "published": "2021-02-13T16:31:14+00:00",
+      "duration_seconds": 346,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "5 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "cQTOIbaEtpo",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=cQTOIbaEtpo",
+      "post_text": "God's Great Dance Floor Choreography by Christlikeness",
+      "published": "2021-02-13T15:45:43+00:00",
+      "duration_seconds": 210,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "3 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "i9d_6aNk550",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=i9d_6aNk550",
+      "post_text": "RADICAL. Radically Loved. Radically Saved. Radically Changed.",
+      "published": "2019-09-24T05:07:19+00:00",
+      "duration_seconds": 538,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "8 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "PUUA877UaUw",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=PUUA877UaUw",
+      "post_text": "RADICAL GRADUATES 2019 - CAC Canada",
+      "published": "2019-07-05T01:48:12+00:00",
+      "duration_seconds": 243,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "4 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "OvowE8O6HIo",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=OvowE8O6HIo",
+      "post_text": "Father's Day 2019 @ CAC Canada",
+      "published": "2019-06-18T05:39:30+00:00",
+      "duration_seconds": 322,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "5 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "wDftwuPr5wo",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=wDftwuPr5wo",
+      "post_text": "Happy Father's Day to our Pastors",
+      "published": "2019-06-18T00:19:34+00:00",
+      "duration_seconds": 336,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "5 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "RtQGhDM0hEA",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=RtQGhDM0hEA",
+      "post_text": "Mother's Day 2019 @ CAC - Tr. Sol & Ptr. Czarina",
+      "published": "2019-05-17T04:28:01+00:00",
+      "duration_seconds": 91,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "1 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "zMfXKygXxh8",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=zMfXKygXxh8",
+      "post_text": "Mother's Day 2019 @  CAC",
+      "published": "2019-05-17T00:35:45+00:00",
+      "duration_seconds": 557,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "9 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "LZNn1E__Xpk",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=LZNn1E__Xpk",
+      "post_text": "CAC 2nd Anniversary | February 24, 2019",
+      "published": "2019-03-16T18:16:06+00:00",
+      "duration_seconds": 92,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "1 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "h-ERpCLBcXI",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=h-ERpCLBcXI",
+      "post_text": "Let’s do LIFE Together! #BetterTogether",
+      "published": "2019-03-16T18:13:01+00:00",
+      "duration_seconds": 59,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "0 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "GCvHZ8UPhFI",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=GCvHZ8UPhFI",
+      "post_text": "CAC Canada's HIStory",
+      "published": "2019-02-26T05:43:39+00:00",
+      "duration_seconds": 380,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "short-video",
+      "reason": "6 min (< 20)",
+      "flags": []
+    },
+    {
+      "id": "XrfMe1k8Io4",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=XrfMe1k8Io4",
+      "post_text": "CAC Thankgiving Festival 2018",
+      "published": "2019-02-14T05:49:17+00:00",
+      "duration_seconds": 2021,
+      "posted_by_church": true,
+      "availability": "public",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "review",
+      "reason": "20+ min but not titled as a worship service",
+      "flags": []
+    },
+    {
+      "id": "rvhBcnCV4Vs",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=rvhBcnCV4Vs",
+      "post_text": "CAC",
+      "published": "2019-01-14T01:08:15+00:00",
+      "duration_seconds": 2021,
+      "posted_by_church": false,
+      "availability": "public",
+      "found_in": [
+        "playlist:CAC"
+      ],
+      "classification": "review",
+      "reason": "20+ min but not titled as a worship service",
+      "flags": [
+        "other-channel"
+      ]
+    },
+    {
+      "id": "pheSkOXZnSI",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=pheSkOXZnSI",
+      "post_text": "Pastor's appreciation day",
+      "published": "2018-10-14T04:46:32+00:00",
+      "duration_seconds": 737,
+      "posted_by_church": false,
+      "availability": "public",
+      "found_in": [
+        "playlist:CAC"
+      ],
+      "classification": "short-video",
+      "reason": "12 min (< 20)",
+      "flags": [
+        "other-channel"
+      ]
+    },
+    {
+      "id": "CkdN-Nk_j9w",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=CkdN-Nk_j9w",
+      "post_text": "CAC FIRST Family Camp!!!",
+      "published": "2018-08-13T23:18:33+00:00",
+      "duration_seconds": 360,
+      "posted_by_church": false,
+      "availability": "public",
+      "found_in": [
+        "playlist:CAC"
+      ],
+      "classification": "short-video",
+      "reason": "6 min (< 20)",
+      "flags": [
+        "other-channel"
+      ]
+    },
+    {
+      "id": "n576KJ7rO7M",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=n576KJ7rO7M",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "unavailable",
+      "reason": "This video is not available",
+      "flags": []
+    },
+    {
+      "id": "PrKDMEQ8M9M",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=PrKDMEQ8M9M",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "unavailable",
+      "reason": "This video is not available",
+      "flags": []
+    },
+    {
+      "id": "L-IVccay2oE",
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=L-IVccay2oE",
+      "found_in": [
+        "videos"
+      ],
+      "classification": "unavailable",
+      "reason": "This video is not available",
+      "flags": []
+    }
+  ]
+}

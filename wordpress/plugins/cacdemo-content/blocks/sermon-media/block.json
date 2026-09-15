@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cacdemo/sermon-media",
+	"title": "Sermon media",
+	"category": "media",
+	"icon": "video-alt3",
+	"description": "Plays the sermon's Sources (YouTube, Facebook, audio) as alternatives, each from its own platform. Reads the Sermon details; nothing is stored in the block.",
+	"textdomain": "cacdemo",
+	"usesContext": [
+		"postId",
+		"postType"
+	],
+	"supports": {
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,64 @@
+{
+    "key": "taxonomy_cacdemo_sermon_series",
+    "title": "Series",
+    "menu_order": 0,
+    "active": true,
+    "taxonomy": "sermon_series",
+    "object_type": [
+        "sermon"
+    ],
+    "advanced_configuration": 0,
+    "import_source": "",
+    "import_date": "",
+    "labels": {
+        "name": "Series",
+        "singular_name": "Series",
+        "menu_name": "Series",
+        "all_items": "All series",
+        "edit_item": "Edit series",
+        "view_item": "View series",
+        "add_new_item": "Add new series",
+        "search_items": "Search series",
+        "not_found": "No series found"
+    },
+    "description": "A sermon series. Terms only for series that have sermons.",
+    "capabilities": {
+        "manage_terms": "manage_categories",
+        "edit_terms": "manage_categories",
+        "delete_terms": "manage_categories",
+        "assign_terms": "edit_posts"
+    },
+    "public": true,
+    "publicly_queryable": true,
+    "hierarchical": false,
+    "show_ui": true,
+    "show_in_menu": true,
+    "show_in_nav_menus": true,
+    "show_in_rest": true,
+    "rest_base": "",
+    "rest_namespace": "wp/v2",
+    "rest_controller_class": "WP_REST_Terms_Controller",
+    "show_tagcloud": false,
+    "show_in_quick_edit": true,
+    "show_admin_column": true,
+    "rewrite": {
+        "permalink_rewrite": "custom_permalink",
+        "slug": "series",
+        "with_front": "0",
+        "rewrite_hierarchical": "0"
+    },
+    "query_var": "taxonomy_key",
+    "query_var_name": "",
+    "default_term": {
+        "default_term_enabled": false,
+        "default_term_name": "",
+        "default_term_slug": "",
+        "default_term_description": ""
+    },
+    "sort": false,
+    "meta_box": "default",
+    "meta_box_cb": "",
+    "meta_box_sanitize_cb": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

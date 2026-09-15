@@ -1,0 +1,859 @@
+/*
+ * Sermons: filters and view switch, cards (grid and list views), table view, sources card, single sermon.
+ * Grid (default) follows the minimal reference: cover, series · date, title.
+ * List (body.cacdemo-view-list) follows the detailed reference: cover beside title and facts.
+ */
+
+/* ---------- Toolbar: filters and view switch (compact, one row on wide screens) ---------- */
+
+.cacdemo-sermon-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--30);
+	padding-block: var(--wp--preset--spacing--30);
+	border-top: 1px solid var(--wp--preset--color--rule);
+	border-bottom: 2px solid currentColor;
+	margin-block-end: var(--wp--preset--spacing--50);
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: 0.9375rem;
+}
+
+.cacdemo-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--wp--preset--spacing--20);
+	flex: 1 1 0;
+	min-width: 0;
+	margin: 0;
+}
+
+.cacdemo-filter select,
+.cacdemo-filter input {
+	box-sizing: border-box;
+	height: 2.5rem;
+	max-width: 100%;
+	padding: 0 0.6rem;
+	font: inherit;
+	color: var(--wp--preset--color--ink);
+	background-color: var(--wp--preset--color--paper);
+	border: 1px solid var(--wp--preset--color--rule);
+	border-radius: 2px;
+}
+
+.cacdemo-filter select {
+	padding-inline-end: 1.5rem;
+	max-width: 10rem;
+	text-overflow: ellipsis;
+}
+
+.cacdemo-filter.is-active select {
+	border-color: var(--wp--preset--color--ink);
+	font-weight: 600;
+}
+
+.cacdemo-filter--search {
+	flex: 1 1 9rem;
+	min-width: 8rem;
+	max-width: 14rem;
+}
+
+.cacdemo-filter--search input {
+	width: 100%;
+}
+
+/* Wide screens: the dropdowns sit in the same row as the search; the Filters button is not needed. */
+.cacdemo-filters__selects {
+	display: contents;
+}
+
+.cacdemo-filters__toggle {
+	display: none;
+}
+
+.cacdemo-filters__actions {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--30);
+}
+
+.cacdemo-filters__apply {
+	height: 2.5rem;
+	padding: 0 0.9rem;
+	font: inherit;
+	font-weight: 600;
+	color: var(--wp--preset--color--paper);
+	background: var(--wp--preset--color--ink);
+	border: 0;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+/* With JavaScript, dropdowns apply on change; Apply is only needed for typed searches (Enter also works). */
+.cacdemo-filters.is-enhanced .cacdemo-filters__apply {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+.cacdemo-filters {
+	position: relative;
+}
+
+.cacdemo-filters__clear {
+	color: var(--wp--preset--color--stone);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-view-switch {
+	display: flex;
+}
+
+.cacdemo-view-switch__link {
+	display: inline-flex;
+	align-items: center;
+	height: 2.5rem;
+	padding-inline: 0.9rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+	border: 1px solid var(--wp--preset--color--ink);
+}
+
+.cacdemo-view-switch__link + .cacdemo-view-switch__link {
+	border-inline-start-width: 0;
+}
+
+.cacdemo-view-switch__link[aria-current="true"] {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--paper);
+}
+
+/* The Table view replaces the Grid/List loop; the table renders only in that view. */
+body.cacdemo-view-table .cacdemo-sermons .wp-block-query {
+	display: none;
+}
+
+/* Phones: search, a "Filters" button and the view switch; the dropdowns open below when asked for. */
+@media (max-width: 781.98px) {
+	.cacdemo-filters {
+		flex-basis: 100%;
+	}
+
+	.cacdemo-filter--search {
+		flex: 1 1 auto;
+		max-width: none;
+	}
+
+	.cacdemo-filters.is-enhanced .cacdemo-filters__toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		height: 2.5rem;
+		padding: 0 0.8rem;
+		font: inherit;
+		font-weight: 600;
+		color: var(--wp--preset--color--ink);
+		background: transparent;
+		border: 1px solid var(--wp--preset--color--ink);
+		border-radius: 2px;
+		cursor: pointer;
+	}
+
+	.cacdemo-filters__count {
+		min-width: 1.25rem;
+		padding: 0 0.3rem;
+		text-align: center;
+		border-radius: 1rem;
+		background: var(--wp--preset--color--ink);
+		color: var(--wp--preset--color--paper);
+		font-size: 0.75rem;
+	}
+
+	.cacdemo-filters__selects {
+		display: grid;
+		flex-basis: 100%;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--wp--preset--spacing--20);
+	}
+
+	.cacdemo-filters.is-enhanced:not(.is-open) .cacdemo-filters__selects {
+		display: none;
+	}
+
+	.cacdemo-filter select {
+		width: 100%;
+		max-width: none;
+	}
+}
+
+/* ---------- Table view ---------- */
+
+.cacdemo-sermon-table {
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-sermon-table__summary {
+	margin: 0 0 var(--wp--preset--spacing--50);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon-table__group + .cacdemo-sermon-table__group {
+	margin-block-start: var(--wp--preset--spacing--70);
+}
+
+.cacdemo-sermon-table__heading {
+	display: flex;
+	align-items: baseline;
+	gap: var(--wp--preset--spacing--30);
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--subheading);
+}
+
+.cacdemo-sermon-table__heading span {
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 400;
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon-table__scroll {
+	overflow-x: auto;
+}
+
+.cacdemo-sermon-table table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9375rem;
+	line-height: 1.4;
+}
+
+.cacdemo-sermon-table thead th {
+	text-align: start;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+	color: var(--wp--preset--color--stone);
+	border-bottom: 2px solid currentColor;
+	padding: 0.5rem 0.75rem 0.5rem 0;
+	white-space: nowrap;
+}
+
+.cacdemo-sermon-table thead th a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.cacdemo-sermon-table thead th[aria-sort] a {
+	color: var(--wp--preset--color--ink);
+}
+
+.cacdemo-sermon-table thead th[aria-sort="ascending"] a::after {
+	content: " ↑";
+}
+
+.cacdemo-sermon-table thead th[aria-sort="descending"] a::after {
+	content: " ↓";
+}
+
+.cacdemo-sermon-table tbody th,
+.cacdemo-sermon-table tbody td {
+	text-align: start;
+	vertical-align: top;
+	padding: 0.55rem 0.75rem 0.55rem 0;
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.cacdemo-sermon-table tbody th {
+	font-weight: 600;
+	width: 50%;
+}
+
+.cacdemo-sermon-table tbody th a {
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+
+.cacdemo-sermon-table tbody th a:hover,
+.cacdemo-sermon-table tbody th a:focus-visible {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.cacdemo-sermon-table__date {
+	white-space: nowrap;
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon-table tbody tr:hover {
+	background: var(--wp--preset--color--mist);
+}
+
+.cacdemo-sermon-table__pages {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-block-start: var(--wp--preset--spacing--60);
+}
+
+/* ---------- Where we post sermons ---------- */
+
+.cacdemo-sources-card {
+	margin-block-start: var(--wp--preset--spacing--section);
+	padding: var(--wp--preset--spacing--50) var(--wp--preset--spacing--60);
+	background: var(--wp--preset--color--mist);
+	max-width: 44rem;
+}
+
+.cacdemo-sources-card > * {
+	margin: 0;
+}
+
+.cacdemo-sources-card > * + * {
+	margin-block-start: var(--wp--preset--spacing--30);
+}
+
+.cacdemo-sources-card__list {
+	list-style: none;
+	padding: 0;
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-sources-card__list li {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 var(--wp--preset--spacing--30);
+	align-items: baseline;
+	padding-block: 0.35rem;
+	color: var(--wp--preset--color--stone);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-sources-card__list a {
+	font-size: 1.0625rem;
+	font-weight: 700;
+	color: var(--wp--preset--color--ink);
+	min-width: 6rem;
+}
+
+/* ---------- Card ---------- */
+
+.cacdemo-sermon {
+	position: relative;
+	height: 100%;
+}
+
+.cacdemo-sermon > * + * {
+	margin-block-start: var(--wp--preset--spacing--40);
+}
+
+.cacdemo-sermon__cover {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--wp--preset--color--night);
+}
+
+.cacdemo-sermon__cover > * {
+	margin: 0 !important;
+}
+
+.cacdemo-sermon__cover .wp-block-post-featured-image,
+.cacdemo-sermon__cover .wp-block-image,
+.cacdemo-sermon__cover img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cacdemo-sermon__fallback {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: var(--wp--preset--spacing--10);
+	padding: clamp(1rem, 4%, 2rem);
+	color: var(--wp--preset--color--paper);
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-sermon__cover:has(.wp-block-post-featured-image img) .cacdemo-sermon__fallback {
+	display: none;
+}
+
+.cacdemo-sermon__fallback-series {
+	color: var(--wp--preset--color--stage-light);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+}
+
+.cacdemo-sermon__fallback-series a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.cacdemo-sermon__fallback-title {
+	font-size: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+	font-weight: 800;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+	max-width: 16ch;
+}
+
+.cacdemo-sermon__body > * {
+	margin: 0;
+}
+
+.cacdemo-sermon__body > * + * {
+	margin-block-start: var(--wp--preset--spacing--20);
+}
+
+.cacdemo-sermon__kicker {
+	gap: 0 0.5em;
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon__kicker > * {
+	margin: 0;
+}
+
+.cacdemo-sermon__kicker .wp-block-post-terms:not(:empty)::after {
+	content: "·";
+	margin-inline-start: 0.5em;
+}
+
+.cacdemo-sermon__kicker a,
+.cacdemo-sermon__fact a {
+	position: relative;
+	z-index: 1; /* above the card's stretched title link */
+	color: inherit;
+}
+
+.cacdemo-sermon__title {
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.cacdemo-sermon__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Whole card is clickable through the title link. */
+.cacdemo-sermon__title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.cacdemo-sermon:hover .cacdemo-sermon__title a,
+.cacdemo-sermon__title a:focus-visible {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.2em;
+}
+
+.cacdemo-sermon:hover .cacdemo-sermon__cover img {
+	filter: brightness(1.06);
+}
+
+/* ---------- Facts (list view and single sermon) ---------- */
+
+.cacdemo-sermon__facts {
+	display: none;
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: 0.9375rem;
+	line-height: 1.45;
+}
+
+.cacdemo-sermon__fact {
+	display: grid;
+	grid-template-columns: 5.5rem minmax(0, 1fr);
+	gap: var(--wp--preset--spacing--30);
+	margin: 0 !important;
+	padding-block: 0.35rem;
+}
+
+.cacdemo-sermon__fact > * {
+	margin: 0 !important;
+}
+
+.cacdemo-sermon__label {
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon__fact:not(:has(.wp-block-post-terms, .wp-block-post-date, p:not(.cacdemo-sermon__label):not(:empty))) {
+	display: none;
+}
+
+/* ---------- Grid view (default) ---------- */
+
+.cacdemo-sermon-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+	gap: var(--wp--preset--spacing--70) var(--wp--preset--spacing--60);
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.cacdemo-sermon-list > li {
+	margin: 0;
+}
+
+.cacdemo-sermon-list--grid3 {
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+
+.cacdemo-sermon-list--grid3 .cacdemo-sermon__title {
+	font-size: 1.25rem;
+}
+
+/* ---------- List view ---------- */
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon-list {
+	grid-template-columns: 1fr;
+	gap: 0;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon-list > li {
+	padding-block: var(--wp--preset--spacing--50);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon {
+	display: grid;
+	grid-template-columns: minmax(9rem, 18rem) minmax(0, 1fr);
+	gap: var(--wp--preset--spacing--30) var(--wp--preset--spacing--60);
+	align-items: start;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon > * + * {
+	margin: 0;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__kicker {
+	display: none;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__title {
+	font-size: clamp(1.125rem, 1rem + 0.8vw, 1.5rem);
+	margin-block-start: 0;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__facts {
+	display: block;
+	max-width: 34rem;
+	margin-block-start: var(--wp--preset--spacing--30);
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__fact {
+	padding-block: 0.15rem;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon-list > li:first-child {
+	padding-block-start: 0;
+}
+
+body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__fallback-title {
+	font-size: 1rem;
+}
+
+@media (max-width: 599.98px) {
+	body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon {
+		grid-template-columns: 7.5rem minmax(0, 1fr);
+	}
+
+	body.cacdemo-view-list .cacdemo-sermons .cacdemo-sermon__fallback-series {
+		display: none;
+	}
+
+	.cacdemo-sermon-filters select {
+		min-width: 0;
+		width: 100%;
+	}
+
+	.cacdemo-sermon-filters,
+	.cacdemo-sermon-filters .wp-block-categories {
+		flex: 1 1 100%;
+	}
+}
+
+.cacdemo-pagination {
+	margin-block-start: var(--wp--preset--spacing--70);
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+/* ---------- Single sermon ---------- */
+
+.cacdemo-eyebrow-link {
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	margin-block-end: var(--wp--preset--spacing--30);
+}
+
+.cacdemo-eyebrow-link a {
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon-hero .wp-block-post-title {
+	font-weight: 800;
+	line-height: 1.02;
+	letter-spacing: -0.025em;
+	margin-block: 0 var(--wp--preset--spacing--60);
+}
+
+.cacdemo-sermon__facts--hero {
+	display: block;
+	border-top: 2px solid currentColor;
+}
+
+.cacdemo-sermon__facts--hero .cacdemo-sermon__fact {
+	padding-block: 0.6rem;
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.cacdemo-sermon-hero__media > * {
+	margin: 0 !important;
+}
+
+/* A video player replaces the cover; an audio-only sermon shows its cover above the audio player. */
+.cacdemo-sermon-hero__media:has(.cacdemo-sermon-media__frame) .cacdemo-sermon__cover {
+	display: none;
+}
+
+.cacdemo-sermon-hero__media:not(:has(.cacdemo-sermon-media__frame)) {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: var(--wp--preset--spacing--40);
+}
+
+
+/* Sources as tabs (sermon media block). */
+.cacdemo-sermon-media__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	margin-block-end: var(--wp--preset--spacing--30);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-sermon-media__tab {
+	min-height: 2.75rem;
+	padding: 0 1.1rem;
+	margin-block-end: -1px;
+	font: inherit;
+	font-weight: 600;
+	color: var(--wp--preset--color--stone);
+	background: transparent;
+	border: 0;
+	border-bottom: 3px solid transparent;
+	cursor: pointer;
+}
+
+.cacdemo-sermon-media__tab[aria-selected="true"] {
+	color: var(--wp--preset--color--ink);
+	border-bottom-color: var(--wp--preset--color--stage);
+}
+
+.cacdemo-sermon-media__tab:hover {
+	color: var(--wp--preset--color--ink);
+}
+
+.cacdemo-sermon-media__frame {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background: var(--wp--preset--color--night);
+}
+
+.cacdemo-sermon-media__frame iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.cacdemo-sermon-media__panel > * {
+	margin: 0;
+}
+
+.cacdemo-sermon-media__open {
+	margin-block-start: var(--wp--preset--spacing--20) !important;
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-sermon-media__open a {
+	color: var(--wp--preset--color--stone);
+}
+
+.cacdemo-sermon-content:empty {
+	display: none;
+}
+
+.cacdemo-resources {
+	margin-block-start: var(--wp--preset--spacing--70);
+	padding-block-start: var(--wp--preset--spacing--50);
+	border-top: 2px solid currentColor;
+}
+
+.cacdemo-resources h2 {
+	font-size: var(--wp--preset--font-size--subheading);
+}
+
+/* Placeholder rows from the starter pattern (href "#") and a section left without real links stay hidden. */
+.cacdemo-resource-list li:has(> a[href="#"]),
+.cacdemo-resources:not(:has(.cacdemo-resource-list a:not([href="#"]), .wp-block-file)) {
+	display: none;
+}
+
+.cacdemo-resource-list {
+	list-style: none;
+	padding: 0;
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-resource-list li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0 var(--wp--preset--spacing--40);
+	margin: 0;
+	padding-block: var(--wp--preset--spacing--30);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+	color: var(--wp--preset--color--stone);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-resource-list li a {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--ink);
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.75rem;
+}
+
+.cacdemo-sermon-more:not(:has(.wp-block-post-template > li)) {
+	display: none;
+}
+
+/* The series band meets the footer without a paper gap. */
+body:has(main > .cacdemo-sermon-more:last-child .wp-block-post-template > li) footer.wp-block-template-part {
+	margin-block-start: 0;
+}
+
+/* ---------- Comments (collapsed bar; shown only when an admin turns comments on) ---------- */
+
+.cacdemo-comments-wrap:not(:has(.cacdemo-comments)) {
+	display: none;
+}
+
+.cacdemo-comments {
+	border-top: 1px solid var(--wp--preset--color--rule);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+	font-family: var(--wp--preset--font-family--sans);
+}
+
+.cacdemo-comments > summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0 var(--wp--preset--spacing--30);
+	min-height: 2.75rem;
+	padding-block: var(--wp--preset--spacing--30);
+	cursor: pointer;
+	list-style: none;
+	color: var(--wp--preset--color--stone);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-comments > summary::-webkit-details-marker {
+	display: none;
+}
+
+.cacdemo-comments > summary::before {
+	content: "+";
+	width: 1rem;
+	font-weight: 700;
+	color: var(--wp--preset--color--ink);
+}
+
+.cacdemo-comments[open] > summary::before {
+	content: "–";
+}
+
+.cacdemo-comments__title {
+	font-weight: 600;
+	color: var(--wp--preset--color--ink);
+}
+
+.cacdemo-comments__count {
+	min-width: 1.5rem;
+	padding: 0 0.4rem;
+	text-align: center;
+	border-radius: 1rem;
+	background: var(--wp--preset--color--mist);
+	color: var(--wp--preset--color--ink);
+}
+
+.cacdemo-comments__thread {
+	padding-block-end: var(--wp--preset--spacing--50);
+}
+
+.cacdemo-comment {
+	padding-block: var(--wp--preset--spacing--30);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.cacdemo-comment .wp-block-comment-author-name {
+	font-weight: 600;
+}
+
+.cacdemo-comment .wp-block-comment-date {
+	color: var(--wp--preset--color--stone);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.cacdemo-comments__thread :where(input[type="text"], input[type="email"], input[type="url"], textarea) {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.6rem 0.75rem;
+	font: inherit;
+	border: 1px solid var(--wp--preset--color--rule);
+	border-radius: 2px;
+	background: var(--wp--preset--color--paper);
+}
+
+/* ---------- Featured sermons (shown only when an admin features some and the list is unfiltered) ---------- */
+
+.cacdemo-sermon-featured:not(:has(.wp-block-post-template > li)) {
+	display: none;
+}
+
+.cacdemo-sermon-featured {
+	margin-block-end: var(--wp--preset--spacing--70);
+	padding-block-end: var(--wp--preset--spacing--60);
+	border-bottom: 1px solid var(--wp--preset--color--rule);
+}
+
+.cacdemo-sermon-featured > h2 {
+	margin-block: 0 var(--wp--preset--spacing--50);
+}

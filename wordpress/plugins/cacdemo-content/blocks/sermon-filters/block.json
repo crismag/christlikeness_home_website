@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cacdemo/sermon-filters",
+	"title": "Sermon filters",
+	"category": "widgets",
+	"icon": "filter",
+	"description": "The filter bar and Grid / List / Table switch for the sermon collection. Filters, sort and grouping come from the page address, so results are shareable.",
+	"textdomain": "cacdemo",
+	"supports": {
+		"html": false,
+		"align": [ "wide" ],
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,64 @@
+{
+    "key": "taxonomy_cacdemo_sermon_speaker",
+    "title": "Speakers",
+    "menu_order": 0,
+    "active": true,
+    "taxonomy": "sermon_speaker",
+    "object_type": [
+        "sermon"
+    ],
+    "advanced_configuration": 0,
+    "import_source": "",
+    "import_date": "",
+    "labels": {
+        "name": "Speakers",
+        "singular_name": "Speaker",
+        "menu_name": "Speakers",
+        "all_items": "All speakers",
+        "edit_item": "Edit speaker",
+        "view_item": "View speaker",
+        "add_new_item": "Add new speaker",
+        "search_items": "Search speakers",
+        "not_found": "No speakers found"
+    },
+    "description": "Who preached the sermon.",
+    "capabilities": {
+        "manage_terms": "manage_categories",
+        "edit_terms": "manage_categories",
+        "delete_terms": "manage_categories",
+        "assign_terms": "edit_posts"
+    },
+    "public": true,
+    "publicly_queryable": true,
+    "hierarchical": false,
+    "show_ui": true,
+    "show_in_menu": true,
+    "show_in_nav_menus": true,
+    "show_in_rest": true,
+    "rest_base": "",
+    "rest_namespace": "wp/v2",
+    "rest_controller_class": "WP_REST_Terms_Controller",
+    "show_tagcloud": false,
+    "show_in_quick_edit": true,
+    "show_admin_column": true,
+    "rewrite": {
+        "permalink_rewrite": "custom_permalink",
+        "slug": "speaker",
+        "with_front": "0",
+        "rewrite_hierarchical": "0"
+    },
+    "query_var": "taxonomy_key",
+    "query_var_name": "",
+    "default_term": {
+        "default_term_enabled": false,
+        "default_term_name": "",
+        "default_term_slug": "",
+        "default_term_description": ""
+    },
+    "sort": false,
+    "meta_box": "default",
+    "meta_box_cb": "",
+    "meta_box_sanitize_cb": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

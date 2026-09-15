@@ -1,0 +1,30 @@
+{
+  "about": "Manual rulings for scripts/import-sermons.php. Key: the source ID of a harvested item. Value: {\"same_as\": \"<source ID already imported>\"} to add it to that sermon, {\"action\": \"new\"} to create its own sermon, or {\"action\": \"skip\"} to leave it out. Add \"date\": \"YYYY-MM-DD\" to correct the service date the post gave. Add a note saying who decided and why.",
+  "items": {
+    "youtube:9HM4Og4hbJM": {
+      "same_as": "facebook:1601182858056451",
+      "note": "Church (Cris), 2026-09-16: same August 23, 2026 service; this is Responsive Obedience VI. The YouTube title's \"VII\" is a mislabel."
+    },
+    "youtube:RCNkWJQKnzw": {
+      "same_as": "facebook:27384478614541648",
+      "note": "Church (Cris), 2026-09-16: same June 28, 2026 service; one upload is a trimmed recording (Facebook 65 min, YouTube 46 min)."
+    },
+    "facebook:2742165579258602": {
+      "action": "new",
+      "date": "2023-07-24",
+      "note": "Church (Cris), 2026-09-16: \"God Is All You Need II\" is wrongly dated July 16 in the post; it is for July 24, 2023."
+    },
+    "facebook:1341485800047246": {
+      "action": "new",
+      "note": "Church (Cris), 2026-09-16: \"God Is All You Need\" (July 16, 2023) is correctly dated; the other July 16 post was part II, dated July 24."
+    },
+    "facebook:254705380213921": {
+      "action": "new",
+      "note": "Church (Cris), 2026-09-16: the August 27, 2023 service is Let's Chat V."
+    },
+    "facebook:319074180498331": {
+      "action": "skip",
+      "note": "Church (Cris), 2026-09-16: same video as Let's Chat V (August 27, 2023), wrongly uploaded as \"Let's Chat IV\". Not imported."
+    }
+  }
+}
