@@ -328,10 +328,17 @@ function cacdemo_site_theme_screen() {
 		if ( ! $package['slots'] ) {
 			continue;
 		}
+		$filled = count( array_filter( (array) ( $state['images'][ $id ] ?? array() ) ) );
+		printf(
+			'<details class="cacdemo-images-group" %1$s><summary><span>%2$s</span> <span class="cacdemo-images-count">%3$s</span></summary>',
+			$id === $current['theme'] ? 'open' : '',
+			esc_html( $package['name'] ),
+			esc_html( sprintf( /* translators: 1: images chosen, 2: image slots */ _n( '%1$d of %2$d image chosen', '%1$d of %2$d images chosen', count( $package['slots'] ), 'cacdemo' ), $filled, count( $package['slots'] ) ) )
+		);
 		printf( '<form method="post" action="%s" class="cacdemo-images">', esc_url( admin_url( 'admin-post.php' ) ) );
 		wp_nonce_field( 'cacdemo_site_theme' );
 		printf( '<input type="hidden" name="action" value="cacdemo_site_theme"><input type="hidden" name="do" value="images"><input type="hidden" name="theme" value="%s">', esc_attr( $id ) );
-		printf( '<h3>%s</h3><ul class="cacdemo-slots">', esc_html( $package['name'] ) );
+		echo '<ul class="cacdemo-slots">';
 		foreach ( $package['slots'] as $slot ) {
 			$attachment = (int) ( $state['images'][ $id ][ $slot ] ?? 0 );
 			$attachment = $attachment && wp_attachment_is_image( $attachment ) ? $attachment : 0;
@@ -353,7 +360,7 @@ function cacdemo_site_theme_screen() {
 		echo '</ul>';
 		/* translators: %s: site theme name */
 		submit_button( sprintf( __( 'Save %s images', 'cacdemo' ), $package['name'] ), 'secondary' );
-		echo '</form>';
+		echo '</form></details>';
 	}
 	echo '</div>';
 

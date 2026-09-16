@@ -17,7 +17,6 @@
 .cacdemo-palettes li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f1; }
 .cacdemo-pass.is-pass { color: #007017; }
 .cacdemo-pass.is-fail { color: #b32d2e; font-weight: 600; }
-.cacdemo-images + .cacdemo-images { border-top: 1px solid #f0f0f1; margin-top: 8px; }
 .cacdemo-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 12px; margin: 8px 0 0; }
 .cacdemo-slot { display: flex; gap: 12px; align-items: flex-start; border: 1px solid #dcdcde; padding: 10px; margin: 0; }
 .cacdemo-slot__preview { flex: 0 0 8rem; aspect-ratio: 16 / 9; background: #f0f0f1; display: grid; place-items: center; overflow: hidden; color: #646970; font-size: 12px; }
@@ -25,3 +24,7 @@
 .cacdemo-slot__body { display: grid; gap: 4px; min-width: 0; }
 .cacdemo-slot__name { font-size: 12px; color: #1d2327; overflow-wrap: anywhere; }
 .cacdemo-slot__actions { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
+.cacdemo-images-group { border-top: 1px solid #f0f0f1; padding: 4px 0; }
+.cacdemo-images-group > summary { cursor: pointer; padding: 10px 2px; font-size: 14px; font-weight: 600; } /* not display:flex — that removes the disclosure triangle */
+.cacdemo-images-group > summary > span:first-child { margin-inline-start: 4px; }
+.cacdemo-images-count { color: #646970; font-weight: 400; font-size: 12px; margin-inline-start: 6px; }

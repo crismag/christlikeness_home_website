@@ -179,6 +179,7 @@ Site default · Rich chocolate · Celebrated blue · Graphite · Rich gold · Fo
   Card = featured image → parent ministry's → fallback slot; applied to the core Featured Image block on ministry,
   update and way-to-serve cards, keeping the block's frame.
 - **Theme images:** Appearance → Site Theme → *Theme images* chooses a Media Library image per slot per theme
+  (one collapsible group per theme, the one showing now open, each labelled with how many slots are filled)
   (`home-hero`, `page-hero`, `ministries-hero`, `sermons-hero`, `fallback`).
 - **Performance:** the first hero on a page loads eagerly with `fetchpriority="high"`, later ones lazily; `srcset` with
   `sizes="100vw"`; generated sizes of JPEG and PNG uploads are saved as WebP.
