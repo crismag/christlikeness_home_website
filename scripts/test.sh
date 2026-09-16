@@ -12,6 +12,10 @@
 #                              Only for bootstrap, WordPress/PHP upgrades, major
 #                              theme architecture changes, releases, or on request.
 #
+#   scripts/test.sh --appearance  Also runs the Appearance acceptance test (tests/appearance-admin.php):
+#                              Site Theme saving and permissions, signed-in preview. Settings are
+#                              restored and temporary users removed.
+#
 #   scripts/test.sh --publishing  Also runs the contextual publishing acceptance test
 #                              (tests/publishing.php): section permissions, tampering,
 #                              contributors, uploads, visitor view) and the Content Manager
@@ -84,6 +88,9 @@ leak=$(curl -s "$SITE_URL/wp-json/wp/v2/centre?status=draft" | grep -c '"status"
 check "sermon post type and series/speaker/topic taxonomies are registered" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo (post_type_exists(\"sermon\") && taxonomy_exists(\"sermon_series\") && taxonomy_exists(\"sermon_speaker\") && taxonomy_exists(\"sermon_topic\")) ? 1 : 0;') == 1 ]]"
 check "sermon media block is registered (cacdemo-content)" bash -c "[[ \$(wp --path='$WP_ROOT' eval 'echo WP_Block_Type_Registry::get_instance()->is_registered(\"cacdemo/sermon-media\") ? 1 : 0;') == 1 ]]"
 check "social channels: Follow Us lists the church's pages, home page links them" bash -c "b=\$(curl -s '$SITE_URL/follow-us/'); h=\$(curl -s '$SITE_URL/'); grep -q 'cacdemo-channels is-feeds' <<<\"\$b\" && grep -q 'cacdemo-channels is-compact' <<<\"\$h\" && ! grep -qE 'Fatal error|Warning:|Notice:' <<<\"\$b\""
+out=$(wpc eval-file "$REPO_ROOT/tests/appearance.php" 2>&1); status=$?
+[[ $status -eq 0 ]] && pass "appearance: palettes pass contrast, site-theme resolution, pre-paint palette, visitor output ($(grep -c PASS <<<"$out") checks)" \
+    || { fail "appearance checks failed:"; grep -E 'FAIL|Error' <<<"$out" | sed 's/^/      /'; }
 check "GET /sermons/ → 200 with the sermon collection, no PHP errors" bash -c "b=\$(curl -s '$SITE_URL/sermons/'); grep -q 'cacdemo-sermon-toolbar' <<<\"\$b\" && ! grep -qE 'Fatal error|Warning:|Notice:|Deprecated:' <<<\"\$b\""
 
 if [[ "${1:-}" == "--interop" ]]; then
@@ -193,6 +200,14 @@ if [[ "${1:-}" == "--interop" ]]; then
     left=$(wpc db query "SELECT ID FROM ${DB_PREFIX}posts" --skip-column-names | grep -cvxF -f "$WORK/ids-before.done" || true)
     [[ "$left" == "0" && "$(wpc option get site_logo 2>/dev/null || true)" == "$logo_before" ]] \
         && pass "temporary content removed and Site Logo restored" || fail "$left temporary posts left behind or Site Logo not restored"
+fi
+
+if [[ "${1:-}" == "--appearance" ]]; then
+    section "Appearance acceptance (Site Theme settings restored afterwards)"
+    out=$(wpc eval-file "$REPO_ROOT/tests/appearance-admin.php" 2>&1); status=$?
+    printf '%s\n' "$out" | grep -E 'PASS|FAIL|^[A-Z][a-z]' | grep -v ' passed, '
+    PASS=$((PASS + $(grep -c 'PASS' <<<"$out"))); FAIL=$((FAIL + $(grep -c 'FAIL' <<<"$out")))
+    [[ $status -ne 0 && $(grep -c 'FAIL' <<<"$out") -eq 0 ]] && fail "appearance acceptance did not run: $(tail -1 <<<"$out")"
 fi
 
 if [[ "${1:-}" == "--publishing" ]]; then

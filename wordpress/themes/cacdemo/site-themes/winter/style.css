@@ -1,0 +1,2 @@
+/* Winter site theme: loaded only while it is active (scoped anyway). Uses tokens, never fixed palette colours. */
+:root[data-site-theme="winter"] .cacdemo-hero.has-image { border-bottom: 4px solid var(--wp--custom--decor); }

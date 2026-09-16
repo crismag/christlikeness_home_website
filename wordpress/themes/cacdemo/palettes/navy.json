@@ -1,0 +1,21 @@
+{
+	"name": "Deep navy",
+	"description": "Navy text and bands on warm white, with slate-blue links.",
+	"order": 70,
+	"colors": {
+		"paper": "#FBFAF7",
+		"ink": "#0F1E3A",
+		"stone": "#4F5B75",
+		"mist": "#E3E8F1",
+		"rule": "#CDD5E3",
+		"night": "#0A2447",
+		"night-rule": "#1F3D66",
+		"night-muted": "#B3C4DD",
+		"stage": "#2C5596",
+		"stage-light": "#9FBAE9"
+	},
+	"custom": {
+		"highlight": "#A56D34",
+		"highlightInverse": "#E0AE74"
+	}
+}

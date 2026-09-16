@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cacdemo/page-hero",
+	"title": "Page hero",
+	"category": "theme",
+	"icon": "cover-image",
+	"description": "The page's banner image (or the site theme's image for this kind of page) behind its title and introduction, with a readable overlay. Without an image it shows the inner blocks as a plain title band.",
+	"textdomain": "cacdemo",
+	"attributes": {
+		"variant": { "type": "string", "enum": [ "landing", "moderate" ], "default": "moderate" },
+		"themeSlot": { "type": "string", "default": "" }
+	},
+	"usesContext": [ "postId", "postType" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

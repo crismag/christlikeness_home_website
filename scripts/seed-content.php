@@ -269,7 +269,7 @@ $YT       = 'https://www.youtube.com/channel/UCdEsFxptBKsb1j6Q9PaY5jQ';
 $pages = array();
 
 /* ---------------- Home ---------------- */
-$hero = cs_group(
+$hero = cs_b( 'cacdemo/page-hero', array( 'variant' => 'landing', 'themeSlot' => 'home-hero', 'align' => 'full' ), cs_group(
 	cs_columns(
 		cs_column(
 			cs_h( 'Looking for a church?', 1, 'display', array( 'className' => 'cacdemo-display' ) ) .
@@ -285,7 +285,7 @@ $hero = cs_group(
 		'style' => array( 'spacing' => array( 'padding' => array( 'top' => 'clamp(2.5rem, 1rem + 4.5vw, 5rem)', 'bottom' => 'clamp(3rem, 1rem + 5vw, 5.5rem)' ) ) ),
 		'layout' => array( 'type' => 'constrained' ) ),
 	'alignfull cacdemo-hero', 'padding-top:clamp(2.5rem, 1rem + 4.5vw, 5rem);padding-bottom:clamp(3rem, 1rem + 5vw, 5.5rem)'
-);
+) );
 
 $worship = cs_band( 'Worship band', cs_columns(
 	cs_column( cs_image( $M['worship'], 'is-style-arch' ), '45%', 'center' ) .

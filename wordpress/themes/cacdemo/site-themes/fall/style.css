@@ -1,0 +1,9 @@
+/* Fall site theme: loaded only while it is active (scoped anyway). Uses tokens, never fixed palette colours. */
+:root[data-site-theme="fall"] .cacdemo-hero.has-image { border-bottom: 4px solid var(--wp--custom--decor); }
+
+/* Falling leaves keep autumn colours whatever palette the visitor chose (green leaves would not read as Fall). */
+:root[data-site-theme="fall"] .cacdemo-effects.is-leaves {
+	--cacdemo-effect-a: #D98A3C;
+	--cacdemo-effect-b: #B4521F;
+	--cacdemo-effect-c: #E0B569;
+}

@@ -1,0 +1,72 @@
+/**
+ * Site-theme effects layer (assets/js/effects.js): inside the first image hero, above its decoration and below its text.
+ * Only transform and opacity animate. Colours come from palette tokens, unless the season
+ * sets its own (`--cacdemo-effect-a|b|c`) because the effect depicts something real, like autumn leaves.
+ */
+.cacdemo-effects { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; }
+.cacdemo-effects__p {
+	position: absolute;
+	top: 0;
+	left: var(--x);
+	width: var(--size);
+	height: var(--size);
+	opacity: 0;
+	will-change: transform, opacity;
+	animation-name: cacdemo-fall;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+.cacdemo-effects.is-paused .cacdemo-effects__p { animation-play-state: paused; }
+
+.is-snow .cacdemo-effects__p { border-radius: 50%; background: radial-gradient(circle, #fff 0 45%, rgb(255 255 255 / 0) 72%); }
+.is-leaves .cacdemo-effects__p {
+	background: var(--cacdemo-effect-a, var(--wp--custom--highlight-inverse));
+	-webkit-mask: var(--cacdemo-leaf) center / contain no-repeat;
+	mask: var(--cacdemo-leaf) center / contain no-repeat;
+	--cacdemo-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3C10 3 4 8 4 15c0 2 .6 3.8 1.6 5.2L3 22.8l1.2 1.2 2.6-2.6C8.2 22.4 10 23 12 23c7 0 12-6 8-20z'/%3E%3C/svg%3E");
+	animation-name: cacdemo-flutter;
+}
+.is-leaves .cacdemo-effects__p:nth-child(3n + 1) { background: var(--cacdemo-effect-b, var(--wp--preset--color--stage-light)); }
+.is-leaves .cacdemo-effects__p:nth-child(3n + 2) { background: var(--cacdemo-effect-c, var(--wp--preset--color--night-muted)); }
+
+@keyframes cacdemo-fall {
+	0% { transform: translate3d(0, -2rem, 0); opacity: 0; }
+	10% { opacity: var(--o); }
+	85% { opacity: var(--o); }
+	100% { transform: translate3d(var(--drift), var(--h, 40rem), 0); opacity: 0; }
+}
+@keyframes cacdemo-flutter {
+	0% { transform: translate3d(0, -2rem, 0) rotate(0deg); opacity: 0; }
+	10% { opacity: var(--o); }
+	30% { transform: translate3d(calc(var(--drift) * -0.6), calc(var(--h, 40rem) * 0.3), 0) rotate(calc(var(--spin) * 0.3)); }
+	60% { transform: translate3d(var(--drift), calc(var(--h, 40rem) * 0.6), 0) rotate(calc(var(--spin) * 0.6)); }
+	85% { opacity: var(--o); }
+	100% { transform: translate3d(calc(var(--drift) * 0.2), var(--h, 40rem), 0) rotate(var(--spin)); opacity: 0; }
+}
+
+.cacdemo-effects-toggle {
+	position: absolute;
+	top: 0.75rem;
+	right: max(1rem, 3vw);
+	z-index: 1;
+	min-height: 2.75rem;
+	padding: 0.25rem 0.85rem;
+	border: 0;
+	border-radius: 2px;
+	background: color-mix(in srgb, var(--wp--preset--color--night) 78%, transparent); /* readable over the bright side of any image */
+	color: var(--wp--preset--color--paper);
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+	cursor: pointer;
+}
+.cacdemo-effects-toggle:focus-visible { outline: 3px solid var(--wp--preset--color--stage-light); outline-offset: 2px; }
+
+@media (max-width: 781.98px) {
+	.cacdemo-effects-toggle { right: auto; left: max(1rem, 3vw); } /* the season's mark sits top right on phones */
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cacdemo-effects, .cacdemo-effects-toggle { display: none; }
+}

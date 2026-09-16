@@ -1,0 +1,21 @@
+{
+	"name": "Forest and sage",
+	"description": "Deep forest bands, muted sage and natural cream.",
+	"order": 60,
+	"colors": {
+		"paper": "#F7F8F2",
+		"ink": "#1C2A22",
+		"stone": "#55635A",
+		"mist": "#E3EADD",
+		"rule": "#CDD7C8",
+		"night": "#1F3528",
+		"night-rule": "#355140",
+		"night-muted": "#BCCFC0",
+		"stage": "#2F6B45",
+		"stage-light": "#A8D0AE"
+	},
+	"custom": {
+		"highlight": "#946528",
+		"highlightInverse": "#D8AA66"
+	}
+}

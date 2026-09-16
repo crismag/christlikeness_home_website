@@ -1,0 +1,21 @@
+{
+	"name": "Graphite",
+	"description": "Charcoal and stone with silver detail and steel-blue links.",
+	"order": 40,
+	"colors": {
+		"paper": "#F7F7F5",
+		"ink": "#1F2224",
+		"stone": "#5A5F63",
+		"mist": "#E6E7E5",
+		"rule": "#D0D3D1",
+		"night": "#26292C",
+		"night-rule": "#3D4246",
+		"night-muted": "#BFC4C8",
+		"stage": "#3D5E78",
+		"stage-light": "#A7C1D6"
+	},
+	"custom": {
+		"highlight": "#86693A",
+		"highlightInverse": "#D2B27A"
+	}
+}

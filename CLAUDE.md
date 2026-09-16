@@ -109,9 +109,11 @@ hostnames, theme/plugin slugs: **cacdemo**. Never display "CAC Demo" publicly.
 
 Approved direction: "Living Worship" on an editorial foundation (`docs/DESIGN-DIRECTION.md`,
 approved rules in `docs/DESIGN-SYSTEM.md`). One expressive moment per page; tone bands, not
-boxes; lists before cards; two typefaces (Schibsted Grotesk, Source Serif 4); no motion;
-arch image only as a dark-band accent; missing images omitted, not placeholdered; editors
-use locked patterns and theme presets, never custom colours or sizes. `design/prototype/` is
+boxes; lists before cards; two typefaces (Schibsted Grotesk, Source Serif 4); no motion
+except opt-in site-theme effects (reduced-motion aware); arch image only as a dark-band accent;
+missing images fall back deliberately (content → parent → theme slot; see DESIGN-SYSTEM → Imagery);
+editors use locked patterns and theme presets, never custom colours or sizes. Visual themes and
+palettes: `docs/VISUAL-THEMES-DESIGN.md`. `design/prototype/` is
 disposable reference, not production code.
 
 ## Content Manager
@@ -154,6 +156,7 @@ plugins. Prefer the smallest test that gives meaningful confidence.
 scripts/bootstrap-local.sh     # build/converge runtime (idempotent, non-destructive)
 scripts/test.sh                # routine checks
 scripts/test.sh --interop      # acceptance checks (see policy above)
+scripts/test.sh --appearance   # visual themes acceptance (site theme saving, previews, theme and Content Manager images)
 scripts/test.sh --publishing   # publishing permissions + Content Manager acceptance (temporary users/content; after those changes)
 scripts/reset-local.sh         # DESTRUCTIVE: drop DB + delete runtime, then bootstrap (asks first)
 wp --path=/mnt/ai/workspaces/cacdemo <command>
@@ -164,7 +167,8 @@ wp --path=/mnt/ai/workspaces/cacdemo eval-file scripts/seed-ministries.php [dry-
 /tmp/ytvenv/bin/python scripts/harvest-youtube.py   # YouTube sermon harvest
 wp --path=/mnt/ai/workspaces/cacdemo eval-file scripts/import-sermons.php [dry-run]  # reconcile harvests into sermons
 scripts/sync-sermons.sh [--dry-run]           # discover new Facebook/YouTube sermons and import (manual; no cron)
-scripts/deploy-staging.sh [--seed-content]   # Hostinger staging — see docs/DEPLOYMENT.md
+wp --path=/mnt/ai/workspaces/cacdemo eval-file scripts/seed-appearance.php [dry-run] [regenerate]  # placeholder art for empty image slots
+scripts/deploy-staging.sh [--seed-content|--seed-appearance]   # Hostinger staging — see docs/DEPLOYMENT.md
 scripts/verify-staging.sh                    # read-only staging checks
 ```
 

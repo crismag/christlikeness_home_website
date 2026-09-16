@@ -1,0 +1,21 @@
+{
+	"name": "Rich chocolate",
+	"description": "Espresso text and cocoa bands on warm cream, with bronze links.",
+	"order": 20,
+	"colors": {
+		"paper": "#FBF7F1",
+		"ink": "#2B1E18",
+		"stone": "#6A5A4F",
+		"mist": "#F0E6DA",
+		"rule": "#DDCDBB",
+		"night": "#2E1C14",
+		"night-rule": "#4A3226",
+		"night-muted": "#D8C4B2",
+		"stage": "#8A4F24",
+		"stage-light": "#E6B98C"
+	},
+	"custom": {
+		"highlight": "#A06A28",
+		"highlightInverse": "#E2B477"
+	}
+}

@@ -1,0 +1,67 @@
+{
+    "key": "taxonomy_cacdemo_media_collection",
+    "title": "Media collections",
+    "menu_order": 0,
+    "active": true,
+    "taxonomy": "media_collection",
+    "object_type": [
+        "attachment"
+    ],
+    "advanced_configuration": 0,
+    "import_source": "",
+    "import_date": "",
+    "labels": {
+        "name": "Media collections",
+        "singular_name": "Media collection",
+        "menu_name": "Media collections",
+        "all_items": "All collections",
+        "edit_item": "Edit collection",
+        "view_item": "View collection",
+        "update_item": "Update collection",
+        "add_new_item": "Add new collection",
+        "new_item_name": "New collection name",
+        "search_items": "Search collections",
+        "not_found": "No collections found",
+        "no_terms": "No collections"
+    },
+    "description": "Groups approved images in the Media Library (General, Placeholder, Church, Worship, seasons\u2026). Every Content Manager upload starts in General.",
+    "capabilities": {
+        "manage_terms": "manage_categories",
+        "edit_terms": "manage_categories",
+        "delete_terms": "manage_categories",
+        "assign_terms": "upload_files"
+    },
+    "public": false,
+    "publicly_queryable": false,
+    "hierarchical": false,
+    "show_ui": true,
+    "show_in_menu": true,
+    "show_in_nav_menus": false,
+    "show_in_rest": true,
+    "rest_base": "media_collection",
+    "rest_namespace": "wp/v2",
+    "rest_controller_class": "WP_REST_Terms_Controller",
+    "show_tagcloud": false,
+    "show_in_quick_edit": true,
+    "show_admin_column": true,
+    "rewrite": {
+        "permalink_rewrite": "no_permalink",
+        "slug": "",
+        "with_front": "1",
+        "rewrite_hierarchical": "0"
+    },
+    "query_var": "taxonomy_key",
+    "query_var_name": "",
+    "default_term": {
+        "default_term_enabled": false,
+        "default_term_name": "",
+        "default_term_slug": "",
+        "default_term_description": ""
+    },
+    "sort": false,
+    "meta_box": "default",
+    "meta_box_cb": "",
+    "meta_box_sanitize_cb": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

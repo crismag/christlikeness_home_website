@@ -24,7 +24,9 @@ scripts/verify-staging.sh                                   # read-only checks
 - Our plugins (`wordpress/plugins/*`, currently `cacdemo-content`): uploaded the same way, activated.
 - Plugins listed in `config/plugins.txt` — installed from WordPress.org by slug, never copied.
 - SCF definitions (`config/scf/`) — imported with `scripts/scf-sync.php`.
-- With `--seed-content` only: `scripts/seed-content.php` plus the five curated images it uses, and
+- With `--seed-content` only: `scripts/seed-content.php` plus the five curated images it uses,
+  `scripts/seed-ministries.php` (seven ministries, ways to serve, Ministries submenu — brief draft copy) and
+  `scripts/seed-channels.php` (Facebook pages/group, Follow Us under Connect), both non-destructive, and
   `scripts/import-sermons.php` with the committed Facebook and YouTube harvests, the review
   decisions and the locally cached stills; staging never contacts Facebook or YouTube.
   It creates missing pages, centres, the Main menu and images, and **rewrites the nine pages'
@@ -90,6 +92,10 @@ Before inviting real contributors on an environment:
    remove the test person.
 
 Expected failure behaviour stays as above: no data is lost; the administrator passes on the lost-password link.
+
+- Hostinger's `.htaccess` WordPress block contains `ExpiresDefault "access plus 1 weeks"`, which made HTML pages
+  browser-cacheable for a week. The theme now sends `Cache-Control: no-cache, must-revalidate, max-age=0` and a past
+  `Expires` for public HTML (`inc/appearance/site-themes.php`), which mod_expires respects; nothing on the server is edited.
 
 ## Open questions
 

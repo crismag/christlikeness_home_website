@@ -5,10 +5,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Appearance: palettes, site-theme packages and their resolver, the visitor colour picker, Appearance → Site Theme.
+require_once __DIR__ . '/inc/appearance/palettes.php';
+require_once __DIR__ . '/inc/appearance/site-themes.php';
+require_once __DIR__ . '/inc/appearance/picker.php';
+require_once __DIR__ . '/inc/appearance/admin.php';
+
 add_action( 'after_setup_theme', 'cacdemo_setup' );
 
 function cacdemo_setup() {
-	add_editor_style( array( 'assets/css/sermons.css', 'assets/css/ministries.css', 'assets/css/channels.css' ) );
+	add_editor_style( array( 'assets/css/sermons.css', 'assets/css/ministries.css', 'assets/css/channels.css', 'assets/css/hero.css' ) );
 }
 
 add_action( 'init', 'cacdemo_register_assets' );
@@ -33,6 +39,14 @@ function cacdemo_register_assets() {
 		'src'    => get_theme_file_uri( 'assets/css/ministries.css' ),
 		'path'   => get_theme_file_path( 'assets/css/ministries.css' ),
 		'ver'    => $version( 'assets/css/ministries.css' ),
+	) );
+
+	// Page hero (cacdemo/page-hero) and card fallback images.
+	wp_enqueue_block_style( 'cacdemo/page-hero', array(
+		'handle' => 'cacdemo-hero',
+		'src'    => get_theme_file_uri( 'assets/css/hero.css' ),
+		'path'   => get_theme_file_path( 'assets/css/hero.css' ),
+		'ver'    => $version( 'assets/css/hero.css' ),
 	) );
 
 	// Social channels (home band, Connect, Follow us).

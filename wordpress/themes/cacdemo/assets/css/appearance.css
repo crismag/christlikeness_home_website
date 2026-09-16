@@ -1,0 +1,55 @@
+/**
+ * Visitor colour picker (footer and phone menu). Sits on Night surfaces, so it uses the inverse tokens.
+ */
+.cacdemo-palette-picker[hidden] { display: none; }
+.cacdemo-palette-picker fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.cacdemo-palette-picker__legend {
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--night-muted);
+	margin-block-end: var(--wp--preset--spacing--20);
+	padding: 0;
+}
+.cacdemo-palette-picker__options { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+.cacdemo-palette-option {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-height: 2.75rem;
+	padding: 0 0.6rem 0 0.35rem;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	font-family: var(--wp--preset--font-family--sans);
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--paper);
+	cursor: pointer;
+}
+.cacdemo-palette-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.cacdemo-palette-option__swatch {
+	flex: none;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: 50%;
+	border: 1px solid var(--wp--preset--color--night-rule);
+	background: conic-gradient(var(--sw-paper) 0 50%, var(--sw-night) 50% 75%, var(--sw-stage) 75% 92%, var(--sw-highlight) 92% 100%);
+}
+.cacdemo-palette-option:hover { border-color: var(--wp--preset--color--night-rule); }
+.cacdemo-palette-option:has(input:checked) { border-color: var(--wp--preset--color--stage-light); }
+.cacdemo-palette-option:has(input:checked) .cacdemo-palette-option__name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em; }
+.cacdemo-palette-option:has(input:focus-visible) { outline: 3px solid var(--wp--preset--color--stage-light); outline-offset: 2px; }
+.cacdemo-palette-option:has(input:disabled) { opacity: 0.6; cursor: not-allowed; }
+.cacdemo-palette-picker__note { margin: var(--wp--preset--spacing--20) 0 0; font-size: var(--wp--preset--font-size--small); color: var(--wp--preset--color--night-muted); }
+
+/* In the phone menu (the overlay is a Night surface): a quiet section at the foot, below the links. */
+.wp-block-navigation__responsive-container-content .cacdemo-palette-picker.is-in-menu {
+	width: 100%;
+	margin-block-start: var(--wp--preset--spacing--60);
+	padding-block-start: var(--wp--preset--spacing--40);
+	border-top: 1px solid var(--wp--preset--color--night-rule);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) .cacdemo-palette-picker.is-in-menu { display: none; }
+.wp-block-navigation__responsive-container-content .cacdemo-palette-picker.is-in-menu .cacdemo-palette-picker__options { justify-content: flex-end; }
+.wp-block-navigation__responsive-container-content .cacdemo-palette-picker.is-in-menu .cacdemo-palette-picker__legend { width: 100%; text-align: end; }
+
+/* Site-theme texture (token `texture`, "none" by default): a faint pattern on Night bands only. */
+.is-style-section-night { background-image: var(--wp--custom--texture); background-repeat: repeat; }

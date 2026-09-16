@@ -1,0 +1,21 @@
+{
+	"name": "Site default",
+	"description": "The Christlikeness colours: warm paper, ink text, a deep night band and stage-blue links.",
+	"order": 10,
+	"colors": {
+		"paper": "#FAFAF7",
+		"ink": "#1E2522",
+		"stone": "#5F6763",
+		"mist": "#E8EAE5",
+		"rule": "#D5D8D2",
+		"night": "#161B2E",
+		"night-rule": "#2C3350",
+		"night-muted": "#B9BED0",
+		"stage": "#4A57C8",
+		"stage-light": "#9AA4F5"
+	},
+	"custom": {
+		"highlight": "#9C7424",
+		"highlightInverse": "#D9B35A"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "Rich gold",
+	"description": "Warm ivory and charcoal, with antique gold kept for accents.",
+	"order": 50,
+	"colors": {
+		"paper": "#FBF8F0",
+		"ink": "#24211C",
+		"stone": "#625A4C",
+		"mist": "#F1EADB",
+		"rule": "#DDD2BC",
+		"night": "#27231D",
+		"night-rule": "#40392E",
+		"night-muted": "#D3C7B0",
+		"stage": "#7B5A12",
+		"stage-light": "#D9B35A"
+	},
+	"custom": {
+		"highlight": "#9E751C",
+		"highlightInverse": "#D9B35A"
+	}
+}

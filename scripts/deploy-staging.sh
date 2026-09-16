@@ -3,8 +3,10 @@
 # deploy-staging.sh — deploy the cacdemo theme and approved plugins to Hostinger staging.
 #
 #   scripts/deploy-staging.sh                      theme + our plugins + approved plugins + SCF definitions
-#   scripts/deploy-staging.sh --seed-content       also run seed-content.php (REWRITES page content) and
-#                                                  import-sermons.php (Facebook + YouTube harvests)
+#   scripts/deploy-staging.sh --seed-content       also run seed-content.php (REWRITES page content),
+#                                                  seed-ministries.php, seed-channels.php and seed-appearance.php (non-destructive)
+#                                                  and import-sermons.php (Facebook + YouTube harvests)
+#   scripts/deploy-staging.sh --seed-appearance    only run seed-appearance.php (placeholder art; fills empty image slots only)
 #   scripts/deploy-staging.sh --replace-hostinger  one-time: back up, then remove Hostinger plugins,
 #                                                  must-use plugins, AI theme and generated content
 #
@@ -20,10 +22,11 @@ STAGING_PATH="${CACDEMO_STAGING_PATH:-domains/cacdemo.crishub.com/public_html}"
 STAGING_URL="${CACDEMO_STAGING_URL:-https://cacdemo.crishub.com}"
 KIT="cacdemo-deploy"   # remote working copy of scripts/config/images, outside the web root
 
-SEED=0; REPLACE=0; YES=0
+SEED=0; APPEARANCE=0; REPLACE=0; YES=0
 for arg in "$@"; do
     case "$arg" in
         --seed-content) SEED=1 ;;
+        --seed-appearance) APPEARANCE=1 ;;
         --replace-hostinger) REPLACE=1 ;;
         --yes) YES=1 ;;
         *) die "unknown option: $arg" ;;
@@ -37,7 +40,7 @@ preflight() {
     [[ -x "$STAGING_SSH" ]] || die "SSH wrapper not found: $STAGING_SSH"
     [[ "$(remote 'wp option get siteurl')" == "$STAGING_URL" ]] || die "remote siteurl is not $STAGING_URL"
     php -r 'json_decode(file_get_contents($argv[1]), false, 512, JSON_THROW_ON_ERROR);' "$THEME_SRC/theme.json"
-    if [[ -n "$(git -C "$REPO_ROOT" status --porcelain -- wordpress/themes/$THEME_SLUG config/scf scripts/seed-content.php)" ]]; then
+    if [[ -n "$(git -C "$REPO_ROOT" status --porcelain -- wordpress/themes/$THEME_SLUG wordpress/plugins config/scf scripts/seed-content.php scripts/seed-appearance.php)" ]]; then
         warn "deploying uncommitted changes (theme, SCF definitions or seed script)"
     fi
 }
@@ -106,7 +109,7 @@ deploy_own_plugins() {
 
 deploy_kit() {
     # scf-sync.php and seed-content.php resolve config/ and content-source/ relative to scripts/.
-    local files=(scripts/scf-sync.php scripts/seed-content.php scripts/import-sermons.php content-source/sermon-harvest/youtube/videos.json content-source/sermon-harvest/facebook/videos.json content-source/sermon-harvest/decisions.json content-source/sermon-harvest/enrichment.json config/scf config/plugins.txt)
+    local files=(scripts/scf-sync.php scripts/seed-content.php scripts/seed-ministries.php scripts/seed-channels.php scripts/seed-appearance.php scripts/import-sermons.php content-source/sermon-harvest/youtube/videos.json content-source/sermon-harvest/facebook/videos.json content-source/sermon-harvest/decisions.json content-source/sermon-harvest/enrichment.json config/scf config/plugins.txt)
     while read -r rel; do files+=("content-source/legacy-site/images/$rel"); done < <(
         grep -oE "'[a-z]+/[^']+__[0-9a-f]{8}\.(png|jpg)'" "$REPO_ROOT/scripts/seed-content.php" | tr -d "'")
     # Saved stills (git-ignored caches under <platform>/stills/YYYY/MM/) become featured images on import.
@@ -130,8 +133,20 @@ plugins() {
 seed() {
     log "Seed content (scripts/seed-content.php)"
     remote "wp eval-file \"\$HOME/$KIT/scripts/seed-content.php\" | sed 's/^/  /'"
+    # After seed-content (pages and Main menu exist); both only add what is missing and never overwrite edits.
+    log "Ministries and ways to serve (scripts/seed-ministries.php)"
+    remote "wp eval-file \"\$HOME/$KIT/scripts/seed-ministries.php\" | { grep -v 'created role' || true; } | sed 's/^/  /'"
+    log "Social channels (scripts/seed-channels.php)"
+    remote "wp eval-file \"\$HOME/$KIT/scripts/seed-channels.php\" | sed 's/^/  /'"
+    # After ministries and pages exist: generated placeholder art for heroes and cards, only where no image is set.
+    seed_appearance
     log "Sermons from the Facebook and YouTube harvests (scripts/import-sermons.php)"
     remote "wp eval-file \"\$HOME/$KIT/scripts/import-sermons.php\" publish | tail -1 | sed 's/^/  /'; wp rewrite flush --quiet"
+}
+
+seed_appearance() {
+    log "Placeholder images (scripts/seed-appearance.php)"
+    remote "wp eval-file \"\$HOME/$KIT/scripts/seed-appearance.php\" | { grep -Ev 'exists|^created collection' || true; } | sed 's/^/  /'"
 }
 
 main() {
@@ -142,7 +157,7 @@ main() {
     deploy_own_plugins
     deploy_theme
     if (( REPLACE )); then replace_hostinger; fi
-    if (( SEED )); then seed; fi
+    if (( SEED )); then seed; elif (( APPEARANCE )); then seed_appearance; fi
     remote "wp cache flush --quiet || true; rm -rf \"\$HOME/$KIT\""
     log "Done: $STAGING_URL — run scripts/verify-staging.sh"
 }

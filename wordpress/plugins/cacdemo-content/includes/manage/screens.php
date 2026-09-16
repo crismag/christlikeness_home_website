@@ -114,25 +114,113 @@ function cacdemo_manage_pagination( $query, $base_args ) {
 	echo '</nav>';
 }
 
-/** Cover image input: current image, replace, remove, and alt text. */
-function cacdemo_manage_cover_input( $post, $label ) {
-	$thumb = $post ? get_post_thumbnail_id( $post ) : 0;
-	echo '<div class="cm-field cm-cover">';
-	printf( '<p class="cm-label">%s</p>', esc_html( $label ) );
-	if ( $thumb ) {
-		echo wp_get_attachment_image( $thumb, 'medium', false, array( 'class' => 'cm-cover__image' ) );
-		printf( '<label class="cm-check"><input type="checkbox" name="cacdemo_cover_remove" value="1"> %s</label>', esc_html__( 'Remove this image', 'cacdemo' ) );
+/** Cover image input (the featured image): current image, choose from the library or upload, remove, and alt text. */
+function cacdemo_manage_cover_input( $post, $label, $help = '' ) {
+	cacdemo_manage_image_input( $post, 'cover', $label, $help );
+}
+
+/** The image a Content Manager image field currently holds. */
+function cacdemo_manage_image_value( $post, $kind ) {
+	if ( ! $post ) {
+		return 0;
 	}
-	if ( current_user_can( 'upload_files' ) ) {
+	$id = 'banner' === $kind ? (int) get_post_meta( $post->ID, 'banner_image', true ) : (int) get_post_thumbnail_id( $post );
+	return cacdemo_is_image_attachment( $id ) ? $id : 0;
+}
+
+/**
+ * An image field. $kind 'cover' is the featured image; 'banner' is the wide image at the top of a page or ministry, with
+ * where to keep in view on wide screens and on phones. Works without JavaScript (upload); with it, "Choose from the
+ * library" opens the media dialog (assets/js/manage-media.js), which also uploads.
+ */
+function cacdemo_manage_image_input( $post, $kind, $label, $help = '' ) {
+	$image = cacdemo_manage_image_value( $post, $kind );
+	$name  = 'cacdemo_' . $kind;
+	$can   = current_user_can( 'upload_files' );
+	printf( '<fieldset class="cm-field cm-image" data-cm-image="%1$s"><legend class="cm-label">%2$s</legend>%3$s', esc_attr( $kind ), esc_html( $label ), $help ? '<p class="cm-help">' . esc_html( $help ) . '</p>' : '' );
+	printf(
+		'<div class="cm-image__current" data-cm-image-preview>%s</div>',
+		$image ? wp_get_attachment_image( $image, 'medium', false, array( 'class' => 'cm-cover__image', 'alt' => '' ) ) . '<span class="cm-image__name">' . esc_html( get_the_title( $image ) ) . '</span>' : '<span class="cm-image__none">' . esc_html__( 'No image', 'cacdemo' ) . '</span>'
+	);
+	if ( $image ) {
+		printf( '<label class="cm-check"><input type="checkbox" name="%1$s_remove" value="1" data-cm-image-remove> %2$s</label>', esc_attr( $name ), esc_html__( 'Remove this image', 'cacdemo' ) );
+	}
+	if ( $can ) {
 		printf(
-			'<label class="cm-sub" for="cacdemo-cover">%1$s</label><input type="file" id="cacdemo-cover" name="cacdemo_cover" accept="image/jpeg,image/png,image/webp"><label class="cm-sub" for="cacdemo-cover-alt">%2$s</label><input type="text" id="cacdemo-cover-alt" name="cacdemo_cover_alt" value="%3$s"><p class="cm-help">%4$s</p>',
-			esc_html( $thumb ? __( 'Replace with a new image', 'cacdemo' ) : __( 'Choose an image (JPG, PNG or WebP)', 'cacdemo' ) ),
-			esc_html__( 'Describe the image for people who cannot see it', 'cacdemo' ),
-			esc_attr( $thumb ? (string) get_post_meta( $thumb, '_wp_attachment_image_alt', true ) : '' ),
-			esc_html__( 'Leave the description empty if the image is only decoration.', 'cacdemo' )
+			'<input type="hidden" name="%1$s_library" value="" data-cm-image-library><p class="cm-image__actions" data-cm-library-actions hidden><button type="button" class="cm-button" data-cm-library="%2$s">%3$s</button></p><label class="cm-sub" for="cm-%2$s-file">%4$s</label><input type="file" id="cm-%2$s-file" name="%1$s" accept="image/jpeg,image/png,image/webp" data-cm-image-file>',
+			esc_attr( $name ),
+			esc_attr( $kind ),
+			esc_html__( 'Choose from the library', 'cacdemo' ),
+			esc_html( $image ? __( 'Or upload a new image (JPG, PNG or WebP)', 'cacdemo' ) : __( 'Or upload an image (JPG, PNG or WebP)', 'cacdemo' ) )
 		);
+		if ( 'banner' === $kind ) {
+			$positions = array( 'center' => __( 'Centre', 'cacdemo' ), 'top' => __( 'Top', 'cacdemo' ), 'bottom' => __( 'Bottom', 'cacdemo' ), 'left' => __( 'Left', 'cacdemo' ), 'right' => __( 'Right', 'cacdemo' ) );
+			foreach ( array( 'position' => array( __( 'Keep in view on wide screens', 'cacdemo' ), 'center' ), 'position_mobile' => array( __( 'Keep in view on phones', 'cacdemo' ), '' ) ) as $field => $meta ) {
+				$value   = $post ? (string) get_post_meta( $post->ID, 'banner_' . $field, true ) : '';
+				$options = 'position_mobile' === $field ? '<option value="">' . esc_html__( 'Same as wide screens', 'cacdemo' ) . '</option>' : '';
+				foreach ( $positions as $key => $position ) {
+					$options .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( $value ?: $meta[1], $key, false ), esc_html( $position ) );
+				}
+				printf( '<label class="cm-sub" for="cm-banner-%1$s">%2$s</label><select id="cm-banner-%1$s" name="cacdemo_banner_%1$s">%3$s</select>', esc_attr( $field ), esc_html( $meta[0] ), $options ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
+			}
+			printf( '<p class="cm-help">%s</p>', esc_html__( 'The banner is cropped to fit each screen; choose the part that must stay visible, such as faces.', 'cacdemo' ) );
+		} else {
+			printf(
+				'<label class="cm-sub" for="cm-%1$s-alt">%2$s</label><input type="text" id="cm-%1$s-alt" name="%3$s_alt" value="%4$s"><p class="cm-help">%5$s</p>',
+				esc_attr( $kind ),
+				esc_html__( 'Describe the image for people who cannot see it', 'cacdemo' ),
+				esc_attr( $name ),
+				esc_attr( $image ? (string) get_post_meta( $image, '_wp_attachment_image_alt', true ) : '' ),
+				esc_html__( 'Leave the description empty if the image is only decoration.', 'cacdemo' )
+			);
+		}
 	}
-	echo '</div>';
+	echo '</fieldset>';
+}
+
+/**
+ * Applies one image field from the submitted form: remove, a library choice, or an upload (which wins). Returns the
+ * resulting attachment ID (0 for none) or null when nothing changed. Uploads join the General collection (media.php).
+ */
+function cacdemo_manage_save_image( $post_id, $kind ) {
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- SCF verified the form nonce before saving.
+	$name    = 'cacdemo_' . $kind;
+	$chosen  = null;
+	if ( ! empty( $_POST[ $name . '_remove' ] ) ) {
+		$chosen = 0;
+	}
+	$library = absint( $_POST[ $name . '_library' ] ?? 0 );
+	if ( $library ) {
+		if ( cacdemo_can_use_library_image( $library ) ) {
+			$chosen = $library;
+		} else {
+			$GLOBALS['cacdemo_manage_upload_error'] = __( 'that library item is not an image you can use.', 'cacdemo' );
+		}
+	}
+	if ( ! empty( $_FILES[ $name ]['name'] ) && current_user_can( 'upload_files' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		$images   = array( 'jpg|jpeg|jpe' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp' );
+		$uploaded = media_handle_upload( $name, $post_id, array(), array( 'test_form' => false, 'mimes' => $images ) );
+		if ( is_wp_error( $uploaded ) ) {
+			$GLOBALS['cacdemo_manage_upload_error'] = $uploaded->get_error_message();
+		} else {
+			$chosen = $uploaded;
+		}
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
+	if ( null === $chosen ) {
+		return null;
+	}
+	if ( 'banner' === $kind ) {
+		update_field( 'banner_image', $chosen ?: '', $post_id );
+	} elseif ( $chosen ) {
+		set_post_thumbnail( $post_id, $chosen );
+	} else {
+		delete_post_thumbnail( $post_id );
+	}
+	return $chosen;
 }
 
 function cacdemo_manage_text_input( $name, $label, $value, $help = '', $type = 'text', $attrs = '' ) {
@@ -229,25 +317,20 @@ function cacdemo_manage_save_extras( $post, $context ) {
 		}
 	}
 
-	if ( post_type_supports( $post->post_type, 'thumbnail' ) ) {
-		if ( ! empty( $_POST['cacdemo_cover_remove'] ) ) {
-			delete_post_thumbnail( $id );
-		}
-		if ( ! empty( $_FILES['cacdemo_cover']['name'] ) && current_user_can( 'upload_files' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-			require_once ABSPATH . 'wp-admin/includes/media.php';
-			require_once ABSPATH . 'wp-admin/includes/image.php';
-			$images   = array( 'jpg|jpeg|jpe' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp' );
-			$uploaded = media_handle_upload( 'cacdemo_cover', $id, array(), array( 'test_form' => false, 'mimes' => $images ) );
-			if ( ! is_wp_error( $uploaded ) ) {
-				set_post_thumbnail( $id, $uploaded );
-			} else {
-				$GLOBALS['cacdemo_manage_upload_error'] = $uploaded->get_error_message();
-			}
-		}
+	if ( post_type_supports( $post->post_type, 'thumbnail' ) && ( isset( $_POST['cacdemo_cover_alt'] ) || isset( $_POST['cacdemo_cover_library'] ) || ! empty( $_POST['cacdemo_cover_remove'] ) || ! empty( $_FILES['cacdemo_cover']['name'] ) ) ) {
+		cacdemo_manage_save_image( $id, 'cover' );
 		$thumb = get_post_thumbnail_id( $id );
 		if ( $thumb && isset( $_POST['cacdemo_cover_alt'] ) && current_user_can( 'edit_post', $thumb ) ) {
 			update_post_meta( $thumb, '_wp_attachment_image_alt', sanitize_text_field( wp_unslash( $_POST['cacdemo_cover_alt'] ) ) );
+		}
+	}
+	if ( in_array( $post->post_type, array( 'page', 'ministry' ), true ) && isset( $_POST['cacdemo_banner_position'] ) ) {
+		cacdemo_manage_save_image( $id, 'banner' );
+		foreach ( array( 'position', 'position_mobile' ) as $field ) {
+			$value = sanitize_key( wp_unslash( $_POST[ 'cacdemo_banner_' . $field ] ?? '' ) );
+			if ( '' === $value || isset( CACDEMO_IMAGE_POSITIONS[ $value ] ) ) {
+				update_field( 'banner_' . $field, 'position' === $field ? ( $value ?: 'center' ) : $value, $id );
+			}
 		}
 	}
 	// phpcs:enable WordPress.Security.NonceVerification.Missing
@@ -468,7 +551,10 @@ function cacdemo_manage_ministry( $id ) {
 			'content' => __( 'Introduction', 'cacdemo' ),
 			'fields'  => array( 'field_cacdemo_ministry_tagline', 'field_cacdemo_ministry_contact_label', 'field_cacdemo_ministry_contact_url', 'field_cacdemo_ministry_invite_heading', 'field_cacdemo_ministry_invite_text' ),
 			'context' => array( 'section' => 'ministries' ),
-			'after'   => fn( $post ) => cacdemo_manage_cover_input( $post, __( 'Photo', 'cacdemo' ) ),
+			'after'   => function ( $post ) {
+				cacdemo_manage_cover_input( $post, __( 'Photo', 'cacdemo' ), __( 'Shown on the ministry’s card and at the top of its page.', 'cacdemo' ) );
+				cacdemo_manage_image_input( $post, 'banner', __( 'Wide banner (optional)', 'cacdemo' ), __( 'A wider image for the top of the ministry page, used instead of the photo there.', 'cacdemo' ) );
+			},
 		) );
 		echo '</section>';
 	} );
@@ -637,6 +723,7 @@ function cacdemo_manage_page_extras( $page ) {
 		esc_html__( 'A sub-page’s address starts with its parent’s, e.g. /about/our-story/.', 'cacdemo' )
 	);
 	cacdemo_manage_text_input( 'cacdemo_order', __( 'Order among its neighbours', 'cacdemo' ), $page ? (string) $page->menu_order : '0', __( 'Lower numbers come first.', 'cacdemo' ), 'number', 'min="0" step="1"' );
+	cacdemo_manage_image_input( $page, 'banner', __( 'Banner image', 'cacdemo' ), __( 'A large image behind the page title. Leave empty for a plain title.', 'cacdemo' ) );
 }
 
 /* ---------------------------------------------------------------- Social channels */
@@ -752,4 +839,48 @@ function cacdemo_manage_person( $id ) {
 			printf( '<input type="hidden" name="cacdemo_manage_action" value="people_remove"><input type="hidden" name="user_id" value="%d"><button type="submit" class="cm-button is-danger">%s</button></form>', (int) $user->ID, esc_html__( 'Remove all sections', 'cacdemo' ) );
 		}
 	} );
+}
+
+/* ---------------------------------------------------------------- Media library dialog */
+
+add_action( 'cacdemo_manage_enqueue', 'cacdemo_manage_media_assets' );
+
+/** People who can upload get the library dialog: browse by collection, search, upload, pick; and add images to text. */
+function cacdemo_manage_media_assets() {
+	if ( ! current_user_can( 'upload_files' ) ) {
+		return;
+	}
+	$file = dirname( __DIR__, 2 ) . '/assets/js/manage-media.js';
+	wp_enqueue_script( 'cacdemo-manage-media', plugins_url( 'assets/js/manage-media.js', dirname( __DIR__ ) ), array(), (string) filemtime( $file ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	$collections = array();
+	foreach ( get_terms( array( 'taxonomy' => 'media_collection', 'hide_empty' => false, 'orderby' => 'name' ) ) ?: array() as $term ) {
+		if ( $term instanceof WP_Term && 'placeholder' !== $term->slug ) {
+			$collections[] = array( 'id' => $term->term_id, 'name' => $term->name );
+		}
+	}
+	wp_localize_script( 'cacdemo-manage-media', 'cacdemoManageMedia', array(
+		'rest'        => esc_url_raw( rest_url( 'wp/v2/media' ) ),
+		'nonce'       => wp_create_nonce( 'wp_rest' ),
+		'collections' => $collections,
+		'text'        => array(
+			'title'       => __( 'Choose an image', 'cacdemo' ),
+			'close'       => __( 'Close', 'cacdemo' ),
+			'collection'  => __( 'Collection', 'cacdemo' ),
+			'all'         => __( 'All images', 'cacdemo' ),
+			'search'      => __( 'Search', 'cacdemo' ),
+			'upload'      => __( 'Upload a new image', 'cacdemo' ),
+			'uploading'   => __( 'Uploading…', 'cacdemo' ),
+			'uploaded'    => __( 'Uploaded and added to the General collection.', 'cacdemo' ),
+			'loading'     => __( 'Loading images…', 'cacdemo' ),
+			'none'        => __( 'No images found.', 'cacdemo' ),
+			'failed'      => __( 'The images could not be loaded. Check your connection and try again.', 'cacdemo' ),
+			'more'        => __( 'Show more', 'cacdemo' ),
+			'use'         => __( 'Use this image', 'cacdemo' ),
+			'insert'      => __( 'Add to the text', 'cacdemo' ),
+			'alt'         => __( 'Describe the image for people who cannot see it', 'cacdemo' ),
+			'altHelp'     => __( 'Leave empty if the image is only decoration.', 'cacdemo' ),
+			'addToText'   => __( 'Add an image to the text', 'cacdemo' ),
+			'willUse'     => __( 'Will be used when you save.', 'cacdemo' ),
+		),
+	) );
 }

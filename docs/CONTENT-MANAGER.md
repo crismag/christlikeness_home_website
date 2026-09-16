@@ -52,6 +52,13 @@ the admin bar shows **Content Manager** for everyone with access.
   carry their own nonces and capability checks.
 - Importer-only source details (posted date, length, platform ID) are kept in the form but hidden; the ID is derived from
   the link.
+- **Images** (`cacdemo_manage_image_input()` / `cacdemo_manage_save_image()`; dialog `cacdemo-content/assets/js/manage-media.js`):
+  sermons have a cover, updates an image, ministries a photo (card and page top) and an optional wide banner, pages a banner
+  (field group *Page banner*) with where to keep in view on wide screens and on phones. Each field can upload (works without
+  JavaScript) or **Choose from the library**: a dialog listing Media Library images by collection and search through the
+  REST API, with upload (the new image joins the General collection). **Add an image to the text** inserts a library image
+  with its description into the text. Library choices are checked on save (an image attachment, and `upload_files`).
+  The dialog is a native modal `<dialog>`: Escape closes it and focus returns to the button that opened it.
 - wp-admin still works for administrators and for anything unusual (menus, templates, designed pages).
 
 ## Verified
@@ -71,7 +78,13 @@ serve refused); a Content Admin at phone and desktop width (Pages tree, **Add su
 full editor, church-wide news, channels and people screens). Fixed during closure: creating an item with only a title did not
 save and could change the newest existing post (regression test added); stacked-table labels; home page address in Pages.
 
+Visual themes Phase 4 (2026-09-15), in the browser as an administrator: new page → upload in the library dialog (joined
+General, WebP sizes) → chosen as banner with right / top focal points → image added to the text with a description →
+published → banner hero and text image on the page → values kept when the form reopened. `scripts/test.sh --appearance`
+covers the save rules (General collection, REST collection listing, banner as SCF field, non-image refused, featured image,
+removal, no library picks without `upload_files`, form markup).
+
 ## Next
 
 Overview dashboard (my drafts, recently published) if wanted; a check with the church's real contributors; Events and other sections once
-their content models exist; image focal point / multiple images; menu placement for new pages (still wp-admin).
+their content models exist; menu placement for new pages (still wp-admin).

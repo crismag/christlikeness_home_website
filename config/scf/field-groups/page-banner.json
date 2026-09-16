@@ -1,0 +1,132 @@
+{
+    "key": "group_cacdemo_page_banner",
+    "title": "Page banner",
+    "fields": [
+        {
+            "key": "field_cacdemo_banner_image",
+            "label": "Banner image",
+            "name": "banner_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Large image across the top of the page. Leave empty for no banner (some pages then use the site theme's image).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,jpeg,png,webp",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_cacdemo_banner_position",
+            "label": "Keep in view",
+            "name": "banner_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Which part of the image matters most when it is cropped.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "choices": {
+                "center": "Centre",
+                "top": "Top",
+                "bottom": "Bottom",
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_cacdemo_banner_position_mobile",
+            "label": "Keep in view on phones",
+            "name": "banner_position_mobile",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Optional; phones crop tall and narrow.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "allow_in_bindings": 0,
+            "choices": {
+                "": "Same as above",
+                "center": "Centre",
+                "top": "Top",
+                "bottom": "Bottom",
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "ministry"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Optional banner image for pages, ministries and news.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": ""
+}

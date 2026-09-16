@@ -8,6 +8,7 @@
  * Viewport Width: 1440
  */
 ?>
+<!-- wp:cacdemo/page-hero {"variant":"landing","themeSlot":"home-hero","align":"full"} -->
 <!-- wp:group {"metadata":{"name":"Hero"},"align":"full","className":"cacdemo-hero","templateLock":"contentOnly","style":{"spacing":{"padding":{"top":"clamp(2.5rem, 1rem + 4.5vw, 5rem)","bottom":"clamp(3rem, 1rem + 5vw, 5.5rem)"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull cacdemo-hero" style="padding-top:clamp(2.5rem, 1rem + 4.5vw, 5rem);padding-bottom:clamp(3rem, 1rem + 5vw, 5.5rem)">
 	<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} -->
@@ -47,3 +48,4 @@
 	<!-- /wp:columns -->
 </div>
 <!-- /wp:group -->
+<!-- /wp:cacdemo/page-hero -->

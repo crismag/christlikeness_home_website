@@ -1,0 +1,21 @@
+{
+	"name": "Celebrated blue",
+	"description": "Deep confident blue bands, blue-grey detail and bright blue links on ivory.",
+	"order": 30,
+	"colors": {
+		"paper": "#FAFAF6",
+		"ink": "#15213A",
+		"stone": "#51607A",
+		"mist": "#E6ECF5",
+		"rule": "#CCD6E6",
+		"night": "#123A7A",
+		"night-rule": "#2A5396",
+		"night-muted": "#C8D8F2",
+		"stage": "#1D5FC2",
+		"stage-light": "#A9C8FF"
+	},
+	"custom": {
+		"highlight": "#A07414",
+		"highlightInverse": "#E3BA52"
+	}
+}

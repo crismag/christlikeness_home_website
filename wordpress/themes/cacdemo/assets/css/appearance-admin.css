@@ -1,0 +1,27 @@
+/* Appearance → Site Theme (wp-admin). Native admin look with small swatches. */
+.cacdemo-site-theme .cacdemo-lead { font-size: 14px; max-width: 48rem; }
+.cacdemo-site-theme .cacdemo-card { background: #fff; border: 1px solid #c3c4c7; padding: 12px 20px 16px; margin: 16px 0; max-width: 64rem; }
+.cacdemo-site-theme .cacdemo-card h2 { margin-top: 8px; }
+.cacdemo-swatch { display: inline-flex; vertical-align: middle; border: 1px solid #c3c4c7; border-radius: 2px; overflow: hidden; }
+.cacdemo-swatch i { display: block; width: 14px; height: 18px; }
+.cacdemo-now__theme { font-size: 18px; font-weight: 600; display: flex; gap: 8px; align-items: center; margin-bottom: 4px; }
+.cacdemo-themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 12px; margin: 12px 0; }
+.cacdemo-theme { display: flex; gap: 10px; align-items: flex-start; border: 1px solid #dcdcde; padding: 12px; border-radius: 2px; }
+.cacdemo-theme:has(input:checked) { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.cacdemo-theme__body { display: grid; gap: 4px; }
+.cacdemo-theme__body strong { display: flex; gap: 6px; align-items: center; }
+.cacdemo-theme__meta { color: #646970; font-size: 12px; }
+.cacdemo-schedule-form .cacdemo-fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.cacdemo-schedule-form label { display: grid; gap: 4px; }
+.cacdemo-palettes { margin: 12px 0 0; }
+.cacdemo-palettes li { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f1; }
+.cacdemo-pass.is-pass { color: #007017; }
+.cacdemo-pass.is-fail { color: #b32d2e; font-weight: 600; }
+.cacdemo-images + .cacdemo-images { border-top: 1px solid #f0f0f1; margin-top: 8px; }
+.cacdemo-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 12px; margin: 8px 0 0; }
+.cacdemo-slot { display: flex; gap: 12px; align-items: flex-start; border: 1px solid #dcdcde; padding: 10px; margin: 0; }
+.cacdemo-slot__preview { flex: 0 0 8rem; aspect-ratio: 16 / 9; background: #f0f0f1; display: grid; place-items: center; overflow: hidden; color: #646970; font-size: 12px; }
+.cacdemo-slot__preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cacdemo-slot__body { display: grid; gap: 4px; min-width: 0; }
+.cacdemo-slot__name { font-size: 12px; color: #1d2327; overflow-wrap: anywhere; }
+.cacdemo-slot__actions { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
