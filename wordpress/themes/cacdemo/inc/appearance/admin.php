@@ -89,6 +89,19 @@ function cacdemo_site_theme_slot_labels() {
 	);
 }
 
+add_filter( 'cacdemo_theme_image_slots', 'cacdemo_site_theme_image_slots' );
+
+/** The image slots any theme offers, for pickers outside this screen (the page-hero block). */
+function cacdemo_site_theme_image_slots( $slots ) {
+	$labels = cacdemo_site_theme_slot_labels();
+	foreach ( cacdemo_site_theme_packages() as $package ) {
+		foreach ( $package['slots'] as $slot ) {
+			$slots[ $slot ] = $labels[ $slot ][0] ?? $slot;
+		}
+	}
+	return $slots;
+}
+
 /**
  * Sets a theme's slot images. $images is slot => attachment ID (0 clears the slot). Only the package's own slots are
  * accepted, and only image attachments.

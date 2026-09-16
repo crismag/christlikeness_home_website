@@ -168,6 +168,8 @@ Site default · Rich chocolate · Celebrated blue · Graphite · Rich gold · Fo
   blocks. With an image it becomes a dark band: the image (`object-fit: cover`, focal point from the content), the
   site theme's `hero-overlay` scrim, the `hero-mark` decoration, and paper-coloured text with inverse buttons. Without
   one it renders its inner blocks unchanged (`is-plain`). Variants: `landing` (tall) and `moderate`.
+  Height and the theme image slot are set in the block's settings panel in the editor, so a template or page can point a
+  hero at any slot without code.
 - **Where:** Home (`landing`, slot `home-hero`), pages via `page.html` (`landing`, no slot: only a page with its own
   banner gets an image, so Contact and Connect stay typographic), Ministries (`landing`, `ministries-hero`), a ministry
   (`moderate`, `ministries-hero`), Sermons (`moderate`, `sermons-hero`).

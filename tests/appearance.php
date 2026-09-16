@@ -49,6 +49,8 @@ $check( 'manifests with an unknown type are rejected', null === cacdemo_site_the
 $unsafe = cacdemo_site_theme_normalize( 'x', array( 'name' => 'X', 'type' => 'program', 'palette' => 'gone', 'tokens' => array( 'decor' => 'red}body{display:none', 'texture' => 'none', 'color' => '#000' ), 'effects' => array( 'leaves' => array( 'wild', 'subtle' ) ) ), '' );
 $check( 'unsafe token values, unknown tokens, unknown intensities and missing palettes are dropped', $unsafe && array( 'texture' => 'none' ) === $unsafe['tokens'] && array( 'leaves' => array( 'subtle' ) ) === $unsafe['effects'] && 'default' === $unsafe['palette'] );
 
+$offered = (array) apply_filters( 'cacdemo_theme_image_slots', array() );
+$check( 'editors can point a page hero at any theme image slot, by name', array( 'home-hero', 'page-hero', 'ministries-hero', 'sermons-hero', 'fallback' ) === array_keys( $offered ) && 'Home page hero' === $offered['home-hero'] );
 $seasons = array( 'spring', 'summer', 'fall', 'winter' );
 $check( 'Spring, Summer, Fall and Winter are natural-season packages, listed in season order after Default', array( 'default', 'spring', 'summer', 'fall', 'winter' ) === array_slice( array_keys( $packages ), 0, 5 ) && ! array_filter( $seasons, fn( $id ) => 'natural-season' !== $packages[ $id ]['type'] ) );
 $complete = true;

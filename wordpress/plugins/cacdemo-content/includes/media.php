@@ -132,6 +132,21 @@ function cacdemo_webp_subsizes( $formats ) {
 	return $formats;
 }
 
+add_action( 'enqueue_block_editor_assets', 'cacdemo_hero_editor_slots' );
+
+/**
+ * Tells the page-hero block which site-theme images an editor may fall back to. The theme answers
+ * `cacdemo_theme_image_slots` with slot => label; nothing is offered if no theme provides slots.
+ */
+function cacdemo_hero_editor_slots() {
+	$slots   = (array) apply_filters( 'cacdemo_theme_image_slots', array() );
+	$options = array( array( 'label' => __( 'None', 'cacdemo' ), 'value' => '' ) );
+	foreach ( $slots as $slot => $label ) {
+		$options[] = array( 'label' => (string) $label, 'value' => (string) $slot );
+	}
+	wp_add_inline_script( 'cacdemo-page-hero-editor-script', 'window.cacdemoHeroSlots = ' . wp_json_encode( $options ) . ';', 'before' );
+}
+
 /* ---------------------------------------------------------------- Media collections */
 
 /** Collections every site starts with (created by scripts/seed-appearance.php; Content Admins add more). */
