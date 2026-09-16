@@ -2,7 +2,7 @@
 /**
  * Page hero. Image: the page's banner (or, for ministries, its featured image), otherwise the active site theme's image for
  * `themeSlot` when set (see includes/media.php). The first hero on a page loads eagerly with high priority (it is usually the
- * largest paint); decorative layers come from site-theme tokens. Without an image, the inner blocks render as a plain band.
+ * largest paint); decorative layers are the Christlikeness flame blended into the photograph and the site theme's own mark. Without an image, the inner blocks render as a plain band.
  *
  * @var array    $attributes
  * @var string   $content
@@ -36,7 +36,7 @@ $cacdemo_img = wp_get_attachment_image( $cacdemo_image['id'], 'full', false, arr
 $cacdemo_style = '--cacdemo-hero-position:' . $cacdemo_image['position'] . ';' . ( $cacdemo_image['position_mobile'] ? '--cacdemo-hero-position-mobile:' . $cacdemo_image['position_mobile'] . ';' : '' );
 
 printf(
-	'<section %1$s><div class="cacdemo-hero__media">%2$s</div><div class="cacdemo-hero__scrim" aria-hidden="true"></div><div class="cacdemo-hero__decor" aria-hidden="true"></div><div class="cacdemo-hero__content">%3$s</div></section>',
+	'<section %1$s><div class="cacdemo-hero__media">%2$s</div><div class="cacdemo-hero__scrim" aria-hidden="true"></div><div class="cacdemo-hero__brand" aria-hidden="true"></div><div class="cacdemo-hero__decor" aria-hidden="true"></div><div class="cacdemo-hero__content">%3$s</div></section>',
 	get_block_wrapper_attributes( array(
 		'class'            => 'cacdemo-hero has-image is-' . $cacdemo_variant . ' is-image-' . $cacdemo_image['source'],
 		'style'            => $cacdemo_style,

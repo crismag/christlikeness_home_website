@@ -170,6 +170,10 @@ Site default · Rich chocolate · Celebrated blue · Graphite · Rich gold · Fo
   one it renders its inner blocks unchanged (`is-plain`). Variants: `landing` (tall) and `moderate`.
   Height and the theme image slot are set in the block's settings panel in the editor, so a template or page can point a
   hero at any slot without code.
+- **The flame is blended into every banner image** (`.cacdemo-hero__brand`, `assets/images/flame.svg` traced from the
+  church's logo mark): the flame shape masks a Paper-coloured layer blended into the photograph (`mix-blend-mode:
+  overlay`, 24%; 28% and smaller on phones), on the quiet side of the band and clear of the site theme's own mark. It is
+  decorative (`aria-hidden`) and is skipped where a browser cannot mask it.
 - **Where:** Home (`landing`, slot `home-hero`), pages via `page.html` (`landing`, no slot: only a page with its own
   banner gets an image, so Contact and Connect stay typographic), Ministries (`landing`, `ministries-hero`), a ministry
   (`moderate`, `ministries-hero`), Sermons (`moderate`, `sermons-hero`).

@@ -19,6 +19,26 @@
 .cacdemo-hero__media,
 .cacdemo-hero__scrim,
 .cacdemo-hero__decor { position: absolute; inset: 0; }
+
+/* The Christlikeness flame, blended into the photograph itself rather than drawn on top of it. Shown only where the
+   browser can mask it to the flame shape; otherwise nothing is drawn. */
+.cacdemo-hero__brand { display: none; }
+@supports ((mask-image: url("../images/flame.svg")) or (-webkit-mask-image: url("../images/flame.svg"))) {
+.cacdemo-hero__brand {
+	display: block;
+	position: absolute;
+	z-index: -2;
+	inset-block: 0 22%; /* clear of the site theme's own mark in the bottom corner */
+	inset-inline-end: max(1.5rem, 4vw);
+	width: min(34vw, 24rem);
+	background: var(--wp--preset--color--paper);
+	opacity: 0.24;
+	mix-blend-mode: overlay;
+	pointer-events: none;
+	-webkit-mask: url("../images/flame.svg") no-repeat center / contain;
+	mask: url("../images/flame.svg") no-repeat center / contain;
+}
+}
 .cacdemo-hero__media { z-index: -3; }
 .cacdemo-hero__image {
 	display: block;
@@ -52,6 +72,7 @@
 	.cacdemo-hero__image { object-position: var(--cacdemo-hero-position-mobile, var(--cacdemo-hero-position, 50% 50%)); }
 	.cacdemo-hero__scrim { background: var(--wp--custom--hero-overlay-mobile); }
 	.cacdemo-hero__decor { background-position: right 1rem top 1rem; background-size: 5.5rem auto; opacity: 0.8; }
+	.cacdemo-hero__brand { inset-block: 0 35%; inset-inline-end: 1rem; width: min(48vw, 12rem); opacity: 0.28; }
 }
 
 /* Cards that show a fallback image keep the same frame as a real featured image. */

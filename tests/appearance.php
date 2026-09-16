@@ -174,7 +174,8 @@ if ( ! $img_a || ! $img_b || ! $about || ! $ministry ) {
 	$hero = '<!-- wp:cacdemo/page-hero {"variant":"moderate","themeSlot":"%s"} --><h2>T</h2><!-- /wp:cacdemo/page-hero -->';
 	$GLOBALS['cacdemo_hero_rendered'] = false;
 	$html_hero = render_block( parse_blocks( sprintf( $hero, 'home-hero' ) )[0] );
-	$check( 'the page hero renders the image behind its content, eager and high priority when first', str_contains( $html_hero, 'cacdemo-hero has-image is-moderate' ) && str_contains( $html_hero, 'fetchpriority="high"' ) && str_contains( $html_hero, 'class="cacdemo-hero__content"><h2>T</h2>' ) && str_contains( $html_hero, 'alt=""' ) );
+	$check( 'the page hero renders the image behind its content, eager and high priority when first', str_contains( $html_hero, 'cacdemo-hero has-image is-moderate' ) && str_contains( $html_hero, 'fetchpriority="high"' ) && str_contains( $html_hero, 'class="cacdemo-hero__content"><h2>T</h2>' ) && str_contains( $html_hero, 'alt=""' )
+		&& str_contains( $html_hero, '<div class="cacdemo-hero__brand" aria-hidden="true">' ) );
 	$html_hero = render_block( parse_blocks( sprintf( $hero, 'home-hero' ) )[0] );
 	$check( 'later heroes on the same page load lazily', str_contains( $html_hero, 'loading="lazy"' ) && ! str_contains( $html_hero, 'fetchpriority="high"' ) );
 	$fake_state = array();
